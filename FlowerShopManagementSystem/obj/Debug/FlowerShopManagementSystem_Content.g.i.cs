@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/power-off.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/key-icon.png")]
 
 

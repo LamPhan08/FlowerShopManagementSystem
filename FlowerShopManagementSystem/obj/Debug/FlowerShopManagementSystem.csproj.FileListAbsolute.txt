@@ -44,3 +44,5 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\FlowerShopMan
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\FlowerShopManagementSystem.csproj.CopyComplete
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\FlowerShopManagementSystem.exe
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\FlowerShopManagementSystem.pdb
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Login.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Login.baml
