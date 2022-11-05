@@ -43,6 +43,7 @@
     <Reference Include="MahApps.Metro.IconPacks.Material, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.IconPacks.Material.4.11.0\lib\net47\MahApps.Metro.IconPacks.Material.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -63,6 +64,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCustomerForm.xaml.cs">
+      <DependentUpon>AddCustomerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AccountsView.xaml.cs">
+      <DependentUpon>AccountsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomersView.xaml.cs">
+      <DependentUpon>CustomersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrdersView.xaml.cs">
+      <DependentUpon>OrdersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProductsView.xaml.cs">
+      <DependentUpon>ProductsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SuppliersView.xaml.cs">
+      <DependentUpon>SuppliersView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddCustomerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +120,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\OrdersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProductsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SuppliersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,9 +161,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Person.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\home.png" />
   </ItemGroup>
   <ItemGroup>
@@ -136,13 +183,22 @@
     <Resource Include="Images\welcome.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\flower.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\user-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\key-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flower.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Person.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Customer Image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

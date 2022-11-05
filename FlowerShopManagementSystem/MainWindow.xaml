@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="Transparent" AllowsTransparency="True">
-    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -24,7 +24,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="1" Background="#008851" CornerRadius="0 50 0 30" Margin="0 10 0 0">
+                <Border Grid.Row="1" Background="#FF008451" CornerRadius="0 50 0 30" Margin="0 10 0 0">
                     <DockPanel>
 
                         <!--Avatar-->
@@ -40,46 +40,52 @@
                         <!--Tên-->
                         <TextBlock Text="Lam Phan" Foreground="White" FontSize="20" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <TextBlock Text="Manager" Foreground="LightGray" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center"/>
+                        
                         <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#007747"/>
 
                         <!--Buttons-->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}">
+                            <Button x:Name="btnDashboard" Style="{StaticResource menuButton}" Click="btnDashboard_Click"
+                                    Background="White" Foreground="#008851" MouseEnter="btnDashboard_MouseEnter" MouseLeave="btnDashboard_MouseLeave"
+                                    >
+
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="Icons/home.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Dashboard" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button x:Name="btnProducts" Style="{StaticResource menuButton}" Click="btnProducts_Click"
+                                    MouseEnter="btnProducts_MouseEnter" MouseLeave="btnProducts_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="Icons/flower.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Products" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button x:Name="btnSuppliers" Style="{StaticResource menuButton}" Click="btnSuppliers_Click" MouseEnter="btnSuppliers_MouseEnter" MouseLeave="btnSuppliers_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="Icons/supplier.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Suppliers" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Name="btnOrders" Style="{StaticResource menuButton}" Click="btnOrders_Click" MouseEnter="btnOrders_MouseEnter" MouseLeave="btnOrders_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="Icons/order.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Orders" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Name="btnCustomers" Style="{StaticResource menuButton}" Click="btnCustomers_Click" MouseEnter="btnCustomers_MouseEnter" MouseLeave="btnCustomers_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="Icons/customer.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Customers" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Name="btnAccounts" Style="{StaticResource menuButton}" Click="btnAccounts_Click" MouseEnter="btnAccounts_MouseEnter" MouseLeave="btnAccounts_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="Icons/account.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Accounts" FontWeight="SemiBold"/>
@@ -105,20 +111,24 @@
             <Grid Grid.Column="1" Margin="30 20 20 20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <!--Exit button-->
-                <Button Margin="800,0,0,0" Style="{StaticResource topButton}" Foreground="Red" Click="Button_Click" Height="30" VerticalAlignment="Top">
+                <Button Margin="0" Style="{StaticResource topButton}" Foreground="Red" Click="Button_Click" Height="30" VerticalAlignment="Top">
                     <icon:PackIconMaterial Kind="LocationExit"/>
                 </Button>
 
-                <TextBlock Text="Dashboard" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
+                <Button x:Name="btnMaximize" Margin="0 0 35 0" Style="{StaticResource topButton}" Foreground="Green" Height="30" VerticalAlignment="Top" Click="btnMaximize_Click">
+                    <icon:PackIconMaterial Kind="WindowMaximize"/>
+                </Button>
+
+                <Button x:Name="btnMinimize" Margin="0 0 70 0" Style="{StaticResource topButton}" Foreground="Gray" Height="30" VerticalAlignment="Top" Click="btnMinimize_Click">
+                    <icon:PackIconMaterial Kind="WindowMinimize"/>
+                </Button>
+
+                <Frame NavigationUIVisibility="Hidden" x:Name="frame" Grid.Row="1" Background="Aquamarine" Margin="0,10,0,0"
+                       Content="View"/>
             </Grid>
 
         </Grid>

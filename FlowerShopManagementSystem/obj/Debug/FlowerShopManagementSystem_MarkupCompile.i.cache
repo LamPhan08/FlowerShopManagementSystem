@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\App.xaml
-2736615074
+92035900270
 
-7-1448319326
-15-603014013
-Login.xaml;MainWindow.xaml;
+142134029566
+16-492295538
+AddCustomerForm.xaml;View\AccountsView.xaml;View\CustomersView.xaml;View\DashboardView.xaml;Login.xaml;MainWindow.xaml;View\OrdersView.xaml;View\ProductsView.xaml;View\SuppliersView.xaml;
 
 False
 

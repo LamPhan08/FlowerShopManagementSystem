@@ -4,91 +4,98 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:materialDesign="material"
         mc:Ignorable="d"
-        WindowStyle="None" Height="500" Width="500" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" Height="500" Width="800" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" MouseDown="Window_MouseDown" Background="Transparent"
         AllowsTransparency="True">
-    <Border CornerRadius="10" Background="White" BorderBrush="#008851" BorderThickness="2">
-        <Grid Margin="0 2 2 0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Border CornerRadius="10">
 
-            <Border>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/flower.jpg"/>
+        </Border.Background>
 
-                    <Button x:Name="exitBtn" Grid.Column="2" Style="{StaticResource topButton}" HorizontalAlignment="Right"
+            <Grid Margin="0 2 2 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="exitBtn" Grid.Column="2" Style="{StaticResource topButton}" HorizontalAlignment="Right"
                         HorizontalContentAlignment="Center" Cursor="Hand"
                             Click="exitBtn_Click">
-                        <icon:PackIconMaterial Kind="LocationExit"/>
-                    </Button>
+                            <icon:PackIconMaterial Kind="LocationExit" Foreground="Red"/>
+                        </Button>
 
-                    <Button x:Name="minimizeBtn" Grid.Column="1" Style="{StaticResource topButton}" HorizontalAlignment="Right"
-                        HorizontalContentAlignment="Center" Cursor="Hand" Content="-" FontSize="20"
+                        <Button x:Name="minimizeBtn" Grid.Column="1" Style="{StaticResource topButton}" HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Center" Cursor="Hand" FontSize="20"
                             VerticalContentAlignment="Center"
-                            Click="minimizeBtn_Click"/>
-                </Grid>
-                
-            </Border>
-            
-            <!--Logo-->
-            <Border Grid.Row="1" Margin="0 10 0 0">
-                <Image Source="Images/logo.png" Height="70" Width="250"/>
-            </Border>
+                            Click="minimizeBtn_Click" Foreground="Green">
+                            <icon:PackIconMaterial Kind="WindowMinimize"/>
+                        </Button>
+                    </Grid>
 
-            <Border Grid.Row="2">
-                <StackPanel Margin="100 0 100 0">
+                </Border>
+
+                <!--Logo-->
+                <Border Grid.Row="1" Margin="0 -10 0 0">
+                    <Image Source="Images/logo.png" Height="70" Width="250"/>
+                </Border>
+
+                <Border Grid.Row="2" Margin="0 20 0 0">
                     
-                    <TextBlock Margin="0 0 0 10" Text="Welcome!" FontSize="40" HorizontalAlignment="Center"
-                               FontWeight="Bold" Foreground="#008851"/>
+                    <StackPanel Margin="270 0 270 0">
 
-                    <TextBlock Text="Login to your existing account" FontSize="17"
+                        <TextBlock Margin="0 0 0 10" Text="Welcome!" FontSize="45" HorizontalAlignment="Center"
+                               FontWeight="Bold" Foreground="Yellow" FontFamily="Times New Roman"/>
+
+                        <TextBlock Text="Login to your existing account" FontSize="17"
                                HorizontalAlignment="Center" FontWeight="SemiBold"
-                               Foreground="Gray"/>
+                               Foreground="White"/>
 
-                    <TextBlock Margin="0 50 0 0" Text="Username"
-                               FontSize="14" Foreground="Gray"/>
+                        <TextBlock Margin="0 50 0 0" Text="Username"
+                               FontSize="14" Foreground="Black" FontWeight="SemiBold"/>
 
-                    <TextBox x:Name="tbxUsername" Margin="0 5 0 0" FontWeight="Medium"
-                             CaretBrush="LightGray" BorderBrush="DarkGray"
+                        <TextBox x:Name="tbxUsername" Margin="0 5 0 0" FontWeight="Medium"
+                             CaretBrush="Black" BorderBrush="Black"
                              BorderThickness="0,0,0,1" Height="28"
                              VerticalContentAlignment="Center"
                              Padding="20,0,0,0">
 
-                        <TextBox.Background>
-                            <ImageBrush ImageSource="/Icons/user-icon.png"
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="/Icons/user-icon.png"
                                         AlignmentX="Left"
                                         Stretch="None"/>
-                        </TextBox.Background>
-                        
-                    </TextBox>
+                            </TextBox.Background>
 
-                    <TextBlock Margin="0 15 0 0" Text="Password"
-                               FontSize="14" Foreground="Gray"/>
+                        </TextBox>
 
-                    <PasswordBox x:Name="txbPassword" Margin="0 5 0 0" FontWeight="Medium"
-                             CaretBrush="LightGray" BorderBrush="DarkGray"
+                        <TextBlock Margin="0 15 0 0" Text="Password"
+                               FontSize="14" Foreground="Black" FontWeight="SemiBold"/>
+
+                        <PasswordBox x:Name="txbPassword" Margin="0 5 0 0" FontWeight="Medium"
+                             CaretBrush="Black" BorderBrush="Black"
                              BorderThickness="0,0,0,1" Height="28"
                              VerticalContentAlignment="Center"
                              Padding="20,0,0,0">
 
-                        <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Icons/key-icon.png"
+                            <PasswordBox.Background>
+                                <ImageBrush ImageSource="/Icons/key-icon.png"
                                         AlignmentX="Left"
                                         Stretch="None"/>
-                        </PasswordBox.Background>
+                            </PasswordBox.Background>
 
-                    </PasswordBox>
+                        </PasswordBox>
 
-                    <Button x:Name="btnLogin"                          
+                        <Button x:Name="btnLogin"                          
                             BorderThickness="0"
                             Content="LOGIN"
                             Foreground="White"
@@ -99,31 +106,32 @@
                             Margin="0,50,0,0"
                             Click="btnLogin_Click">
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#008851"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#28AEED"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#FF008451"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF009B51"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40"
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                        <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
 
-                </StackPanel>
-            </Border>
-        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
     </Border>
 </Window>
