@@ -11,91 +11,97 @@
     <Border CornerRadius="10">
 
         <Border.Background>
-            <ImageBrush ImageSource="/Images/flower.jpg"/>
+            <ImageBrush ImageSource="/Images/flowerbackground.jpg"/>
         </Border.Background>
 
-            <Grid Margin="0 2 2 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <Grid Margin="0 2 2 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Border>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
+            <Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Button x:Name="exitBtn" Grid.Column="2" Style="{StaticResource topButton}" HorizontalAlignment="Right"
+                    <Button x:Name="exitBtn" Grid.Column="2" Style="{StaticResource topButton}" HorizontalAlignment="Right"
                         HorizontalContentAlignment="Center" Cursor="Hand"
                             Click="exitBtn_Click">
-                            <icon:PackIconMaterial Kind="LocationExit" Foreground="Red"/>
-                        </Button>
+                        <icon:PackIconMaterial Kind="LocationExit" Foreground="Red"/>
+                    </Button>
 
-                        <Button x:Name="minimizeBtn" Grid.Column="1" Style="{StaticResource topButton}" HorizontalAlignment="Right"
+                    <Button x:Name="minimizeBtn" Grid.Column="1" Style="{StaticResource topButton}" HorizontalAlignment="Right"
                         HorizontalContentAlignment="Center" Cursor="Hand" FontSize="20"
                             VerticalContentAlignment="Center"
-                            Click="minimizeBtn_Click" Foreground="Green">
-                            <icon:PackIconMaterial Kind="WindowMinimize"/>
-                        </Button>
-                    </Grid>
+                            Click="minimizeBtn_Click" Foreground="Gray">
+                        <icon:PackIconMaterial Kind="WindowMinimize"/>
+                    </Button>
+                </Grid>
 
-                </Border>
+            </Border>
 
-                <!--Logo-->
-                <Border Grid.Row="1" Margin="0 -10 0 0">
-                    <Image Source="Images/logo.png" Height="70" Width="250"/>
-                </Border>
+            <!--Logo-->
+            <Border Grid.Row="1" Margin="0 -10 0 0">
+                <Image Source="Images/logo.png" Height="70" Width="250"/>
+            </Border>
 
-                <Border Grid.Row="2" Margin="0 20 0 0">
-                    
-                    <StackPanel Margin="270 0 270 0">
+            <Border Grid.Row="2" Margin="240 0 240 20" CornerRadius="30" Opacity="0.9">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="#dfdfdf" Offset="0"/>
+                        <GradientStop Color="#F5F5F5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                
+                <StackPanel>
+                    <TextBlock Margin="0 0 0 10" Text="Welcome!" FontSize="45" HorizontalAlignment="Center"
+                               FontWeight="Bold" Foreground="#FF009B51" FontFamily="Times New Roman"/>
 
-                        <TextBlock Margin="0 0 0 10" Text="Welcome!" FontSize="45" HorizontalAlignment="Center"
-                               FontWeight="Bold" Foreground="Yellow" FontFamily="Times New Roman"/>
-
-                        <TextBlock Text="Login to your existing account" FontSize="17"
+                    <TextBlock Text="Login to your existing account" FontSize="17"
                                HorizontalAlignment="Center" FontWeight="SemiBold"
-                               Foreground="White"/>
+                               Foreground="Black"/>
 
-                        <TextBlock Margin="0 50 0 0" Text="Username"
+                    <TextBlock Margin="10 50 0 0" Text="Username"
                                FontSize="14" Foreground="Black" FontWeight="SemiBold"/>
 
-                        <TextBox x:Name="tbxUsername" Margin="0 5 0 0" FontWeight="Medium"
+                    <TextBox x:Name="tbxUsername" Margin="10 5 10 0" FontWeight="Medium"
                              CaretBrush="Black" BorderBrush="Black"
                              BorderThickness="0,0,0,1" Height="28"
                              VerticalContentAlignment="Center"
                              Padding="20,0,0,0">
 
-                            <TextBox.Background>
-                                <ImageBrush ImageSource="/Icons/user-icon.png"
-                                        AlignmentX="Left"
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Icons/user-icon.png"
+                                       AlignmentX="Left"
                                         Stretch="None"/>
-                            </TextBox.Background>
+                        </TextBox.Background>
 
-                        </TextBox>
+                    </TextBox>
+                    
 
-                        <TextBlock Margin="0 15 0 0" Text="Password"
+                    <TextBlock Margin="10 15 0 0" Text="Password"
                                FontSize="14" Foreground="Black" FontWeight="SemiBold"/>
 
-                        <PasswordBox x:Name="txbPassword" Margin="0 5 0 0" FontWeight="Medium"
+                    <PasswordBox x:Name="txbPassword" Margin="10 5 10 0" FontWeight="Medium"
                              CaretBrush="Black" BorderBrush="Black"
                              BorderThickness="0,0,0,1" Height="28"
                              VerticalContentAlignment="Center"
                              Padding="20,0,0,0">
 
-                            <PasswordBox.Background>
-                                <ImageBrush ImageSource="/Icons/key-icon.png"
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/Icons/key-icon.png"
                                         AlignmentX="Left"
                                         Stretch="None"/>
-                            </PasswordBox.Background>
+                        </PasswordBox.Background>
 
-                        </PasswordBox>
+                    </PasswordBox>
 
-                        <Button x:Name="btnLogin"                          
+                    <Button x:Name="btnLogin"                          
                             BorderThickness="0"
                             Content="LOGIN"
                             Foreground="White"
@@ -103,35 +109,35 @@
                             FontSize="12"
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
-                            Margin="0,50,0,0"
+                            Margin="0,70,0,0"
                             Click="btnLogin_Click">
 
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#FF008451"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FF009B51"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#FF008451"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF009B51"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
 
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Width="150" Height="40"
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center"
+                                    <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
 
-                    </StackPanel>
-                </Border>
-            </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
 
     </Border>
 </Window>

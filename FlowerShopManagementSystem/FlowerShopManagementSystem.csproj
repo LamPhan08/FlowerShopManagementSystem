@@ -192,13 +192,16 @@
     <Resource Include="Icons\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\flower.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Person.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Customer Image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FLOWER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flowerbackground.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

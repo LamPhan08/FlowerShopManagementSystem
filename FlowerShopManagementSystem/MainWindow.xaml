@@ -123,7 +123,7 @@
                     <icon:PackIconMaterial Kind="WindowMaximize"/>
                 </Button>
 
-                <Button x:Name="btnMinimize" Margin="0 0 70 0" Style="{StaticResource topButton}" Foreground="Gray" Height="30" VerticalAlignment="Top" Click="btnMinimize_Click">
+                <Button x:Name="btnMinimize" Margin="0 0 70 0" Style="{StaticResource topButton}" Foreground="Black" Height="30" VerticalAlignment="Top" Click="btnMinimize_Click">
                     <icon:PackIconMaterial Kind="WindowMinimize"/>
                 </Button>
 
