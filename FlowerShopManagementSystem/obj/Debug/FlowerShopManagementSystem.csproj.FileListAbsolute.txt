@@ -51,8 +51,6 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\Dashboar
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\DashboardView.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\CustomersView.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\CustomersView.g.cs
-D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\AccountsView.g.cs
-D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\AccountsView.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\OrdersView.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\ProductsView.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\SuppliersView.g.cs
@@ -61,3 +59,5 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\Products
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\SuppliersView.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\AddCustomerForm.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\AddCustomerForm.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\AccountsView.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\View\AccountsView.baml

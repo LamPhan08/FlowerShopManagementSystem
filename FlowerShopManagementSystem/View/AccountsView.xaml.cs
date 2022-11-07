@@ -25,4 +25,9 @@ namespace FlowerShopManagementSystem.View
             InitializeComponent();
         }
     }
+
+    public class Account
+    {
+        //public string 
+    }
 }
