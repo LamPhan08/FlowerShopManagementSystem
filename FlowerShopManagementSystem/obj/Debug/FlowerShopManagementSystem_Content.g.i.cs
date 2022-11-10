@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/person.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20c%c3%bac.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20h%e1%bb%93ng.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20lan.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20ly.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20mai.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20v%e1%ba%a1n%20th%e1%bb%8d.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("product%20image/hoa%20%c4%91%c3%a0o.jpg")]
 
 

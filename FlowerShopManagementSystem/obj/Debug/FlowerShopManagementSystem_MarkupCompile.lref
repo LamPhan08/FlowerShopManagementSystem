@@ -1,9 +1,14 @@
 ﻿
 
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\AddCustomerForm.xaml;;
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\View\AccountsView.xaml;;
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\View\DashboardView.xaml;;
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\View\OrdersView.xaml;;
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\View\ProductsView.xaml;;
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\View\SuppliersView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Customers\AddCustomerForm.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Accounts\AccountsView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Customers\EditCustomerForm.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Customers\ViewCustomerDetails.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Dashboard\DashboardView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\OrdersView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Products\ProductsView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\SuppliersView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\AddSupplierForm.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\ViewSupplierDetails.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\EditSupplierForm.xaml;;
 

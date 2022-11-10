@@ -17,6 +17,8 @@ namespace FlowerShopManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static bool isLogout = false;
+
         private bool isMaximized = false;
 
         private int Dashboard = 0,
@@ -31,7 +33,7 @@ namespace FlowerShopManagementSystem
         public MainWindow()
         {
             InitializeComponent();
-            View.DashboardView dashboard = new View.DashboardView();
+            Dashboard.DashboardView dashboard = new Dashboard.DashboardView();
             frame.Content = dashboard;
             isSelected = Dashboard;
         }
@@ -51,16 +53,24 @@ namespace FlowerShopManagementSystem
 
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Close();
+            //Login login = new Login();
+            //login.Show();
+            //this.Close();
+
+            NotificationBox.LogoutConfirmationBox logoutConfirmationBox = new NotificationBox.LogoutConfirmationBox();
+            logoutConfirmationBox.ShowDialog();
+
+            if (isLogout)
+            {
+                this.Close();
+            }
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
             if (isSelected != Dashboard)
             {
-                View.DashboardView dashboardView = new View.DashboardView();
+                Dashboard.DashboardView dashboardView = new Dashboard.DashboardView();
                 frame.Content = dashboardView;
 
                 ChangeButtonStyle();
@@ -77,7 +87,7 @@ namespace FlowerShopManagementSystem
         {
             if (isSelected != Products)
             {
-                View.ProductsView productsView = new View.ProductsView();
+                Products.ProductsView productsView = new Products.ProductsView();
                 frame.Content = productsView;
 
                 ChangeButtonStyle();
@@ -219,7 +229,7 @@ namespace FlowerShopManagementSystem
         {
             if (isSelected != Suppliers)
             {
-                View.SuppliersView suppliersView = new View.SuppliersView();
+                Suppliers.SuppliersView suppliersView = new Suppliers.SuppliersView();
                 frame.Content = suppliersView;
 
                 ChangeButtonStyle();
@@ -236,7 +246,7 @@ namespace FlowerShopManagementSystem
         {
             if (isSelected != Orders)
             {
-                View.OrdersView ordersView = new View.OrdersView();
+                Orders.OrdersView ordersView = new Orders.OrdersView();
                 frame.Content = ordersView;
 
                 ChangeButtonStyle();
@@ -253,7 +263,7 @@ namespace FlowerShopManagementSystem
         {
             if (isSelected != Customers)
             {
-                View.CustomersView customersView = new View.CustomersView();
+                Customers.CustomersView customersView = new Customers.CustomersView();
                 frame.Content = customersView;
 
                 ChangeButtonStyle();
@@ -270,7 +280,7 @@ namespace FlowerShopManagementSystem
         {
             if (isSelected != Accounts)
             {
-                View.AccountsView accountsView = new View.AccountsView();
+                Accounts.AccountsView accountsView = new Accounts.AccountsView();
                 frame.Content = accountsView;
 
                 ChangeButtonStyle();

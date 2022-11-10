@@ -22,7 +22,7 @@ namespace FlowerShopManagementSystem
         public Login()
         {
             InitializeComponent();
-            //tbxUsername.Focus();
+            tbxUsername.Focus();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

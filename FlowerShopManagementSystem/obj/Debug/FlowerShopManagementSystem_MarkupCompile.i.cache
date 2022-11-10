@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\App.xaml
-92035900270
+171643081164
 
-142134029566
+221403710992
 16-492295538
-AddCustomerForm.xaml;View\AccountsView.xaml;View\CustomersView.xaml;View\DashboardView.xaml;Login.xaml;MainWindow.xaml;View\OrdersView.xaml;View\ProductsView.xaml;View\SuppliersView.xaml;
+NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;Orders\OrdersView.xaml;Products\ProductsView.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
 
-False
+True
 

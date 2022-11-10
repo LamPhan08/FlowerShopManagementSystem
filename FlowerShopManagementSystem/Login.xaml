@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        WindowStyle="None" Height="500" Width="800" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" Height="550" Width="850" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" MouseDown="Window_MouseDown" Background="Transparent"
         AllowsTransparency="True">
     <Border CornerRadius="10">
@@ -50,7 +50,7 @@
                 <Image Source="Images/logo.png" Height="70" Width="250"/>
             </Border>
 
-            <Border Grid.Row="2" Margin="240 0 240 20" CornerRadius="30" Opacity="0.9">
+            <Border Grid.Row="2" Margin="250 0 250 40" CornerRadius="30" Opacity="0.9">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                         <GradientStop Color="#dfdfdf" Offset="0"/>
@@ -59,7 +59,7 @@
                 </Border.Background>
                 
                 <StackPanel>
-                    <TextBlock Margin="0 0 0 10" Text="Welcome!" FontSize="45" HorizontalAlignment="Center"
+                    <TextBlock Margin="0 20 0 10" Text="Welcome!" FontSize="45" HorizontalAlignment="Center"
                                FontWeight="Bold" Foreground="#FF009B51" FontFamily="Times New Roman"/>
 
                     <TextBlock Text="Login to your existing account" FontSize="17"
@@ -76,7 +76,7 @@
                              Padding="20,0,0,0">
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/Icons/user-icon.png"
+                            <ImageBrush ImageSource="/Images/Icons/user-icon.png"
                                        AlignmentX="Left"
                                         Stretch="None"/>
                         </TextBox.Background>
@@ -94,12 +94,17 @@
                              Padding="20,0,0,0">
 
                         <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Icons/key-icon.png"
+                            <ImageBrush ImageSource="/Images/Icons/key-icon.png"
                                         AlignmentX="Left"
                                         Stretch="None"/>
                         </PasswordBox.Background>
 
                     </PasswordBox>
+
+                    <CheckBox x:Name="chkbxShowPassword" Width="auto" HorizontalAlignment="Left" Margin="10 10 0 0"
+                              FontWeight="SemiBold" Cursor="Hand" Style="{StaticResource chkbxLogin}">
+                        
+                    </CheckBox>
 
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"
@@ -109,7 +114,7 @@
                             FontSize="12"
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
-                            Margin="0,70,0,0"
+                            Margin="0,50,0,0"
                             Click="btnLogin_Click">
 
                         <Button.Style>

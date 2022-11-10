@@ -64,40 +64,84 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddCustomerForm.xaml.cs">
+    <Compile Include="NotificationBox\CannotDeleteBox.xaml.cs">
+      <DependentUpon>CannotDeleteBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationBox\LogoutConfirmationBox.xaml.cs">
+      <DependentUpon>LogoutConfirmationBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\AddCustomerForm.xaml.cs">
       <DependentUpon>AddCustomerForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AccountsView.xaml.cs">
+    <Compile Include="Accounts\AccountsView.xaml.cs">
       <DependentUpon>AccountsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CustomersView.xaml.cs">
+    <Compile Include="Customers\CustomersView.xaml.cs">
       <DependentUpon>CustomersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DashboardView.xaml.cs">
+    <Compile Include="Customers\EditCustomerForm.xaml.cs">
+      <DependentUpon>EditCustomerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\ViewCustomerDetails.xaml.cs">
+      <DependentUpon>ViewCustomerDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OrdersView.xaml.cs">
+    <Compile Include="NotificationBox\DeleteConfirmationBox.xaml.cs">
+      <DependentUpon>DeleteConfirmationBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrdersView.xaml.cs">
       <DependentUpon>OrdersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductsView.xaml.cs">
+    <Compile Include="Products\ProductsView.xaml.cs">
       <DependentUpon>ProductsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SuppliersView.xaml.cs">
+    <Compile Include="Suppliers\AddSupplierForm.xaml.cs">
+      <DependentUpon>AddSupplierForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers\EditSupplierForm.xaml.cs">
+      <DependentUpon>EditSupplierForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers\SuppliersView.xaml.cs">
       <DependentUpon>SuppliersView.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddCustomerForm.xaml">
+    <Compile Include="Suppliers\ViewSupplierDetails.xaml.cs">
+      <DependentUpon>ViewSupplierDetails.xaml</DependentUpon>
+    </Compile>
+    <Page Include="NotificationBox\CannotDeleteBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AccountsView.xaml">
+    <Page Include="NotificationBox\LogoutConfirmationBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CustomersView.xaml">
+    <Page Include="Customers\AddCustomerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DashboardView.xaml">
+    <Page Include="Accounts\AccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customers\CustomersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customers\EditCustomerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customers\ViewCustomerDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dashboard\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotificationBox\DeleteConfirmationBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,15 +164,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\OrdersView.xaml">
+    <Page Include="Orders\OrdersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ProductsView.xaml">
+    <Page Include="Products\ProductsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SuppliersView.xaml">
+    <Page Include="Suppliers\AddSupplierForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Suppliers\EditSupplierForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Suppliers\SuppliersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Suppliers\ViewSupplierDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,20 +217,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\home.png" />
+    <Resource Include="Images\Icons\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\account.png" />
-    <Resource Include="Icons\customer.png" />
-    <Resource Include="Icons\flower.png" />
-    <Resource Include="Icons\order.png" />
-    <Resource Include="Icons\supplier.png" />
+    <Resource Include="Images\Icons\account.png" />
+    <Resource Include="Images\Icons\customer.png" />
+    <Resource Include="Images\Icons\flower.png" />
+    <Resource Include="Images\Icons\order.png" />
+    <Resource Include="Images\Icons\supplier.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\logout.png" />
+    <Resource Include="Images\Icons\logout.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\power-off.png" />
+    <Resource Include="Images\Icons\power-off.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo.png" />
@@ -183,13 +239,13 @@
     <Resource Include="Images\welcome.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\user-icon.png" />
+    <Resource Include="Images\Icons\user-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\key-icon.png" />
+    <Resource Include="Images\Icons\key-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\user.png" />
+    <Resource Include="Images\Icons\user.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Person.jpg" />
@@ -202,6 +258,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\flowerbackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Products\Product Image\Hoa cúc.jpg" />
+    <Resource Include="Products\Product Image\Hoa hồng.jpg" />
+    <Resource Include="Products\Product Image\Hoa lan.jpg" />
+    <Resource Include="Products\Product Image\Hoa ly.jpg" />
+    <Resource Include="Products\Product Image\Hoa mai.jpg" />
+    <Resource Include="Products\Product Image\Hoa vạn thọ.png" />
+    <Resource Include="Products\Product Image\Hoa đào.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\invisible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\visible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Supplier image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\red warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -51,7 +51,7 @@
                                     >
 
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="Icons/home.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <Image Source="/Images/Icons/home.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Dashboard" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
@@ -59,35 +59,35 @@
                             <Button x:Name="btnProducts" Style="{StaticResource menuButton}" Click="btnProducts_Click"
                                     MouseEnter="btnProducts_MouseEnter" MouseLeave="btnProducts_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="Icons/flower.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <Image Source="/Images/Icons/flower.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Products" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
                             <Button x:Name="btnSuppliers" Style="{StaticResource menuButton}" Click="btnSuppliers_Click" MouseEnter="btnSuppliers_MouseEnter" MouseLeave="btnSuppliers_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="Icons/supplier.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <Image Source="/Images/Icons/supplier.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Suppliers" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="btnOrders" Style="{StaticResource menuButton}" Click="btnOrders_Click" MouseEnter="btnOrders_MouseEnter" MouseLeave="btnOrders_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="Icons/order.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <Image Source="/Images/Icons/order.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Orders" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="btnCustomers" Style="{StaticResource menuButton}" Click="btnCustomers_Click" MouseEnter="btnCustomers_MouseEnter" MouseLeave="btnCustomers_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="Icons/customer.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <Image Source="/Images/Icons/customer.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Customers" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="btnAccounts" Style="{StaticResource menuButton}" Click="btnAccounts_Click" MouseEnter="btnAccounts_MouseEnter" MouseLeave="btnAccounts_MouseLeave">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="Icons/account.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <Image Source="/Images/Icons/account.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                     <TextBlock Text="Accounts" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
@@ -97,7 +97,7 @@
                         <Button x:Name="logoutBtn" Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20"
                                 Click="logoutBtn_Click">
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Icons/logout.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                <Image Source="/Images/Icons/logout.png" Height="15" Width="15" Margin="20 2 20 0"/>
                                 <TextBlock Text="Logout" FontWeight="SemiBold"/>
                             </StackPanel>
                         </Button>
