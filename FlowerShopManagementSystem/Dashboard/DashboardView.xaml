@@ -5,9 +5,78 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FlowerShopManagementSystem"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="450" d:DesignWidth="800" Background="#EFF2F7">
 
-    <Grid Background="White">
-        <TextBlock Text="Dashboard"/>
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Dịch vụ đặc biệt" FontSize="25"/>
+                        <TextBlock Grid.Column="1" Text="@" FontSize="25" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="@" FontSize="25" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <ListView Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                        <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding exampleProduct}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="10" Width="235" Height="260" Background="Gray" CornerRadius="5">
+                                        <StackPanel>
+                                            <Border Width="225" Height="200" CornerRadius="5" Margin="5">
+                                                <!--<Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Image}"/>
+                                            </Border.Background>-->
+                                                <Image Source="{Binding productImage1}"/>
+                                            </Border>
+                                            <TextBlock Margin="5" Text="{Binding productPrice1, StringFormat={}{0:C}}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                            <TextBlock Margin="5 0" Text="{Binding productName1}" FontSize="15"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <ContentPresenter />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </StackPanel>
+
+           
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -224,11 +224,11 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#623ED0"/>
+                    <Setter Property="Background" Value="#FF008451"/>
                     <Setter Property="Foreground" Value="#ffffff"/>
                 </Trigger>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#623ED0"/>
+                    <Setter Property="Background" Value="#FF008451"/>
                     <Setter Property="Foreground" Value="#ffffff"/>
                 </Trigger>
                 <MultiTrigger>
@@ -312,9 +312,10 @@
         </Style>
 
         <Style x:Key="gridEditButton" TargetType="Button">
-            <Setter Property="Background" Value="#008851" />
+            <Setter Property="Background" Value="#FF0A7EBB" />
             <!--<Setter Property="BorderBrush" Value="#4A148C" />-->
             <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Template" >
@@ -328,7 +329,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF009B51" />
+                    <Setter Property="Background" Value="#FF3F8CF3" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -353,6 +354,7 @@
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Margin" Value="1 0" />
             <Setter Property="FontSize" Value="13" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template" >
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -365,7 +367,7 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#7950F2" />
+                    <Setter Property="Background" Value="#FF008451" />
                     <Setter Property="Foreground" Value="#ffffff" />
                 </Trigger>
             </Style.Triggers>

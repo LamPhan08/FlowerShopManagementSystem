@@ -67,6 +67,11 @@ namespace FlowerShopManagementSystem.Customers
             NotificationBox.DeleteConfirmationBox deleteConfirmationBox = new NotificationBox.DeleteConfirmationBox();
             deleteConfirmationBox.ShowDialog();
         }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Clicked");
+        }
     }
 
     public class Customer

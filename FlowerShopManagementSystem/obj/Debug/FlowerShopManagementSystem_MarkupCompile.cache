@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\App.xaml
-171643081164
+20-1158322359
 
-21-809167686
+24-2012981435
 16-492295538
-NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;Orders\OrdersView.xaml;Products\ProductsView.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
+Accounts\AddAccountForm.xaml;Accounts\EditAccountForm.xaml;Accounts\ViewAccountDetails.xaml;NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;Orders\OrdersView.xaml;Products\ProductsView.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
 
 False
 

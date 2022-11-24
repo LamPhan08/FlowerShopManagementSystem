@@ -23,6 +23,28 @@ namespace FlowerShopManagementSystem.Dashboard
         public DashboardView()
         {
             InitializeComponent();
+
+            List<exampleProduct> products = new List<exampleProduct>();
+
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa mai.jpg", productName1 = "Hoa mai", productPrice1 = 100 });
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa đào.jpg", productName1 = "Hoa đào", productPrice1 = 100 });
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa hồng.jpg", productName1 = "Hoa hồng", productPrice1 = 100 });
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa lan.jpg", productName1 = "Hoa lan", productPrice1 = 100 });
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa ly.jpg", productName1 = "Hoa ly", productPrice1 = 100 });
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa cúc.jpg", productName1 = "Hoa cúc", productPrice1 = 100 });
+            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa vạn thọ.png", productName1 = "Hoa vạn thọ", productPrice1 = 100 });
+
+            ListViewProducts.ItemsSource = products;
         }
+
+    }
+
+    public class exampleProduct
+    {
+        public string productName1 { get; set; }
+        public double productPrice1 { get; set; }
+        public string productImage1 { get; set; }
+
+      
     }
 }

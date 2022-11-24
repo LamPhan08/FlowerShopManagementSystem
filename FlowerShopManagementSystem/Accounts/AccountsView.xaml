@@ -47,7 +47,7 @@
 
         <TextBlock Text="Accounts" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
-        <Button Style="{StaticResource addButton}" Grid.Row="0" x:Name="btnAddEmployee" Cursor="Hand">
+        <Button Style="{StaticResource addButton}" Grid.Row="0" x:Name="btnAddAccount" Cursor="Hand" Click="btnAddAccount_Click">
             <StackPanel Orientation="Horizontal">
                 <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                 <TextBlock Text="Add new account"/>
@@ -69,37 +69,49 @@
             <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
         </Grid>
 
-        <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="customersDataGrid" Grid.Row="3">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding stt}"/>
+        <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="accountsDataGrid" Grid.Row="3">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
 
-                <DataGridTemplateColumn Header="Customer Name" IsReadOnly="True" Width="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding sttTK}"/>
+
+                <DataGridTemplateColumn Header="Employee Name" IsReadOnly="True" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <!--<Border Width="25" Height="25" CornerRadius="50" Margin="0 10 0 0" Background="{Binding BgColor}">
-                                    <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                </Border>-->
+                                <Border Width="50" Height="50" Margin="0 10 10 10">
+                                    <!--<Image Source="{Binding avatarTK}"/>-->
+                                    <Ellipse>
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="{Binding avatarTK}"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Border>
 
-                                <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding employeeName}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Address" IsReadOnly="True" Width="*" Binding="{Binding address}"/>
-                <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding phone}"/>
-                <DataGridTextColumn Header="Registration Date" IsReadOnly="True" Width="*" Binding="{Binding ngayDK}"/>
+                <DataGridTextColumn Header="Code" IsReadOnly="True" Width="*" Binding="{Binding employeeCode}"/>
+                <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding employeePhone}"/>
+                <DataGridTextColumn Header="Working Date" IsReadOnly="True" Width="*" Binding="{Binding workingDate}"/>
 
                 <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource gridEditButton}">
+                                <Button Style="{StaticResource gridEditButton}" x:Name="btnEditAccount" Click="btnEditAccount_Click">
                                     <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
 
-                                <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0">
+                                <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" x:Name="btnDeleteAccount" Click="btnDeleteAccount_Click">
                                     <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
                             </StackPanel>

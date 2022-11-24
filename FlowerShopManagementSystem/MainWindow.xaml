@@ -28,7 +28,7 @@
                     <DockPanel>
 
                         <!--Avatar-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
+                        <Border Width="100" Height="100" Padding="3" Background="White" CornerRadius="100"
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
@@ -127,7 +127,7 @@
                     <icon:PackIconMaterial Kind="WindowMinimize"/>
                 </Button>
 
-                <Frame NavigationUIVisibility="Hidden" x:Name="frame" Grid.Row="1" Background="Aquamarine" Margin="0,10,0,0"
+                <Frame NavigationUIVisibility="Hidden" x:Name="frame" Grid.Row="1" Background="#FF6F6F6F" Margin="0,10,0,0"
                        Content="View"/>
             </Grid>
 

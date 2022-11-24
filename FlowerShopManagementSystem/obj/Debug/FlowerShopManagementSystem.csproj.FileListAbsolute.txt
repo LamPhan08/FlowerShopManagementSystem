@@ -77,3 +77,9 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\NotificationB
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\NotificationBox\DeleteConfirmationBox.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\NotificationBox\CannotDeleteBox.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\NotificationBox\CannotDeleteBox.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\AddAccountForm.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\EditAccountForm.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\ViewAccountDetails.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\AddAccountForm.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\EditAccountForm.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\ViewAccountDetails.baml
