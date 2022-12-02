@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\App.xaml
-20-1158322359
+23-505240794
 
-25199897243
-16-492295538
-Accounts\AddAccountForm.xaml;Accounts\EditAccountForm.xaml;Accounts\ViewAccountDetails.xaml;NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;Orders\OrdersView.xaml;Products\ProductsView.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
+28-1037379778
+172139538121
+Accounts\AddAccountForm.xaml;Accounts\EditAccountForm.xaml;Accounts\ViewAccountDetails.xaml;NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;Orders\OrdersView.xaml;Products\AddProductForm.xaml;Products\EditProductForm.xaml;Products\ProductsView.xaml;Products\ViewProductDetails.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
 
-False
+True
 

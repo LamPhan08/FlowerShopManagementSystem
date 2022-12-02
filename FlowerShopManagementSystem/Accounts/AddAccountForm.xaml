@@ -5,22 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShopManagementSystem"
         mc:Ignorable="d"
-        Height="600" Width="740" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
+        Height="600" Width="1100" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
     <Border Background="#F2F5F8" CornerRadius="10" BorderBrush="#FF008451" BorderThickness="2">
         <Grid Margin="20 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
+                <!--<RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>-->
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
+            <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>-->
+
 
             <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
                 <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
@@ -36,71 +37,115 @@
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
-            <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Employee Code" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                <TextBox x:Name="tbxEmployeeCode" FontWeight="Medium" IsReadOnly="True" Background="#FFCCD0D6"/>
-            </StackPanel>
-
-            <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Employee Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" />
-
-                <TextBox x:Name="tbxEmployeeName" FontWeight="Medium"/>
-            </StackPanel>
-
-            <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                <TextBox x:Name="tbxEmployeePhoneNumber" FontWeight="Medium"/>
-            </StackPanel>
-
-            <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="3" Orientation="Vertical">
-                <TextBlock Text="Working Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                <DatePicker x:Name="dpkWorkingDate" Margin="0 5 0 0">
-                    <DatePicker.Resources>
-                        <Style TargetType="DatePickerTextBox">
-                            <Setter Property="IsReadOnly" Value="True"/>
-                        </Style>
-                    </DatePicker.Resources>
-                </DatePicker>
-            </StackPanel>
-
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Margin="20 10 -40 10" Orientation="Vertical">
-                    <TextBlock Text="Username" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    <TextBox x:Name="tbxUsername" FontWeight="Medium"/>
+                    <StackPanel Margin="20 10" Orientation="Vertical">
+                        <TextBlock Text="Employee Code" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                </StackPanel>
+                        <TextBox x:Name="tbxEmployeeCode" FontWeight="Medium" IsReadOnly="True" Background="#FFCCD0D6"/>
+                    </StackPanel>
 
-                <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
-                    <TextBlock Text="Password" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
+                        <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                    <TextBox x:Name="tbxPassword" FontWeight="Medium"/>
+                        <TextBox x:Name="tbxEmployeePhoneNumber" FontWeight="Medium" PreviewTextInput="tbxEmployeePhoneNumber_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="20 10 -40 10" Orientation="Vertical">
+                            <TextBlock Text="Username" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+
+                            <TextBox x:Name="tbxUsername" FontWeight="Medium"/>
+
+                        </StackPanel>
+
+                        <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
+                            <TextBlock Text="Password" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+
+                            <TextBox x:Name="tbxPassword" FontWeight="Medium"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Margin="20 10"  Orientation="Vertical">
+                        <TextBlock Text="Employee Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" />
+
+                        <TextBox x:Name="tbxEmployeeName" FontWeight="Medium"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
+                        <TextBlock Text="Working Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+
+                        <DatePicker x:Name="dpkWorkingDate" Margin="0 5 0 0">
+                            <DatePicker.Resources>
+                                <Style TargetType="DatePickerTextBox">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Margin="134 10 20 10" Orientation="Vertical">
+                        <TextBlock Text="Account Priority" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+
+                        <ComboBox x:Name="cbbAccountPriority" Margin="0 5 0 0">
+                            <ComboBoxItem Content="Manager"/>
+                            <ComboBoxItem Content="Employee" IsSelected="True"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="20 10">
+                    <TextBlock Text="Avatar" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    
+                    <Border CornerRadius="50"  Margin="0 10 0 0">
+                        <Ellipse  Width="200" Height="200">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="avatar" ImageSource="/Images/man.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Border>
+
+                    <Button x:Name="uploadAvatarBtn" Content="Click to upload" FontWeight="SemiBold" Style="{StaticResource saveButton}" Margin="0 100 0 0" Height="20" FontSize="12" Click="uploadAvatarBtn_Click"/>
                 </StackPanel>
             </Grid>
 
-            <StackPanel Grid.Row="4" Grid.Column="1" Margin="134 10 20 10" Orientation="Vertical">
-                <TextBlock Text="Account Priority" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                <ComboBox x:Name="cbbAccountPriority" Margin="0 5 0 0">
-                    <ComboBoxItem Content="Manager"/>
-                    <ComboBoxItem Content="Employee" IsSelected="True"/>
-                </ComboBox>
-            </StackPanel>
-
-
-            <Button x:Name="btnAddEmployee" Grid.Column="1" Grid.Row="5" Content="Add" HorizontalAlignment="Right" Margin="0 40 0 10" 
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name="btnAddEmployee" Grid.Column="1" Grid.Row="5" Content="Add" HorizontalAlignment="Right" Margin="0 40 0 10" 
                     Style="{StaticResource saveButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnAddEmployee_Click"/>
 
             <Button x:Name="btnBackEmployee" Grid.Row="5" Content="Back" HorizontalAlignment="Left" Margin="0 40 0 10"
                     Style="{StaticResource backButton}" FontWeight="SemiBold" Click="btnBackEmployee_Click" Cursor="Hand"/>
+            </Grid>
 
         </Grid>
     </Border>

@@ -36,14 +36,15 @@ namespace FlowerShopManagementSystem
             Dashboard.DashboardView dashboard = new Dashboard.DashboardView();
             frame.Content = dashboard;
             isSelected = Dashboard;
+            //avatar.ImageSource = new BitmapImage(new System.Uri("pack://application:,,,/Images/Person.jpg"));
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            //if (e.ChangedButton == MouseButton.Left)
+            //{
+            //    this.DragMove();
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

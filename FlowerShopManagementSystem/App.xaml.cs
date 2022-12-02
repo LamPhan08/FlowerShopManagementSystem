@@ -13,5 +13,10 @@ namespace FlowerShopManagementSystem
     /// </summary>
     public partial class App : Application
     {
+        private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            //MessageBox.Show("Clicked");
+
+        }
     }
 }

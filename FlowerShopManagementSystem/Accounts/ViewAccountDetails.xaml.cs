@@ -24,9 +24,10 @@ namespace FlowerShopManagementSystem.Accounts
             InitializeComponent();
         }
 
-        private void btnBackAccountDetails_Click(object sender, RoutedEventArgs e)
+        private void btnBackViewEmployee_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+
         }
     }
 }

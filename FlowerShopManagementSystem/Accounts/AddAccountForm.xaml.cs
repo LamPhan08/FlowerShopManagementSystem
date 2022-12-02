@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +33,23 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void uploadAvatarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Image Files|*.jpg;*.png";
+
+            if (openFile.ShowDialog() == true)
+            {
+                avatar.ImageSource = new BitmapImage(new Uri(openFile.FileName));
+            }
+        }
+
+        private void tbxEmployeePhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

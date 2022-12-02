@@ -32,7 +32,7 @@
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Images/Person.jpg"/>
+                                    <ImageBrush x:Name="avatar" ImageSource="/Images/Person.jpg"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>

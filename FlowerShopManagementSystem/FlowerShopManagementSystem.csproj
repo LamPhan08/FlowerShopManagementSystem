@@ -46,6 +46,7 @@
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -103,8 +104,17 @@
     <Compile Include="Orders\OrdersView.xaml.cs">
       <DependentUpon>OrdersView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Products\AddProductForm.xaml.cs">
+      <DependentUpon>AddProductForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Products\EditProductForm.xaml.cs">
+      <DependentUpon>EditProductForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products\ProductsView.xaml.cs">
       <DependentUpon>ProductsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ViewProductDetails.xaml.cs">
+      <DependentUpon>ViewProductDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Suppliers\AddSupplierForm.xaml.cs">
       <DependentUpon>AddSupplierForm.xaml</DependentUpon>
@@ -189,7 +199,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Products\AddProductForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Products\EditProductForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Products\ProductsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Products\ViewProductDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,6 +337,15 @@
     <Resource Include="Accounts\AccountAvatar\avatar2.jpg" />
     <Resource Include="Accounts\AccountAvatar\avatar3.jpg" />
     <Resource Include="Accounts\AccountAvatar\avatar4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hibicus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sunflower.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

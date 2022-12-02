@@ -46,7 +46,7 @@
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
                 <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditCustomerPhone" FontWeight="Medium"/>
+                <TextBox x:Name="tbxEditCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxEditCustomerPhone_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
@@ -108,7 +108,7 @@
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
                 <TextBlock Text="Sales" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditCustomerSales" FontWeight="Medium"/>
+                <TextBox x:Name="tbxEditCustomerSales" FontWeight="Medium" PreviewTextInput="tbxEditCustomerSales_PreviewTextInput"/>
             </StackPanel>
 
             <Button x:Name="btnEditSaveCustomer" Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 0 10" Style="{StaticResource saveButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnEditSaveCustomer_Click"/>

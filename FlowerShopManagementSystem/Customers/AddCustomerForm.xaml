@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShopManagementSystem"
+        xmlns:sysglb="clr-namespace:System.Globalization;assembly=mscorlib"
         mc:Ignorable="d"
         Height="600" Width="740" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
     <Border Background="#F2F5F8" CornerRadius="10" BorderBrush="#FF008451" BorderThickness="2">
@@ -46,7 +47,7 @@
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
                 <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxCustomerPhone" FontWeight="Medium"/>
+                <TextBox x:Name="tbxCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxCustomerPhone_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
@@ -108,7 +109,7 @@
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
                 <TextBlock Text="Sales" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxCustomerSales" FontWeight="Medium"/>
+                <TextBox x:Name="tbxCustomerSales" FontWeight="Medium" PreviewTextInput="tbxCustomerSales_PreviewTextInput"/>
             </StackPanel>
 
             <Button x:Name="btnAddCustomer" Grid.Column="1" Grid.Row="6" Content="Add" HorizontalAlignment="Right" Margin="0 40 0 10" Style="{StaticResource saveButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnAddCustomer_Click"/>

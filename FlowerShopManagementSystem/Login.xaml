@@ -80,7 +80,7 @@
                                        AlignmentX="Left"
                                         Stretch="None"/>
                         </TextBox.Background>
-
+                        
                     </TextBox>
                     
 
@@ -98,13 +98,10 @@
                                         AlignmentX="Left"
                                         Stretch="None"/>
                         </PasswordBox.Background>
-
+                        
+                        
                     </PasswordBox>
 
-                    <CheckBox x:Name="chkbxShowPassword" Width="auto" HorizontalAlignment="Left" Margin="10 10 0 0"
-                              FontWeight="SemiBold" Cursor="Hand" Style="{StaticResource chkbxLogin}">
-                        
-                    </CheckBox>
 
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"

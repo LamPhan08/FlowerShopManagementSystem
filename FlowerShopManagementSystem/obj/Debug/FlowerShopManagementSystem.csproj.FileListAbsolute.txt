@@ -83,3 +83,9 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\View
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\AddAccountForm.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\EditAccountForm.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Accounts\ViewAccountDetails.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Products\AddProductForm.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Products\EditProductForm.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Products\ViewProductDetails.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Products\AddProductForm.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Products\EditProductForm.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Products\ViewProductDetails.baml

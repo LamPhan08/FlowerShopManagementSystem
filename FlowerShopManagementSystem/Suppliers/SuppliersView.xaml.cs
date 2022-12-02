@@ -53,6 +53,12 @@ namespace FlowerShopManagementSystem.Suppliers
             Suppliers.AddSupplierForm supplierForm = new Suppliers.AddSupplierForm();
             supplierForm.ShowDialog();
         }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ViewSupplierDetails viewSupplierDetails = new ViewSupplierDetails();
+            viewSupplierDetails.ShowDialog();
+        }
     }
 
     public class Supplier

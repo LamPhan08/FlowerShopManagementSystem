@@ -87,7 +87,8 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Clicked");
+            ViewAccountDetails viewAccount = new ViewAccountDetails();
+            viewAccount.ShowDialog();
         }
     }
 

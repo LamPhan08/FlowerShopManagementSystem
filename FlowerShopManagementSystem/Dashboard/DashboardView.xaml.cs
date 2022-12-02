@@ -24,27 +24,40 @@ namespace FlowerShopManagementSystem.Dashboard
         {
             InitializeComponent();
 
-            List<exampleProduct> products = new List<exampleProduct>();
+            List<filterButton> filters = new List<filterButton>();
 
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa mai.jpg", productName1 = "Hoa mai", productPrice1 = 100 });
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa đào.jpg", productName1 = "Hoa đào", productPrice1 = 100 });
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa hồng.jpg", productName1 = "Hoa hồng", productPrice1 = 100 });
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa lan.jpg", productName1 = "Hoa lan", productPrice1 = 100 });
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa ly.jpg", productName1 = "Hoa ly", productPrice1 = 100 });
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa cúc.jpg", productName1 = "Hoa cúc", productPrice1 = 100 });
-            products.Add(new exampleProduct { productImage1 = "/Products/Product Image/Hoa vạn thọ.png", productName1 = "Hoa vạn thọ", productPrice1 = 100 });
+            filters.Add(new filterButton { buttonContent = "Tất cả" });
+            filters.Add(new filterButton { buttonContent = "Tình yêu" });
+            filters.Add(new filterButton { buttonContent = "Đám tang" });
+            filters.Add(new filterButton { buttonContent = "Đám cưới" });
+            filters.Add(new filterButton { buttonContent = "Tất cả" });
+            filters.Add(new filterButton { buttonContent = "Tình yêu" });
+            filters.Add(new filterButton { buttonContent = "Đám tang" });
+            filters.Add(new filterButton { buttonContent = "Đám cưới" });
+            filters.Add(new filterButton { buttonContent = "Tất cả" });
+            filters.Add(new filterButton { buttonContent = "Tình yêu" });
+            filters.Add(new filterButton { buttonContent = "Đám tang" });
+            filters.Add(new filterButton { buttonContent = "Đám cưới" });
 
-            ListViewProducts.ItemsSource = products;
+            ListViewButton.ItemsSource = filters;
+
         }
 
+
+        private void leftBtn_Click(object sender, RoutedEventArgs e)
+        {
+            sv.ScrollToHorizontalOffset(sv.HorizontalOffset - 200);
+
+        }
+
+        private void rightBtn_Click(object sender, RoutedEventArgs e)
+        {
+            sv.ScrollToHorizontalOffset(sv.HorizontalOffset + 200);
+        }
     }
 
-    public class exampleProduct
+    public class filterButton
     {
-        public string productName1 { get; set; }
-        public double productPrice1 { get; set; }
-        public string productImage1 { get; set; }
-
-      
+        public string buttonContent { get; set; }
     }
 }

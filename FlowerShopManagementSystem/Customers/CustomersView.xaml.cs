@@ -70,7 +70,8 @@ namespace FlowerShopManagementSystem.Customers
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Clicked");
+            ViewCustomerDetails viewCustomer = new ViewCustomerDetails();
+            viewCustomer.ShowDialog();
         }
     }
 
