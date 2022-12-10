@@ -53,5 +53,15 @@ namespace FlowerShopManagementSystem.Accounts
                 editavatar.ImageSource = new BitmapImage(new Uri(openFile.FileName));
             }
         }
+
+        private void cbbEditAccountPriority_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditAccountPriority_DropDownClosed(object sender, EventArgs e)
+        {
+
+        }
     }
 }

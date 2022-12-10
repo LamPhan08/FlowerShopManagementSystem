@@ -31,38 +31,38 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Customer Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="SUPPLIERS DETAILS" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Supplier Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="Supplier ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
                 <!--<TextBox x:Name="txtblckCustomerName" FontWeight="Medium"/>-->
+
+                <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
+                    <TextBlock x:Name="txtblckSupplierID" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
+                <TextBlock Text="Supplier Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+
+                <!--<TextBox x:Name="txtblckPhoneNumber" FontWeight="Medium"/>-->
 
                 <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
                     <TextBlock x:Name="txtblckSupplierName" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
                 </Border>
             </StackPanel>
 
-            <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                <!--<TextBox x:Name="txtblckPhoneNumber" FontWeight="Medium"/>-->
-
-                <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
-                    <TextBlock x:Name="txtblckSupplierPhoneNumber" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
-                </Border>
-            </StackPanel>
-
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                <TextBlock Text="House Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
                 <!--<TextBox x:Name="txtblckHouseNumber" FontWeight="Medium"/>-->
 
                 <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
-                    <TextBlock x:Name="txtblckSupplierHouseNumber" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
+                    <TextBlock x:Name="txtblckSupplierPhoneNumber" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
                 </Border>
             </StackPanel>
 
@@ -92,19 +92,19 @@
                 </StackPanel>
 
                 <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
-                    <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="District" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
                     <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
-                        <TextBlock x:Name="txtblckSupplierCity" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
+                        <TextBlock x:Name="txtblckSupplierDistrict" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
                     </Border>
                 </StackPanel>
             </Grid>
 
             <StackPanel Grid.Row="4" Grid.Column="1" Margin="134 10 20 10" Orientation="Vertical">
-                <TextBlock Text="Province" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
                 <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
-                    <TextBlock x:Name="txtblckSupplierProvince" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
+                    <TextBlock x:Name="txtblckSupplierCity" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
                 </Border>
             </StackPanel>
 

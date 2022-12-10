@@ -32,7 +32,7 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Account Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="ACCOUNT DETAILS" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
@@ -52,10 +52,10 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10" Orientation="Vertical">
-                        <TextBlock Text="Employee Code" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
                         <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
-                            <TextBlock x:Name="txtblckEmployeeCode" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
+                            <TextBlock x:Name="txtblckEmployeeID" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
                         </Border>
                     </StackPanel>
 

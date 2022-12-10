@@ -40,5 +40,35 @@ namespace FlowerShopManagementSystem.Suppliers
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void cbbEditSupplierWard_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditSupplierWard_DropDownClosed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditSupplierDistrict_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditSupplierDistrict_DropDownClosed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditSuppierCity_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditSuppierCity_DropDownClosed(object sender, EventArgs e)
+        {
+
+        }
     }
 }

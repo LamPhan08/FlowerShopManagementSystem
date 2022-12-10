@@ -8,7 +8,11 @@ FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Accounts\AccountsView.
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Customers\EditCustomerForm.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Customers\ViewCustomerDetails.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Dashboard\DashboardView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\ChooseProduct.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\CreateNewOrder.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\EditOrder.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\OrdersView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\ViewOrder.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Products\AddProductForm.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Products\EditProductForm.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Products\ProductsView.xaml;;

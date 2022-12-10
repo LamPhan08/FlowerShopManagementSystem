@@ -31,27 +31,27 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Customer Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="SUPPLIERS DETAILS" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Supplier Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="Supplier ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditSupplierName" FontWeight="Medium"/>
+                <TextBox x:Name="tbxEditSupplierID" FontWeight="Medium"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="Supplier Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditSupplierPhone" FontWeight="Medium" PreviewTextInput="tbxEditSupplierPhone_PreviewTextInput"/>
+                <TextBox x:Name="tbxEditSupplierName" FontWeight="Medium" PreviewTextInput="tbxEditSupplierPhone_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                <TextBlock Text="House Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditSupplierHouseNumber" FontWeight="Medium"/>
+                <TextBox x:Name="tbxEditSupplierPhoneNumber" FontWeight="Medium"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="3" Orientation="Vertical">
@@ -69,23 +69,35 @@
                 <StackPanel Margin="20 10 -40 10" Orientation="Vertical">
                     <TextBlock Text="Ward" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                    <ComboBox x:Name="cbbEditSupplierWard"/>
+                    <ComboBox x:Name="cbbEditSupplierWard" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbEditSupplierWard_DropDownOpened"
+                              DropDownClosed="cbbEditSupplierWard_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold"/>
 
                 </StackPanel>
 
                 <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
-                    <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="District" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                    <ComboBox x:Name="cbbEditSupplierCity">
+                    <ComboBox x:Name="cbbEditSupplierDistrict" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbEditSupplierDistrict_DropDownOpened"
+                              DropDownClosed="cbbEditSupplierDistrict_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold">
 
                     </ComboBox>
                 </StackPanel>
             </Grid>
 
             <StackPanel Grid.Row="4" Grid.Column="1" Margin="134 10 20 10" Orientation="Vertical">
-                <TextBlock Text="Province" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <ComboBox x:Name="cbbEditSuppierProvince">
+                <ComboBox x:Name="cbbEditSuppierCity" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbEditSuppierCity_DropDownOpened"
+                              DropDownClosed="cbbEditSuppierCity_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold">
 
                 </ComboBox>
             </StackPanel>

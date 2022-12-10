@@ -51,5 +51,15 @@ namespace FlowerShopManagementSystem.Accounts
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void cbbAccountPriority_DropDownOpened(object sender, EventArgs e)
+        {
+            cbbAccountPriority.Background = Brushes.LightGray;
+        }
+
+        private void cbbAccountPriority_DropDownClosed(object sender, EventArgs e)
+        {
+            cbbAccountPriority.Background = Brushes.Transparent;
+        }
     }
 }

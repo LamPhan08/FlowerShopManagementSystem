@@ -32,7 +32,7 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Account Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="ACCOUNT DETAILS" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
@@ -52,9 +52,9 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10" Orientation="Vertical">
-                        <TextBlock Text="Employee Code" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <TextBox x:Name="tbxEditEmployeeCode" FontWeight="Medium" IsReadOnly="True" Background="#FFCCD0D6"/>
+                        <TextBox x:Name="tbxEditEmployeeID" FontWeight="Medium"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
@@ -112,7 +112,11 @@
                     <StackPanel Grid.Row="2" Margin="134 10 20 10" Orientation="Vertical">
                         <TextBlock Text="Account Priority" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <ComboBox x:Name="cbbEditAccountPriority" Margin="0 5 0 0">
+                        <ComboBox x:Name="cbbEditAccountPriority" Margin="0 3 0 0" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbEditAccountPriority_DropDownOpened"
+                              DropDownClosed="cbbEditAccountPriority_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold">
                             <ComboBoxItem Content="Manager"/>
                             <ComboBoxItem Content="Employee" IsSelected="True"/>
                         </ComboBox>

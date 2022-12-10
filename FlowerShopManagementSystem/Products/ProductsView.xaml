@@ -58,12 +58,12 @@
 
         <Separator Height="1" Grid.Row="1" Background="#DAE2EA" Margin="0 -1 0 10"/>
 
-        <TextBlock Text="Có 10 sản phẩm" Grid.Row="2" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock Text="10 Products" Grid.Row="2" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <TextBlock Text="Filter by" Grid.Row="2" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
         <Grid Width="200" HorizontalAlignment="Right" Grid.Row="2">
-            <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+            <TextBlock Margin="10 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search in Products ..."
                            Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
@@ -77,55 +77,70 @@
                     <ItemsControl x:Name="ListProducts">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Grid Margin="0 10 0 10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="125"/>
-                                        <ColumnDefinition Width="280"/>
-                                    </Grid.ColumnDefinitions>
+                                <CheckBox x:Name="radioBtn" Cursor="Hand">
+                                    <CheckBox.Template>
+                                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                                            <Border x:Name="border" Margin="5" CornerRadius="10" Background="White">
+                                                <Grid  x:Name="gridBorder">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="125"/>
+                                                        <ColumnDefinition Width="280"/>
+                                                    </Grid.ColumnDefinitions>
 
-                                    <Border Height="125" CornerRadius="10" Margin="5">
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="{Binding productImage}"/>
-                                        </Border.Background>
-                                    </Border>
+                                                    <Border Height="125" CornerRadius="10" Margin="5">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding productImage}"/>
+                                                        </Border.Background>
+                                                    </Border>
 
-                                    <Border Grid.Column="1" Height="125" CornerRadius="10" BorderThickness="1" BorderBrush="#FF008451" Margin="0 0 15 0"
-                                            Background="White">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
-                                            </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="1" Height="125" CornerRadius="10" BorderThickness="1" BorderBrush="#FF008451" Margin="0 0 5 0"
+                                                        Background="White">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="auto"/>
+                                                            </Grid.ColumnDefinitions>
 
-                                            <StackPanel Margin="5">
-                                                <TextBlock Margin="5 0" Text="{Binding productName}" FontSize="20" FontWeight="DemiBold" FontFamily="Times New Roman"/>
-                                                
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Margin="5 5 0 0" Text="Loại: " FontSize="15"/>
-                                                    <TextBlock Margin="0 5 0 0" Text="{Binding productType}" FontSize="15"/>
-                                                </StackPanel>
+                                                            <StackPanel Margin="5">
+                                                                <TextBlock x:Name="nameProduct" Margin="5 0" Text="{Binding productName}" FontSize="20" FontWeight="DemiBold" FontFamily="Times New Roman"/>
 
-                                                <TextBlock VerticalAlignment="Bottom" Margin="5 40 0 0" Text="{Binding productPrice, StringFormat={}{0:C}}" FontSize="15" Foreground="#FF008451" FontWeight="SemiBold"/>
-                                            </StackPanel>
+                                                                <TextBlock VerticalAlignment="Bottom" Margin="5 70 0 0" Text="{Binding productPrice, StringFormat={}{0:C}}" FontSize="15" Foreground="#FF008451" FontWeight="SemiBold"/>
+                                                            </StackPanel>
 
-                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                                <Button x:Name="btnProductIn4" Style="{StaticResource gridIn4Button}" Cursor="Hand" Click="btnProductIn4_Click"
+                                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                                                <Button x:Name="btnProductIn4" Style="{StaticResource productIn4Button}" Cursor="Hand" Click="btnProductIn4_Click"
                                                         Margin="5 5 10 0">
-                                                    <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
-                                                </Button>
-                                                
-                                                <Button x:Name="btnEditProduct" Style="{StaticResource gridEditButton}" Cursor="Hand" Click="btnEditProduct_Click"
-                                                        Margin="5 5 10 0">
-                                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
-                                                </Button>
+                                                                    <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
+                                                                </Button>
 
-                                                <Button x:Name="btnDeleteProduct" Style="{StaticResource gridRemoveButton}" Margin="5 5 10 0" Cursor="Hand" Click="btnDeleteProduct_Click">
-                                                    <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-                                </Grid>
+                                                                <Button x:Name="btnEditProduct" Style="{StaticResource productEditButton}" Cursor="Hand" Click="btnEditProduct_Click"
+                                                        Margin="5 5 10 0">
+                                                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
+                                                                </Button>
+
+                                                                <Button x:Name="btnDeleteProduct" Style="{StaticResource productRemoveButton}" Margin="5 5 10 0" Cursor="Hand" Click="btnDeleteProduct_Click">
+                                                                    <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
+                                                                </Button>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                                
+                                            </Border>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#cccccc"/>
+                                                </Trigger>
+
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#cccccc"/>
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </CheckBox.Template>
+                                </CheckBox>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>

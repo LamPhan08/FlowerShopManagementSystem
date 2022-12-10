@@ -34,12 +34,15 @@ namespace FlowerShopManagementSystem.Suppliers
 
             suppliersDataGrid.ItemsSource = suppliers;
 
+           
+
         }
 
         private void btnEditSupplier_Click(object sender, RoutedEventArgs e)
         {
             Suppliers.EditSupplierForm editSupplierForm = new Suppliers.EditSupplierForm();
             editSupplierForm.ShowDialog();
+            
         }
 
         private void btnDeleteSupplier_Click(object sender, RoutedEventArgs e)
@@ -58,6 +61,8 @@ namespace FlowerShopManagementSystem.Suppliers
         {
             ViewSupplierDetails viewSupplierDetails = new ViewSupplierDetails();
             viewSupplierDetails.ShowDialog();
+
+            
         }
     }
 

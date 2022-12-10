@@ -98,10 +98,9 @@
                                         AlignmentX="Left"
                                         Stretch="None"/>
                         </PasswordBox.Background>
-                        
-                        
-                    </PasswordBox>
 
+
+                    </PasswordBox>
 
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"

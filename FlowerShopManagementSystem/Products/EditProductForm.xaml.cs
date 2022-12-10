@@ -53,5 +53,15 @@ namespace FlowerShopManagementSystem.Products
                 editProductImage.Source = new BitmapImage(new Uri(openFile.FileName));
             }
         }
+
+        private void cbbEditSuppier_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbEditSuppier_DropDownClosed(object sender, EventArgs e)
+        {
+
+        }
     }
 }

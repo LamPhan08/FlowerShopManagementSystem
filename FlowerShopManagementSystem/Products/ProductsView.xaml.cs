@@ -26,15 +26,16 @@ namespace FlowerShopManagementSystem.Products
 
             List<Product> products = new List<Product>();
 
-            products.Add(new Product{ productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867",  productType="Đám cưới"});
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT", productType = "Đám tang" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT", productType = "Tình nhân" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100, productSupplier = "UIT", productType = "TIệc" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100, productSupplier = "UIT", productType = "..." });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT", productType = "..." });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT", productType = "..." });
+            products.Add(new Product{ productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867"});
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT"});
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT" });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100, productSupplier = "UIT"});
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100, productSupplier = "UIT" });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT"});
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT"});
 
             ListProducts.ItemsSource = products;
+
 
         }
 
@@ -61,6 +62,7 @@ namespace FlowerShopManagementSystem.Products
             ViewProductDetails viewProductDetails = new ViewProductDetails();
             viewProductDetails.ShowDialog();
         }
+
     }
 
     public class Product
@@ -68,7 +70,6 @@ namespace FlowerShopManagementSystem.Products
         public string productName { get; set; }
         public double productPrice { get; set; }
         public string productImage { get; set; }
-        public string productType { get; set; }
         public string productSupplier { get; set; }
 
         //public Product(string name, double price, string image)

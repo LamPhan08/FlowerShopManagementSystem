@@ -62,7 +62,7 @@
         <TextBlock Text="Filter by" Grid.Row="2" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
         <Grid Width="200" HorizontalAlignment="Right" Grid.Row="2">
-            <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+            <TextBlock Margin="10 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search in Accounts ..."
                            Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
@@ -70,7 +70,7 @@
         </Grid>
 
         <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                  x:Name="accountsDataGrid" Grid.Row="3">
+                  x:Name="accountsDataGrid" Grid.Row="3" ItemsSource="{Binding accounts}">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
@@ -78,6 +78,7 @@
                     <Setter Property="Background" Value="#FFFFFF"/>
                     <Setter Property="SnapsToDevicePixels" Value="true"/>
                     <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                    <Setter Property="Cursor" Value="Hand"/>
                     <Setter Property="ValidationErrorTemplate">
                         <Setter.Value>
                             <ControlTemplate>
@@ -109,12 +110,12 @@
 
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FF008451"/>
-                            <Setter Property="Foreground" Value="#ffffff"/>
+                            <Setter Property="Background" Value="#e5e5e5"/>
+                            <!--<Setter Property="Foreground" Value="#ffffff"/>-->
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#FF008451"/>
-                            <Setter Property="Foreground" Value="#ffffff"/>
+                            <Setter Property="Background" Value="#e5e5e5"/>
+                            <!--<Setter Property="Foreground" Value="#ffffff"/>-->
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

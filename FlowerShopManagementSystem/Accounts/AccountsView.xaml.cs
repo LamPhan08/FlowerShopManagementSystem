@@ -20,16 +20,17 @@ namespace FlowerShopManagementSystem.Accounts
     /// </summary>
     public partial class AccountsView : Page
     {
+        List<Account> accounts = new List<Account>();
+
         public AccountsView()
         {
             InitializeComponent();
 
-            List<Account> accounts = new List<Account>();
-            accounts.Add(new Account{ sttTK = "1", employeeCode = "NV01", employeeName="Nguyễn Văn A", employeePhone="0123456789",
+            accounts.Add(new Account{ sttTK = 1, employeeCode = "NV01", employeeName="Nguyễn Văn A", employeePhone="0123456789",
                 avatarTK= "/Accounts/AccountAvatar/avatar1.jpg", username="tk0123", password="123456", workingDate="24/11/2022", priority="1"});
             accounts.Add(new Account
             {
-                sttTK = "2",
+                sttTK =2,
                 employeeCode = "NV02",
                 employeeName = "Nguyễn Văn B",
                 employeePhone = "0123456789",
@@ -41,7 +42,7 @@ namespace FlowerShopManagementSystem.Accounts
             });
             accounts.Add(new Account
             {
-                sttTK = "3",
+                sttTK = 3,
                 employeeCode = "NV03",
                 employeeName = "Nguyễn Văn C",
                 employeePhone = "0123456789",
@@ -53,7 +54,7 @@ namespace FlowerShopManagementSystem.Accounts
             });
             accounts.Add(new Account
             {
-                sttTK = "4",
+                sttTK = 4,
                 employeeCode = "NV04",
                 employeeName = "Nguyễn Văn D",
                 employeePhone = "0123456789",
@@ -81,8 +82,7 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            NotificationBox.DeleteConfirmationBox deleteConfirmationBox = new NotificationBox.DeleteConfirmationBox();
-            deleteConfirmationBox.ShowDialog();
+           
         }
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -94,7 +94,7 @@ namespace FlowerShopManagementSystem.Accounts
 
     public class Account
     {
-        public string sttTK { get; set; }
+        public int sttTK { get; set; }
         public string employeeCode { get; set; }
         public string employeeName { get; set; }
         public string employeePhone { get; set; }

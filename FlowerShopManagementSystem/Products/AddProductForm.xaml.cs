@@ -34,7 +34,7 @@ namespace FlowerShopManagementSystem.Products
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void btnBackAddProduct_Click(object sender, RoutedEventArgs e)
@@ -51,6 +51,16 @@ namespace FlowerShopManagementSystem.Products
             {
                 productImage.Source = new BitmapImage(new Uri(openFile.FileName));
             }
+        }
+
+        private void cbbSuppier_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbSuppier_DropDownClosed(object sender, EventArgs e)
+        {
+
         }
     }
 }

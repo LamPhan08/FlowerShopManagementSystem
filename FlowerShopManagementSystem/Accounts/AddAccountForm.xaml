@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShopManagementSystem"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Height="600" Width="1100" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
     <Border Background="#F2F5F8" CornerRadius="10" BorderBrush="#FF008451" BorderThickness="2">
@@ -32,7 +33,7 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Account Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="CREATE NEW ACCOUNT" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
@@ -52,9 +53,9 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10" Orientation="Vertical">
-                        <TextBlock Text="Employee Code" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <TextBox x:Name="tbxEmployeeCode" FontWeight="Medium" IsReadOnly="True" Background="#FFCCD0D6"/>
+                        <TextBox x:Name="tbxEmployeeID" FontWeight="Medium"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
@@ -100,19 +101,26 @@
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
                         <TextBlock Text="Working Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <DatePicker x:Name="dpkWorkingDate" Margin="0 5 0 0">
+                        <DatePicker x:Name="dpkWorkingDate" Margin="0 5 0 0" materialDesign:HintAssist.Hint="Select working date"
+                                    FontSize="15" FontFamily="Sitka Subheading" FontWeight="SemiBold">
                             <DatePicker.Resources>
                                 <Style TargetType="DatePickerTextBox">
                                     <Setter Property="IsReadOnly" Value="True"/>
                                 </Style>
                             </DatePicker.Resources>
+                            
+
                         </DatePicker>
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Margin="134 10 20 10" Orientation="Vertical">
                         <TextBlock Text="Account Priority" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <ComboBox x:Name="cbbAccountPriority" Margin="0 5 0 0">
+                        <ComboBox x:Name="cbbAccountPriority" Margin="0 3 0 0" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbAccountPriority_DropDownOpened"
+                              DropDownClosed="cbbAccountPriority_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold">
                             <ComboBoxItem Content="Manager"/>
                             <ComboBoxItem Content="Employee" IsSelected="True"/>
                         </ComboBox>

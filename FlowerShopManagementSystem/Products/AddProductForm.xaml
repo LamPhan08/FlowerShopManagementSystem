@@ -32,7 +32,7 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Product Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="ADD NEW PRODUCT" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
@@ -52,9 +52,9 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10" Orientation="Vertical">
-                        <TextBlock Text="Product Code" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <TextBlock Text="Product ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <TextBox x:Name="tbxProductCode" FontWeight="Medium" IsReadOnly="True" Background="#FFCCD0D6"/>
+                        <TextBox x:Name="tbxProductID" FontWeight="Medium"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
@@ -91,7 +91,11 @@
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
                         <TextBlock Text="Supplier" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <ComboBox x:Name="cbbSuppier" Margin="0 5 0 0">
+                        <ComboBox x:Name="cbbSuppier" Margin="0 3 0 0" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbSuppier_DropDownOpened"
+                              DropDownClosed="cbbSuppier_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold">
                             
                         </ComboBox>
                     </StackPanel>

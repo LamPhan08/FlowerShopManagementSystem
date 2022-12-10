@@ -33,7 +33,7 @@
                     </Ellipse>
                 </Border>
 
-                <TextBlock Text="Customer Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBlock Text="ADD NEW CUSTOMER" Foreground="#374655" FontSize="22" Margin="15 0 0 0" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
@@ -69,27 +69,38 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Margin="20 10 -40 10" Orientation="Vertical">
-                    <TextBlock Text="Ward" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="District" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                    <ComboBox x:Name="cbbWard"/>
+                    <ComboBox x:Name="cbbDistrict" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbDistrict_DropDownOpened"
+                              DropDownClosed="cbbDistrict_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold"/>
 
                 </StackPanel>
 
                 <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
                     <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                    <ComboBox x:Name="cbbCity">
+                    <ComboBox x:Name="cbbCity" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbCity_DropDownOpened"
+                              DropDownClosed="cbbCity_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold"/>
 
-                    </ComboBox>
                 </StackPanel>
             </Grid>
 
             <StackPanel Grid.Row="4" Grid.Column="1" Margin="134 10 20 10" Orientation="Vertical">
                 <TextBlock Text="Province" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <ComboBox x:Name="cbbProvince">
+                <ComboBox x:Name="cbbProvince" Padding="5" Tag="null" FontSize="15"
+                              DropDownOpened="cbbProvince_DropDownOpened"
+                              DropDownClosed="cbbProvince_DropDownClosed"
+                              FontFamily="Sitka Subheading"
+                              FontWeight="SemiBold"/>
 
-                </ComboBox>
+
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="5" Orientation="Vertical">
