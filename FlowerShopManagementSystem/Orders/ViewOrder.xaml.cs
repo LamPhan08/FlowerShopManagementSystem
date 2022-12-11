@@ -33,5 +33,19 @@ namespace FlowerShopManagementSystem.Orders
         {
 
         }
+
+        private void btnPrintInvoice_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnPayment_Click(object sender, RoutedEventArgs e)
+        {
+            btnPayment.Visibility = Visibility.Hidden;
+            orderStatusPanel.Visibility = Visibility.Visible;
+
+            btnPrintInvoice.Background = (Brush) new BrushConverter().ConvertFrom("#FF008451");
+            btnPrintInvoice.IsEnabled = true;
+        }
     }
 }

@@ -171,12 +171,17 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
+
+                                <Button x:Name="btnEditOrder" Style="{StaticResource gridEditButton}" Cursor="Hand" Click="btnEditOrder_Click" Margin="0 0 5 0">
+                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                </Button>
+
+                                <Button x:Name="btnPayment" Style="{StaticResource gridCurrencyButton}" Cursor="Hand" Click="btnPayment_Click" Margin="0 0 5 0">
+                                    <icon:PackIconMaterial Kind="CurrencyUsd" Style="{StaticResource gridButtonIcon}"/>
+                                </Button>
+
                                 <Button x:Name="btnPrint" Style="{StaticResource gridPrintButton}" Cursor="Hand" Click="btnPrint_Click" Margin="0 0 5 0">
                                     <icon:PackIconMaterial Kind="Printer" Style="{StaticResource gridButtonIcon}"/>
-                                </Button>
-                                
-                                <Button x:Name="btnEditOrder" Style="{StaticResource gridEditButton}" Cursor="Hand" Click="btnEditOrder_Click">
-                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
 
                                 <!--<Button x:Name="btnDeleteOrder" Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" Cursor="Hand" Click="btnDeleteSupplier_Click">

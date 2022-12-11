@@ -36,6 +36,7 @@ namespace FlowerShopManagementSystem.Orders
             hoadon.Add(new HOA_DON { MAHD = "HD08", NGHD = DateTime.Now.ToString(), SODT_KH = "0123456789", MANV = "NV08", TRIGIA = 1000000, sttHD = 8, TINHTRANG = "Unpaid" });
 
             ordersDataGrid.ItemsSource = hoadon;
+
         }
 
         private void btnAddNewOrder_Click(object sender, RoutedEventArgs e)
@@ -61,7 +62,10 @@ namespace FlowerShopManagementSystem.Orders
             edit.ShowDialog();
         }
 
+        private void btnPayment_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 
     public class HOA_DON

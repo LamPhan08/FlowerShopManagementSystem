@@ -372,6 +372,16 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <Style x:Key="gridCurrencyButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="#FFFBD508" />
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
             <Style x:Key="productIn4Button" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="Foreground" Value="#666666" />
@@ -501,7 +511,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="7" BorderThickness="0.8" BorderBrush="#b9b9b9">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="7" BorderThickness="0.8">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 1"/>
                             </Border>
                         </ControlTemplate>
@@ -563,6 +573,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+
 
 
         </ResourceDictionary>
