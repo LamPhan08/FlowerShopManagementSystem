@@ -45,13 +45,13 @@
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
                 <TextBlock Text="Supplier Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditSupplierName" FontWeight="Medium" PreviewTextInput="tbxEditSupplierPhone_PreviewTextInput"/>
+                <TextBox x:Name="tbxEditSupplierName" FontWeight="Medium"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
                 <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                <TextBox x:Name="tbxEditSupplierPhoneNumber" FontWeight="Medium"/>
+                <TextBox x:Name="tbxEditSupplierPhoneNumber" FontWeight="Medium" PreviewTextInput="tbxEditSupplierPhoneNumber_PreviewTextInput"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="3" Orientation="Vertical">

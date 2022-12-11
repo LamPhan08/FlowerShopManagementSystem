@@ -35,12 +35,6 @@ namespace FlowerShopManagementSystem.Suppliers
             this.Close();
         }
 
-        private void tbxEditSupplierPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
         private void cbbEditSupplierWard_DropDownOpened(object sender, EventArgs e)
         {
 
@@ -69,6 +63,12 @@ namespace FlowerShopManagementSystem.Suppliers
         private void cbbEditSuppierCity_DropDownClosed(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbxEditSupplierPhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
