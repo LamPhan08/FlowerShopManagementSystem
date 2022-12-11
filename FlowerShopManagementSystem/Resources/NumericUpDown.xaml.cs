@@ -25,7 +25,7 @@ namespace FlowerShopManagementSystem.Resources
         #region Fields
 
         public event EventHandler PropertyChanged;
-        //public event EventHandler ValueChanged;
+        public event EventHandler ValueChanged;
         public event EventHandler TextChanged;
         #endregion
 
@@ -34,7 +34,7 @@ namespace FlowerShopManagementSystem.Resources
             InitializeComponent();
 
             DependencyPropertyDescriptor.FromProperty(ValueProperty, typeof(NumericUpDown)).AddValueChanged(this, PropertyChanged);
-            //DependencyPropertyDescriptor.FromProperty(ValueProperty, typeof(NumericUpDown)).AddValueChanged(this, ValueChanged);
+            DependencyPropertyDescriptor.FromProperty(ValueProperty, typeof(NumericUpDown)).AddValueChanged(this, ValueChanged);
             DependencyPropertyDescriptor.FromProperty(DecimalsProperty, typeof(NumericUpDown)).AddValueChanged(this, PropertyChanged);
             DependencyPropertyDescriptor.FromProperty(MinValueProperty, typeof(NumericUpDown)).AddValueChanged(this, PropertyChanged);
             DependencyPropertyDescriptor.FromProperty(MaxValueProperty, typeof(NumericUpDown)).AddValueChanged(this, PropertyChanged);
@@ -74,7 +74,11 @@ namespace FlowerShopManagementSystem.Resources
                     this.brdBrush.BorderBrush = Brushes.Gray;
                 }
                 SetValue(ValueProperty, value);
-                //ValueChanged(this, new EventArgs());
+
+                if (ValueChanged != null)
+                {
+                    ValueChanged(this, new EventArgs());
+                }
             }
         }
 
