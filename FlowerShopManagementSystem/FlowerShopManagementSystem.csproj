@@ -95,6 +95,9 @@
     <Compile Include="Accounts\ViewAccountDetails.xaml.cs">
       <DependentUpon>ViewAccountDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\ViewDashboardProduct.xaml.cs">
+      <DependentUpon>ViewDashboardProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NotificationBox\CannotDeleteBox.xaml.cs">
       <DependentUpon>CannotDeleteBox.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Accounts\ViewAccountDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dashboard\ViewDashboardProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

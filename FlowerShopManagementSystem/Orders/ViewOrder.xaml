@@ -217,11 +217,11 @@
                     Style="{StaticResource backButton}" FontWeight="SemiBold" Click="btnBackViewOrder_Click" Cursor="Hand"/>
 
                 <Button x:Name="btnPrintInvoice" Grid.Column="1" Content="Print Invoice" HorizontalAlignment="Center" Margin="0 40 0 10"
-                    Style="{StaticResource backButton}" FontWeight="SemiBold" Click="btnPrintInvoice_Click" Cursor="Hand"
-                        Background="#FFDCD7D7" IsEnabled="False"/>
-                <Button x:Name="btnPayment" Grid.Column="2" Content="Pay" HorizontalAlignment="Center" Margin="0 40 0 10"
-                    Style="{StaticResource backButton}" FontWeight="SemiBold" Click="btnPayment_Click" Cursor="Hand"
-                        Background="#FF008451"/>
+                    Style="{StaticResource saveButton}" FontWeight="SemiBold" Click="btnPrintInvoice_Click" Cursor="Hand"
+                        IsEnabled="False" Opacity="0.3"/>
+                <Button x:Name="btnPayment" Grid.Column="2" Content="Pay" HorizontalAlignment="Right" Margin="0 40 0 10"
+                    Style="{StaticResource saveButton}" FontWeight="SemiBold" Click="btnPayment_Click" Cursor="Hand"
+                        />
 
                 <StackPanel x:Name="orderStatusPanel" Grid.Column="2" Orientation="Horizontal"
                             Margin="0 40 0 10"

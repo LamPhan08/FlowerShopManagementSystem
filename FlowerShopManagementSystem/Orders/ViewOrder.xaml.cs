@@ -44,7 +44,7 @@ namespace FlowerShopManagementSystem.Orders
             btnPayment.Visibility = Visibility.Hidden;
             orderStatusPanel.Visibility = Visibility.Visible;
 
-            btnPrintInvoice.Background = (Brush) new BrushConverter().ConvertFrom("#FF008451");
+            btnPrintInvoice.Opacity = 1;
             btnPrintInvoice.IsEnabled = true;
         }
     }

@@ -4,54 +4,186 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FlowerShopManagementSystem"
+      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+ 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Background="#EFF2F7">
 
-    <ScrollViewer>
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
 
-            <StackPanel Margin="10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="shiftLeft" Style="{StaticResource chevron}" Margin="5" Click="shiftLeft_Click">
+                    <materialDesign:PackIcon Kind="ChevronLeft" Height="24" Width="24" Foreground="White"/>
+                    
+                </Button>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="60"/>
-                        </Grid.ColumnDefinitions>
+                <!--<Rectangle Width="1" Fill="LightGray" Margin="5 7"/>-->
 
-                        <TextBlock Text="Dịch vụ đặc biệt" FontSize="25"/>
-                        <Button x:Name="leftBtn" Grid.Column="1" Content="Left" FontSize="25" HorizontalAlignment="Center" Click="leftBtn_Click"/>
-                        <Button x:Name="rightBtn" Grid.Column="2" Content="Right" FontSize="25" HorizontalAlignment="Center" Click="rightBtn_Click"/>
-                    </Grid>
+            </StackPanel>
 
-                    <ScrollViewer Grid.Row="1" x:Name="sv" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" CanContentScroll="False">
-                        <ItemsControl x:Name="ListViewButton">
+            <ScrollViewer x:Name="scroll" Grid.Column="1"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Hidden"
+                          >
+                <!--<ItemsControl x:Name="listButton">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Content="{Binding buttonContent}"
+                                    Style="{StaticResource buttonFilter}"
+                                    Margin="5 0 5 0"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>-->
+
+                <StackPanel x:Name="stkpnl" Orientation="Horizontal"/>
+            </ScrollViewer>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <!--<Rectangle Width="1" Fill="LightGray" Margin="5 7"/>-->
+
+                <Button x:Name="shiftRight" Style="{StaticResource chevron}" Margin="5" Click="shiftRight_Click">
+                    <materialDesign:PackIcon Kind="ChevronRight" Height="24" Width="24" Foreground="White"/>
+
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+        <TextBlock Text="Filter by" Grid.Row="1" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <Grid Width="200" HorizontalAlignment="Right" Grid.Row="1" Margin="0 0 5 0">
+            <TextBlock Margin="10 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Type to Search ..."
+                           Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
+        </Grid>
+
+        <Border CornerRadius="10" Background="WhiteSmoke" Grid.Row="2" BorderBrush="LightGray" BorderThickness="0.5">
+            <ScrollViewer >
+                <StackPanel>
+                    <!--<TextBlock Text="Items" Margin="10" FontSize="22" FontWeight="Medium"/>-->
+                    <StackPanel Margin="0 10">
+                        <ItemsControl x:Name="DashboardProductsList" Margin="10 0 0 0">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Margin="10" Width="235" Height="260" Background="Gray" CornerRadius="5">
-                                        <Button Content="{Binding buttonContent}"/>
+                                    <Border>
+                                            <Border Margin="5" CornerRadius="10" Background="White">
+                                                <Grid >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="165"/>
+                                                        <RowDefinition Height="55"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Border Width="185" HorizontalAlignment="Center" CornerRadius="10">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding productImage}"/>
+                                                        </Border.Background>
+
+
+                                                    </Border>
+
+                                                    <Grid Grid.Row="1" Width="185" Background="White" Margin="5 0 5 5">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <StackPanel>
+                                                            <TextBlock x:Name="nameProduct" HorizontalAlignment="Left" Text="{Binding productName}" 
+                                                                       FontSize="17" FontWeight="SemiBold" FontFamily="Times New Roman"
+                                                                       Margin="0 7 0 0"/>
+
+                                                            <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 5 0 0" Text="{Binding productPrice, StringFormat={}{0:C}}" FontSize="15" Foreground="Red" FontWeight="SemiBold"/>
+                                                        </StackPanel>
+
+                                                        <Rectangle Grid.Column="1" Width="1" Fill="#e5e5e5" Margin="0 8 0 0"/>
+
+                                                        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0 8 0 0">
+                                                            <Button x:Name="btnDashboardProductIn4" Style="{StaticResource productIn4Button}" Cursor="Hand" Click="btnDashboardProductIn4_Click"
+                                                                    VerticalAlignment="Center" Height="30" Width="30" Margin="5 0 0 0">
+                                                                <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}" Height="18" Width="18"/>
+                                                            </Button>
+                                                            <Button x:Name="btnShopping" Style="{StaticResource productEditButton}" Cursor="Hand" Click="btnShopping_Click"
+                                                                    VerticalAlignment="Center" Margin="3 0 0 0" Height="30" Width="30">
+                                                                <icon:PackIconMaterial Kind="Shopping" Style="{StaticResource gridButtonIcon}" Height="18" Width="18"/>
+                                                            </Button>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Grid>
+                                            </Border>
+
+
                                     </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
+                                    <WrapPanel/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </Grid>
-            </StackPanel>
 
-           
-        </Grid>
-    </ScrollViewer>
+
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+
+
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Row="3" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource pagingButton}">
+                    <icon:PackIconMaterial Kind="ChevronDoubleLeft" Style="{StaticResource pagingButtonIcon}"/>
+                </Button>
+
+                <Button Style="{StaticResource pagingButton}">
+                    <icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
+                </Button>
+
+                <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                <TextBlock Text="1 of 20" Style="{StaticResource pagingTextBlock}"/>
+
+                <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                <Button Style="{StaticResource pagingButton}">
+                    <icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
+                </Button>
+
+                <Button Style="{StaticResource pagingButton}">
+                    <icon:PackIconMaterial Kind="ChevronDoubleRight" Style="{StaticResource pagingButtonIcon}"/>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
 </Page>

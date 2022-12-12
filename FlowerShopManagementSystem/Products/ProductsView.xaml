@@ -77,70 +77,54 @@
                     <ItemsControl x:Name="ListProducts">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox x:Name="radioBtn" Cursor="Hand">
-                                    <CheckBox.Template>
-                                        <ControlTemplate TargetType="{x:Type CheckBox}">
-                                            <Border x:Name="border" Margin="5" CornerRadius="10" Background="White">
-                                                <Grid  x:Name="gridBorder">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="125"/>
-                                                        <ColumnDefinition Width="280"/>
-                                                    </Grid.ColumnDefinitions>
+                                <Border>
+                                    <Border x:Name="border" Margin="5" CornerRadius="10" Background="White">
+                                        <Grid  x:Name="gridBorder">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="125"/>
+                                                <ColumnDefinition Width="280"/>
+                                            </Grid.ColumnDefinitions>
 
-                                                    <Border Height="125" CornerRadius="10" Margin="5">
-                                                        <Border.Background>
-                                                            <ImageBrush ImageSource="{Binding productImage}"/>
-                                                        </Border.Background>
-                                                    </Border>
-
-                                                    <Border Grid.Column="1" Height="125" CornerRadius="10" BorderThickness="1" BorderBrush="#FF008451" Margin="0 0 5 0"
-                                                        Background="White">
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="auto"/>
-                                                            </Grid.ColumnDefinitions>
-
-                                                            <StackPanel Margin="5">
-                                                                <TextBlock x:Name="nameProduct" Margin="5 0" Text="{Binding productName}" FontSize="20" FontWeight="DemiBold" FontFamily="Times New Roman"/>
-
-                                                                <TextBlock VerticalAlignment="Bottom" Margin="5 70 0 0" Text="{Binding productPrice, StringFormat={}{0:C}}" FontSize="15" Foreground="#FF008451" FontWeight="SemiBold"/>
-                                                            </StackPanel>
-
-                                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                                                <Button x:Name="btnProductIn4" Style="{StaticResource productIn4Button}" Cursor="Hand" Click="btnProductIn4_Click"
-                                                        Margin="5 5 10 0">
-                                                                    <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
-                                                                </Button>
-
-                                                                <Button x:Name="btnEditProduct" Style="{StaticResource productEditButton}" Cursor="Hand" Click="btnEditProduct_Click"
-                                                        Margin="5 5 10 0">
-                                                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
-                                                                </Button>
-
-                                                                <Button x:Name="btnDeleteProduct" Style="{StaticResource productRemoveButton}" Margin="5 5 10 0" Cursor="Hand" Click="btnDeleteProduct_Click">
-                                                                    <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
-                                                                </Button>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Border>
-                                                </Grid>
-                                                
+                                            <Border Height="125" CornerRadius="10" Margin="5">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="{Binding productImage}"/>
+                                                </Border.Background>
                                             </Border>
 
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsChecked" Value="True">
-                                                    <Setter TargetName="border" Property="Background" Value="#cccccc"/>
-                                                </Trigger>
+                                            <Border Grid.Column="1" Height="125" CornerRadius="10" BorderThickness="1" BorderBrush="#FF008451" Margin="0 0 5 0"
+                                                Background="White">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
 
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter TargetName="border" Property="Background" Value="#cccccc"/>
-                                                </Trigger>
+                                                    <StackPanel Margin="5">
+                                                        <TextBlock x:Name="nameProduct" Margin="5 0" Text="{Binding productName}" FontSize="20" FontWeight="DemiBold" FontFamily="Times New Roman"/>
 
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </CheckBox.Template>
-                                </CheckBox>
+                                                        <TextBlock VerticalAlignment="Bottom" Margin="5 70 0 0" Text="{Binding productPrice, StringFormat={}{0:C}}" FontSize="15" Foreground="#FF008451" FontWeight="SemiBold"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                                        <Button x:Name="btnProductIn4" Style="{StaticResource productIn4Button}" Cursor="Hand" Click="btnProductIn4_Click"
+                                                Margin="5 5 10 0">
+                                                            <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
+                                                        </Button>
+
+                                                        <Button x:Name="btnEditProduct" Style="{StaticResource productEditButton}" Cursor="Hand" Click="btnEditProduct_Click"
+                                                Margin="5 5 10 0">
+                                                            <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
+                                                        </Button>
+
+                                                        <Button x:Name="btnDeleteProduct" Style="{StaticResource productRemoveButton}" Margin="5 5 10 0" Cursor="Hand" Click="btnDeleteProduct_Click">
+                                                            <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}" Height="15" Width="15"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
