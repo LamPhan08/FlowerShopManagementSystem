@@ -24,6 +24,8 @@ namespace FlowerShopManagementSystem.Accounts
         public AddAccountForm()
         {
             InitializeComponent();
+
+            notify.Visibility = Visibility.Hidden;
         }
 
         private void btnBackEmployee_Click(object sender, RoutedEventArgs e)
@@ -33,6 +35,12 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
+            if (tbxEmployeeID.Text == "" || tbxEmployeeName.Text == ""
+                || tbxEmployeePhoneNumber.Text == "" || dpkWorkingDate.Text == ""
+                || tbxUsername.Text == "" || tbxPassword.Text == "")
+            {
+                notify.Visibility = Visibility.Visible;
+            }
         }
 
         private void uploadAvatarBtn_Click(object sender, RoutedEventArgs e)
@@ -54,12 +62,51 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void cbbAccountPriority_DropDownOpened(object sender, EventArgs e)
         {
-            cbbAccountPriority.Background = Brushes.LightGray;
+            //cbbAccountPriority.Background = Brushes.LightGray;
+            notify.Visibility = Visibility.Hidden;
+
         }
 
-        private void cbbAccountPriority_DropDownClosed(object sender, EventArgs e)
+
+        private void tbxEmployeeID_TextChanged(object sender, TextChangedEventArgs e)
         {
-            cbbAccountPriority.Background = Brushes.Transparent;
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEmployeeName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEmployeePhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void dpkWorkingDate_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+        }
+
+        private void dpkWorkingDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
         }
     }
 }

@@ -24,12 +24,20 @@ namespace FlowerShopManagementSystem.Products
         public EditProductForm()
         {
             InitializeComponent();
+
+            notify.Visibility = Visibility.Hidden;
+
         }
 
 
         private void btnSaveProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbxProductID.Text == "" || tbxEditProductName.Text == ""
+                || tbxEditProductType.Text == "" || cbbEditSuppier.Text == ""
+                || tbxEditEvent.Text == "" || tbxEditProductPrice.Text == "")
+            {
+                notify.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnBackEditProduct_Click(object sender, RoutedEventArgs e)
@@ -50,17 +58,43 @@ namespace FlowerShopManagementSystem.Products
 
             if (openFile.ShowDialog() == true)
             {
-                editProductImage.Source = new BitmapImage(new Uri(openFile.FileName));
+                editProductImage.ImageSource = new BitmapImage(new Uri(openFile.FileName));
             }
         }
 
         private void cbbEditSuppier_DropDownOpened(object sender, EventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
 
         }
 
-        private void cbbEditSuppier_DropDownClosed(object sender, EventArgs e)
+        private void tbxProductID_TextChanged(object sender, TextChangedEventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditProductName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditProductType_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditEvent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditProductPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
 
         }
     }

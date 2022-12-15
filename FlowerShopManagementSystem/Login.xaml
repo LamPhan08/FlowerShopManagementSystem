@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        WindowStyle="None" Height="550" Width="850" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" MouseDown="Window_MouseDown" Background="Transparent"
+        WindowStyle="None" Height="720" Width="1080" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Background="Transparent"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         AllowsTransparency="True">
-    <Border CornerRadius="10">
+    <Border CornerRadius="10" Background="White">
 
-        <Border.Background>
+        <!--<Border.Background>
             <ImageBrush ImageSource="/Images/flowerbackground.jpg"/>
-        </Border.Background>
+        </Border.Background>-->
 
         <Grid Margin="0 2 2 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -38,14 +38,117 @@
                     <Button x:Name="minimizeBtn" Grid.Column="1" Style="{StaticResource topButton}" HorizontalAlignment="Right"
                         HorizontalContentAlignment="Center" Cursor="Hand" FontSize="20"
                             VerticalContentAlignment="Center"
-                            Click="minimizeBtn_Click" Foreground="Gray">
+                            Click="minimizeBtn_Click" Foreground="#FF008451">
                         <icon:PackIconMaterial Kind="WindowMinimize"/>
                     </Button>
                 </Grid>
 
             </Border>
 
+            <TextBlock Grid.Row="1" Text="Flower Shop"
+                       FontSize="50" HorizontalAlignment="Left"
+                       VerticalAlignment="Top" Margin="110 80 0 0"
+                       FontWeight="SemiBold" FontFamily=".VnAristote"
+                       Foreground="#FF1F2511"/>
+
+            <Image Source="/Images/logo.png"
+                   Grid.Row="1" Height="94"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="363,67,0,0" Width="303"/>
+
+            <Border CornerRadius="10" 
+                   Grid.Row="1" Height="350" Width="500"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="110 180">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Images/flowershop.jpg"/>
+                </Border.Background>
+            </Border>
+            <Ellipse Grid.Row="1" HorizontalAlignment="Left"
+                     Height="400" Width="400"
+                     Margin="-187 577 0 -197" Stroke="#FF008451"
+                     VerticalAlignment="Top" StrokeThickness="50"/>
+            <Ellipse Grid.Row="1"
+            HorizontalAlignment="Left" 
+            Height="1063" 
+            Width="1039"
+            Margin="850,-353,-644.4,0" 
+                Stroke="#FF008451"
+            VerticalAlignment="Top"  
+            StrokeThickness="60"/>
+
+            <Border 
+                Grid.Row="1"
+                Background="White"
+                HorizontalAlignment="Right"
+                Height="460" 
+                Width="340" 
+                CornerRadius="10"
+                VerticalAlignment="Top"
+                BorderBrush="Gray"
+                BorderThickness="1"
+                Margin="50 90 50 0">
+
+                <StackPanel>
+                    <TextBlock Text="Welcome!"
+                               FontSize="32"
+                               HorizontalAlignment="Center"
+                               FontWeight="Bold"
+                               Margin="0 30 0 0"/>
+                    <Grid Width="270" Height="50"
+                          HorizontalAlignment="Center"
+                          Margin="0 70 0 0">
+                        <materialDesign:PackIcon Kind="Account"
+                                                 Foreground="Black"
+                                                 Height="30"
+                                                 Width="30"
+                                                 HorizontalAlignment="Left"
+                                                 VerticalAlignment="Bottom"/>
+                        <TextBox HorizontalAlignment="Right" Width="220" Height="40" 
+                                 x:Name="tbxUsername" FontWeight="Medium"
+                                 Margin="0 0 7 0" TextChanged="tbxUsername_TextChanged"
+                                 
+                              materialDesign:HintAssist.Hint="Username"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </Grid>
+                    <Grid Width="270" Height="50"
+                          HorizontalAlignment="Center"
+                          Margin="0 10 0 0">
+                        <materialDesign:PackIcon Kind="Password"
+                                                 Foreground="Black"
+                                                 Height="25"
+                                                 Width="25"
+                                                 Margin="2 0 0 0"
+                                                 HorizontalAlignment="Left"
+                                                 VerticalAlignment="Bottom"/>
+                        <PasswordBox HorizontalAlignment="Right" Width="220" Height="40" 
+                                 x:Name="tbxPassword" FontWeight="Medium"
+                                Margin="0 0 7 0" PasswordChanged="tbxPassword_PasswordChanged"
+                              materialDesign:HintAssist.Hint="Password"
+                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+
+                    </Grid>
+
+                    <TextBlock Visibility="Hidden"
+                               x:Name="loginNotify"
+                               FontSize="12"
+                               HorizontalAlignment="Left"
+                               FontWeight="SemiBold"
+                               Foreground="Red"
+                               Margin="80 5 0 0"/>
+
+                    <Button x:Name="btnLogin"
+                            Margin="50 90 50 0"
+                            Content="Login"
+                            FontSize="18" Height="40"
+                            FontWeight="Bold"
+                            Style="{StaticResource saveButton}"
+                            Click="btnLogin_Click"/>
+                </StackPanel>
+            </Border>
             <!--Logo-->
+            <!--
             <Border Grid.Row="1" Margin="0 -10 0 0">
                 <Image Source="Images/logo.png" Height="70" Width="250"/>
             </Border>
@@ -137,7 +240,7 @@
                     </Button>
 
                 </StackPanel>
-            </Border>
+            </Border>-->
         </Grid>
 
     </Border>

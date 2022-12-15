@@ -24,6 +24,8 @@ namespace FlowerShopManagementSystem.Products
         public AddProductForm()
         {
             InitializeComponent();
+
+            notify.Visibility = Visibility.Hidden;
         }
 
         private void tbxProductPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -34,7 +36,12 @@ namespace FlowerShopManagementSystem.Products
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (tbxProductID.Text == "" || tbxProductName.Text == ""
+                || tbxProductType.Text == "" || cbbSuppier.Text == ""
+                || tbxEvent.Text == "" || tbxProductPrice.Text == "") {
+                notify.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void btnBackAddProduct_Click(object sender, RoutedEventArgs e)
@@ -44,22 +51,50 @@ namespace FlowerShopManagementSystem.Products
 
         private void uploadProductImageBtn_Click(object sender, RoutedEventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
+
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "Image Files|*.jpg;*.png";
 
             if (openFile.ShowDialog() == true)
             {
-                productImage.Source = new BitmapImage(new Uri(openFile.FileName));
+                productImage.ImageSource = new BitmapImage(new Uri(openFile.FileName));
             }
         }
 
         private void cbbSuppier_DropDownOpened(object sender, EventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
 
         }
 
-        private void cbbSuppier_DropDownClosed(object sender, EventArgs e)
+        private void tbxProductID_TextChanged(object sender, TextChangedEventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxProductName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxProductType_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEvent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxProductPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
 
         }
     }

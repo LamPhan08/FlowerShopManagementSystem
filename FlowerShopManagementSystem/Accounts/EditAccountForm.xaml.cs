@@ -24,6 +24,8 @@ namespace FlowerShopManagementSystem.Accounts
         public EditAccountForm()
         {
             InitializeComponent();
+            
+            notify.Visibility = Visibility.Hidden;
         }
 
       
@@ -34,7 +36,12 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void btnSaveEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbxEditEmployeeID.Text == "" || tbxEditEmployeeName.Text == ""
+                || tbxEditEmployeePhoneNumber.Text == "" || dpkEditWorkingDate.Text == ""
+                || tbxEditUsername.Text == "" || tbxEditPassword.Text == "")
+            {
+                notify.Visibility = Visibility.Visible;
+            }
         }
 
         private void tbxEditEmployeePhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -56,11 +63,49 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void cbbEditAccountPriority_DropDownOpened(object sender, EventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
 
         }
 
         private void cbbEditAccountPriority_DropDownClosed(object sender, EventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditEmployeeID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditEmployeeName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditEmployeePhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void dpkEditWorkingDate_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
 
         }
     }

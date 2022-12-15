@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShopManagementSystem"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         mc:Ignorable="d"
         Height="600" Width="1100" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
     <Border Background="#F2F5F8" CornerRadius="10" BorderBrush="#FF008451" BorderThickness="2">
@@ -52,15 +54,21 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10" Orientation="Vertical">
-                        <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                        <TextBox x:Name="tbxEditEmployeeID" FontWeight="Medium"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
+                        <TextBox x:Name="tbxEditEmployeeID" FontWeight="Medium" TextChanged="tbxEditEmployeeID_TextChanged"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
-                        <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
 
-                        <TextBox x:Name="tbxEditEmployeePhoneNumber" FontWeight="Medium" PreviewTextInput="tbxEditEmployeePhoneNumber_PreviewTextInput"/>
+                        <TextBox x:Name="tbxEditEmployeePhoneNumber" FontWeight="Medium" PreviewTextInput="tbxEditEmployeePhoneNumber_PreviewTextInput"
+                                 TextChanged="tbxEditEmployeePhoneNumber_TextChanged"/>
                     </StackPanel>
 
                     <Grid Grid.Row="2">
@@ -70,16 +78,22 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Margin="20 10 -40 10" Orientation="Vertical">
-                            <TextBlock Text="Username" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Username" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                                <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                            </StackPanel>
 
-                            <TextBox x:Name="tbxEditUsername" FontWeight="Medium"/>
+                            <TextBox x:Name="tbxEditUsername" FontWeight="Medium" Margin="0 5 0 0" TextChanged="tbxEditUsername_TextChanged"/>
 
                         </StackPanel>
 
                         <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
-                            <TextBlock Text="Password" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Password" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                                <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                            </StackPanel>
 
-                            <TextBox x:Name="tbxEditPassword" FontWeight="Medium"/>
+                            <TextBox x:Name="tbxEditPassword" FontWeight="Medium" Margin="0 5 0 0" TextChanged="tbxEditPassword_TextChanged"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -92,15 +106,22 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10"  Orientation="Vertical">
-                        <TextBlock Text="Employee Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Employee Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" />
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
 
-                        <TextBox x:Name="tbxEditEmployeeName" FontWeight="Medium"/>
+                        <TextBox x:Name="tbxEditEmployeeName" FontWeight="Medium" TextChanged="tbxEditEmployeeName_TextChanged"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="1" Orientation="Vertical">
-                        <TextBlock Text="Working Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Working Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
 
-                        <DatePicker x:Name="dpkEditWorkingDate" Margin="0 5 0 0">
+                        <DatePicker x:Name="dpkEditWorkingDate" Focusable="False" materialDesign:HintAssist.Hint="Select Working Date"
+                                    FontSize="15" FontFamily="Sitka Subheading" FontWeight="SemiBold" CalendarOpened="dpkEditWorkingDate_CalendarOpened">
                             <DatePicker.Resources>
                                 <Style TargetType="DatePickerTextBox">
                                     <Setter Property="IsReadOnly" Value="True"/>
@@ -110,13 +131,16 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Margin="134 10 20 10" Orientation="Vertical">
-                        <TextBlock Text="Account Priority" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Account Priority" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
-                        <ComboBox x:Name="cbbEditAccountPriority" Margin="0 3 0 0" Padding="5" Tag="null" FontSize="15"
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
+                        <ComboBox x:Name="cbbEditAccountPriority"  Padding="5" Tag="null" FontSize="15"
                               DropDownOpened="cbbEditAccountPriority_DropDownOpened"
-                              DropDownClosed="cbbEditAccountPriority_DropDownClosed"
                               FontFamily="Sitka Subheading"
-                              FontWeight="SemiBold">
+                              FontWeight="SemiBold"
+                                  Cursor="Hand">
                             <ComboBoxItem Content="Manager"/>
                             <ComboBoxItem Content="Employee" IsSelected="True"/>
                         </ComboBox>
@@ -124,7 +148,13 @@
                 </Grid>
 
                 <StackPanel Grid.Column="2" Orientation="Vertical" Margin="20 10">
-                    <TextBlock Text="Avatar" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="35 0 0 0">
+                        <TextBlock Text="Avatar" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource chevron}" Margin="10 -5 0 0" x:Name="editAvatarBtn"
+                                Click="editAvatarBtn_Click">
+                            <materialDesign:PackIcon Kind="Plus" Height="25" Width="25"/>
+                        </Button>
+                    </StackPanel>
                     
                     <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF" Margin="0 10 0 0">
                         <Ellipse  Width="200" Height="200">
@@ -134,8 +164,6 @@
                         </Ellipse>
                     </Border>
 
-                    <Button x:Name="editAvatarBtn" Content="Click to upload" FontWeight="SemiBold" Style="{StaticResource saveButton}" Margin="0 100 0 0" Height="20" FontSize="12"
-                            Click="editAvatarBtn_Click"/>
                 </StackPanel>
             </Grid>
 
@@ -144,11 +172,19 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
-                <Button x:Name="btnSaveEmployee" Grid.Column="1" Grid.Row="5" Content="Add" HorizontalAlignment="Right" Margin="0 40 0 10" 
+
+                <TextBlock Text="Please input full information!"
+                               x:Name="notify"
+                               Foreground="Red"
+                               FontSize="13"
+                               VerticalAlignment="Top"
+                               FontWeight="SemiBold"
+                               Margin="20 -40 0 0"/>
+
+                <Button x:Name="btnSaveEmployee" Grid.Column="1"  Content="Save" HorizontalAlignment="Right" Margin="0 40 0 10" 
                     Style="{StaticResource saveButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnSaveEmployee_Click"/>
 
-            <Button x:Name="btnBackEditEmployee" Grid.Row="5" Content="Back" HorizontalAlignment="Left" Margin="0 40 0 10"
+            <Button x:Name="btnBackEditEmployee" Content="Back" HorizontalAlignment="Left" Margin="0 40 0 10"
                     Style="{StaticResource backButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnBackEditEmployee_Click"/>
             </Grid>
 

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShopManagementSystem"
         xmlns:sysglb="clr-namespace:System.Globalization;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         mc:Ignorable="d"
         Height="600" Width="740" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
     <Border Background="#F2F5F8" CornerRadius="10" BorderBrush="#FF008451" BorderThickness="2">
@@ -39,27 +41,40 @@
             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Customer Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Customer Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbxCustomerName" FontWeight="Medium"/>
+                <TextBox x:Name="tbxCustomerName" FontWeight="Medium" TextChanged="tbxCustomerName_TextChanged"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Phone Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbxCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxCustomerPhone_PreviewTextInput"/>
+                <TextBox x:Name="tbxCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxCustomerPhone_PreviewTextInput"
+                         TextChanged="tbxCustomerPhone_TextChanged"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                <TextBlock Text="House Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="House Number" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbxCustomerHouseNumber" FontWeight="Medium"/>
+                <TextBox x:Name="tbxCustomerHouseNumber" FontWeight="Medium" TextChanged="tbxCustomerHouseNumber_TextChanged"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="3" Orientation="Vertical">
-                <TextBlock Text="Street" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Street" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbxCustomerStreet" FontWeight="Medium"/>
+                <TextBox x:Name="tbxCustomerStreet" FontWeight="Medium" TextChanged="tbxCustomerStreet_TextChanged"/>
             </StackPanel>
 
             <Grid Grid.Row="4">
@@ -69,46 +84,57 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Margin="20 10 -40 10" Orientation="Vertical">
-                    <TextBlock Text="District" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="District" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                    </StackPanel>
 
                     <ComboBox x:Name="cbbDistrict" Padding="5" Tag="null" FontSize="15"
                               DropDownOpened="cbbDistrict_DropDownOpened"
-                              DropDownClosed="cbbDistrict_DropDownClosed"
                               FontFamily="Sitka Subheading"
-                              FontWeight="SemiBold"/>
+                              FontWeight="SemiBold" Cursor="Hand">
+                    </ComboBox>
 
                 </StackPanel>
 
                 <StackPanel Margin="80 10 -100 10" Orientation="Vertical" Grid.Column="1">
-                    <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="City" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                    </StackPanel>
 
                     <ComboBox x:Name="cbbCity" Padding="5" Tag="null" FontSize="15"
                               DropDownOpened="cbbCity_DropDownOpened"
-                              DropDownClosed="cbbCity_DropDownClosed"
                               FontFamily="Sitka Subheading"
-                              FontWeight="SemiBold"/>
+                              FontWeight="SemiBold" Cursor="Hand"/>
 
                 </StackPanel>
             </Grid>
 
             <StackPanel Grid.Row="4" Grid.Column="1" Margin="134 10 20 10" Orientation="Vertical">
-                <TextBlock Text="Province" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Province" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
                 <ComboBox x:Name="cbbProvince" Padding="5" Tag="null" FontSize="15"
                               DropDownOpened="cbbProvince_DropDownOpened"
-                              DropDownClosed="cbbProvince_DropDownClosed"
                               FontFamily="Sitka Subheading"
-                              FontWeight="SemiBold"/>
+                              FontWeight="SemiBold" Cursor="Hand"/>
 
 
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="5" Orientation="Vertical">
-                <TextBlock Text="Registration Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Registration Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
                 <!--<TextBox x:Name="tbxCustomerRegistrationDate" FontWeight="Medium"/>-->
 
-                <DatePicker x:Name="dpkRegistrationDate">
+                <DatePicker x:Name="dpkRegistrationDate" Focusable="False" materialDesign:HintAssist.Hint="Select Working Date"
+                                    FontSize="15" FontFamily="Sitka Subheading" FontWeight="SemiBold" CalendarOpened="dpkRegistrationDate_CalendarOpened">
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox">
                             <Setter Property="IsReadOnly" Value="True"/>
@@ -118,10 +144,23 @@
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
-                <TextBlock Text="Sales" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Sales" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbxCustomerSales" FontWeight="Medium" PreviewTextInput="tbxCustomerSales_PreviewTextInput"/>
+                <TextBox x:Name="tbxCustomerSales" FontWeight="Medium" PreviewTextInput="tbxCustomerSales_PreviewTextInput"
+                         TextChanged="tbxCustomerSales_TextChanged"/>
             </StackPanel>
+
+            <TextBlock Text="Please input full information!"
+                        x:Name="notify"
+                       Grid.Row="6"
+                        Foreground="Red"
+                        FontSize="13"
+                        VerticalAlignment="Top"
+                        FontWeight="SemiBold"
+                        Margin="20 0 0 0"/>
 
             <Button x:Name="btnAddCustomer" Grid.Column="1" Grid.Row="6" Content="Add" HorizontalAlignment="Right" Margin="0 40 0 10" Style="{StaticResource saveButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnAddCustomer_Click"/>
 

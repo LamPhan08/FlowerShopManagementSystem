@@ -25,14 +25,6 @@ namespace FlowerShopManagementSystem
             tbxUsername.Focus();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
-        }
-
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -45,9 +37,63 @@ namespace FlowerShopManagementSystem
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            if (tbxUsername.Text == "")
+            {
+                if (tbxPassword.Password.ToString() == "")
+                {
+                    loginNotification("Please input full information!");
+                    tbxUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+                    tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    loginNotification("Please input full information!");
+                    tbxUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+            }
+            else
+            {
+                if (tbxPassword.Password.ToString() == "")
+                {
+                    loginNotification("Please input full information!");
+                    tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    if (tbxUsername.Text != "admin" || tbxPassword.Password.ToString() != "admin")
+                    {
+                        loginNotification("Invalid Username or Password!");
+                        tbxUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+                        tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                    }
+                    else
+                    {
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                    }
+                }
+            }
+        }
+
+        private void loginNotification(String notify)
+        {
+            loginNotify.Text = notify;
+            loginNotify.Visibility = Visibility.Visible;
+        }
+
+        private void tbxUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            loginNotify.Visibility = Visibility.Hidden;
+            tbxUsername.BorderBrush = new SolidColorBrush(Colors.Black);
+            tbxPassword.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
+
+        private void tbxPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            loginNotify.Visibility = Visibility.Hidden;
+            tbxUsername.BorderBrush = new SolidColorBrush(Colors.Black);
+            tbxPassword.BorderBrush = new SolidColorBrush(Colors.Black);
         }
     }
 }

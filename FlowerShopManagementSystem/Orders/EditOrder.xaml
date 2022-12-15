@@ -57,14 +57,21 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Margin="20 10" Orientation="Vertical" Grid.Row="1">
-                        <TextBlock Text="Order ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Order ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
 
-                        <TextBox x:Name="tbxEditOrderID" FontWeight="Medium"/>
+                        <TextBox x:Name="tbxEditOrderID" FontWeight="Medium" TextChanged="tbxEditOrderID_TextChanged"/>
 
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="2" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Customer Phone" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
+                        
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -72,24 +79,40 @@
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBox x:Name="tbxEditCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxEditCustomerPhone_PreviewTextInput"/>
-
-                            <Button Grid.Column="1" x:Name="btnEditFind" Style="{StaticResource findButton}" Cursor="Hand" Click="btnEditFind_Click" Margin="5 0 0 0">
+                            <StackPanel>
+                                <TextBox x:Name="tbxEditCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxEditCustomerPhone_PreviewTextInput"
+                                         TextChanged="tbxEditCustomerPhone_TextChanged"/>
+                                <TextBlock Text="This customer does not exist!"
+                                                x:Name="findNotify"
+                                                Foreground="Red"
+                                                FontSize="13"
+                                                VerticalAlignment="Top"
+                                                FontWeight="SemiBold"
+                                                Margin="0 10 0 0"/>
+                            </StackPanel>
+                            <Button Grid.Column="1" x:Name="btnEditFind" Style="{StaticResource findButton}" Cursor="Hand" Click="btnEditFind_Click" Margin="5 0 0 0"
+                                    VerticalAlignment="Top">
                                 <icon:PackIconMaterial Kind="Magnify" Style="{StaticResource gridButtonIcon}" Height="20" Width="20"/>
                             </Button>
                         </Grid>
                     </StackPanel>
 
                     <StackPanel Margin="20 10"  Orientation="Vertical">
-                        <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Employee ID" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
 
                         <TextBox x:Name="tbxEditEmployeeID" FontWeight="Medium" IsReadOnly="True"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="3" Orientation="Vertical">
-                        <TextBlock Text="Customer Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Customer Name" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
+                            <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
+                        </StackPanel>
 
-                        <TextBox x:Name="tbxEditCustomerName" FontWeight="Medium" IsReadOnly="True"/>
+                        <TextBox x:Name="tbxEditCustomerName" FontWeight="Medium" IsReadOnly="True" TextChanged="tbxEditCustomerName_TextChanged"/>
                     </StackPanel>
 
                 </Grid>
@@ -194,6 +217,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="btnProductIn4" Style="{StaticResource gridPrintButton}" Cursor="Hand" Click="btnProductIn4_Click"
+                                                    Margin="0 0 5 0">
+                                                <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}"/>
+                                            </Button>
                                             <Button x:Name="btnEditRemoveProduct" Style="{StaticResource gridRemoveButton}" Cursor="Hand" Click="btnEditRemoveProduct_Click">
                                                 <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
@@ -238,6 +265,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <TextBlock Text="Please input full information!"
+                        x:Name="notify"
+                        Foreground="Red"
+                        FontSize="13"
+                        VerticalAlignment="Top"
+                        FontWeight="SemiBold"
+                        Margin="20 0 0 0"/>
                 <Button x:Name="btnSaveOrder" Grid.Column="1" Grid.Row="5" Content="Save" HorizontalAlignment="Right" Margin="0 40 0 10" 
                     Style="{StaticResource saveButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnSaveOrder_Click"/>
 

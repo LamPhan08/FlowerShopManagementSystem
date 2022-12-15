@@ -20,19 +20,50 @@ namespace FlowerShopManagementSystem.Orders
     /// </summary>
     public partial class EditOrder : Window
     {
+        private List<CTHD> cTHDs = new List<CTHD>();
+
         public EditOrder()
         {
             InitializeComponent();
+
+            notify.Visibility = Visibility.Hidden;
+            findNotify.Visibility = Visibility.Hidden;
+
+            cTHDs.Add(new CTHD { sttSanPham = "1", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "2", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "3", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "4", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "5", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "6", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "7", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "8", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "9", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "10", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+
+            editOrderDetailsDataGrid.ItemsSource = cTHDs;
+
         }
 
         private void btnEditFind_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbxEditCustomerPhone.Text == "0123456789")
+            {
+                tbxEditCustomerName.Text = "Phan Nhat Lam";
+            }
+            else
+            {
+                findNotify.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnSaveOrder_Click(object sender, RoutedEventArgs e)
         {
+            if (tbxEditOrderID.Text == "" || tbxEditCustomerPhone.Text == ""
+                || tbxEditCustomerName.Text == "" || cTHDs.Count == 0)
+            {
+                notify.Visibility = Visibility.Visible;
 
+            }
         }
 
         private void btnBackEditOrder_Click(object sender, RoutedEventArgs e)
@@ -54,7 +85,15 @@ namespace FlowerShopManagementSystem.Orders
 
         private void editOrderDetailsDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
+            long total = 0;
 
+            for (int i = 0; i < cTHDs.Count; i++)
+            {
+                total += cTHDs[i].productTotalMoney;
+            }
+
+
+            txtblckTotalMoney.Text = total.ToString();
         }
 
 
@@ -63,5 +102,28 @@ namespace FlowerShopManagementSystem.Orders
 
         }
 
+        private void tbxEditOrderID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxEditCustomerPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+            findNotify.Visibility = Visibility.Hidden;
+        }
+
+        private void tbxEditCustomerName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void btnProductIn4_Click(object sender, RoutedEventArgs e)
+        {
+            Products.ViewProductDetails viewProductDetails = new Products.ViewProductDetails();
+            viewProductDetails.ShowDialog();
+        }
     }
 }

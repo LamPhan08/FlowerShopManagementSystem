@@ -23,6 +23,9 @@ namespace FlowerShopManagementSystem.Customers
         public EditCustomerForm()
         {
             InitializeComponent();
+
+            notify.Visibility = Visibility.Hidden;
+
         }
 
         private void btnEditBackCustomer_Click(object sender, RoutedEventArgs e)
@@ -32,7 +35,14 @@ namespace FlowerShopManagementSystem.Customers
 
         private void btnEditSaveCustomer_Click(object sender, RoutedEventArgs e)
         {
+            if (tbxEditCustomerName.Text == "" || tbxEditCustomerPhone.Text == ""
+                || tbxEditCustomerHouseNumber.Text == "" || tbxEditCustomerStreet.Text == ""
+                || cbbEditDistrict.Text == "" || cbbEditCity.Text == "" || cbbEditProvince.Text == ""
+                || tbxEditCustomerSales.Text == "" || dpkEditRegistrationDate.Text == "")
+            {
+                notify.Visibility = Visibility.Visible;
 
+            }
         }
 
         private void tbxEditCustomerSales_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -49,37 +59,53 @@ namespace FlowerShopManagementSystem.Customers
 
         private void cbbEditDistrict_DropDownOpened(object sender, EventArgs e)
         {
-
-        }
-
-        private void cbbEditDistrict_DropDownClosed(object sender, EventArgs e)
-        {
-
+            notify.Visibility = Visibility.Hidden;
         }
 
         private void cbbEditCity_DropDownOpened(object sender, EventArgs e)
         {
-
+            notify.Visibility = Visibility.Hidden;
         }
 
-        private void cbbEditCity_DropDownClosed(object sender, EventArgs e)
-        {
-
-        }
 
         private void cbbEditProvince_DropDownOpened(object sender, EventArgs e)
         {
-
-        }
-
-        private void cbbEditProvince_DropDownClosed(object sender, EventArgs e)
-        {
-
+            notify.Visibility = Visibility.Hidden;
         }
 
         private void cbbEditDistrict_DropDownOpened_1(object sender, EventArgs e)
         {
+            notify.Visibility = Visibility.Hidden;
+        }
 
+        private void tbxEditCustomerName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+        }
+
+        private void tbxEditCustomerPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+        }
+
+        private void tbxEditCustomerHouseNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+        }
+
+        private void tbxEditCustomerStreet_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+        }
+
+        private void tbxEditCustomerSales_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+        }
+
+        private void dpkEditRegistrationDate_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
         }
     }
 }

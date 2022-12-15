@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,13 +26,19 @@ namespace FlowerShopManagementSystem.Orders
         {
             InitializeComponent();
 
-            
+            notify.Visibility = Visibility.Hidden;
+            findNotify.Visibility = Visibility.Hidden;
 
-            cTHDs.Add(new CTHD {sttSanPham = "1", productID = "SP01", productName="Hoa hồng", productQuantity = 2, productPrice =3000, productTotalMoney = 6000});
+            cTHDs.Add(new CTHD { sttSanPham = "1", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
             cTHDs.Add(new CTHD { sttSanPham = "2", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
             cTHDs.Add(new CTHD { sttSanPham = "3", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
             cTHDs.Add(new CTHD { sttSanPham = "4", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
             cTHDs.Add(new CTHD { sttSanPham = "5", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "6", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "7", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "8", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "9", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
+            cTHDs.Add(new CTHD { sttSanPham = "10", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
 
 
             orderDetailsDataGrid.ItemsSource = cTHDs;
@@ -40,11 +47,12 @@ namespace FlowerShopManagementSystem.Orders
 
         }
 
-        
+
 
         private void tbxCustomerPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void chooseProductBtn_Click(object sender, RoutedEventArgs e)
@@ -65,17 +73,25 @@ namespace FlowerShopManagementSystem.Orders
 
         private void btnCreateOrder_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (tbxOrderID.Text == "" || tbxCustomerPhone.Text == ""
+                || tbxCustomerName.Text == "" || cTHDs.Count == 0)
+            {
+                notify.Visibility = Visibility.Visible;
+
+            }
         }
 
-        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
 
         private void btnFind_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbxCustomerPhone.Text == "0123456789")
+            {
+                tbxCustomerName.Text = "Phan Nhat Lam";
+            }
+            else
+            {
+                findNotify.Visibility = Visibility.Visible;
+            }
         }
 
 
@@ -90,6 +106,36 @@ namespace FlowerShopManagementSystem.Orders
 
             
             txtblckTotalMoney.Text = total.ToString();
+        }
+
+        private void tbxEmployeeID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxOrderID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void tbxCustomerPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+            findNotify.Visibility = Visibility.Hidden;
+        }
+
+        private void tbxCustomerName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            notify.Visibility = Visibility.Hidden;
+
+        }
+
+        private void btnProductIn4_Click(object sender, RoutedEventArgs e)
+        {
+            Products.ViewProductDetails viewProductDetails = new Products.ViewProductDetails();
+            viewProductDetails.ShowDialog();
         }
     }
 
