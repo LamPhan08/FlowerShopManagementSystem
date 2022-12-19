@@ -143,6 +143,8 @@
                             Content="Login"
                             FontSize="18" Height="40"
                             FontWeight="Bold"
+                            PreviewKeyDown="btnLogin_PreviewKeyDown"
+                            IsDefault="True"
                             Style="{StaticResource saveButton}"
                             Click="btnLogin_Click"/>
                 </StackPanel>

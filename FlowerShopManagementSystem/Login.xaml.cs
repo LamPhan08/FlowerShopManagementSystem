@@ -37,6 +37,11 @@ namespace FlowerShopManagementSystem
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            checkLogin();
+        }
+
+        private void checkLogin()
+        {
             if (tbxUsername.Text == "")
             {
                 if (tbxPassword.Password.ToString() == "")
@@ -94,6 +99,14 @@ namespace FlowerShopManagementSystem
             loginNotify.Visibility = Visibility.Hidden;
             tbxUsername.BorderBrush = new SolidColorBrush(Colors.Black);
             tbxPassword.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
+
+        private void btnLogin_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                checkLogin();
+            }
         }
     }
 }

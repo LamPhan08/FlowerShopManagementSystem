@@ -125,3 +125,5 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\EditOr
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ViewOrder.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Dashboard\ViewDashboardProduct.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Dashboard\ViewDashboardProduct.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ProductIn4.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ProductIn4.baml

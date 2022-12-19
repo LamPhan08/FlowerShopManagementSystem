@@ -134,9 +134,10 @@ namespace FlowerShopManagementSystem.Orders
 
         private void btnProductIn4_Click(object sender, RoutedEventArgs e)
         {
-            Products.ViewProductDetails viewProductDetails = new Products.ViewProductDetails();
-            viewProductDetails.ShowDialog();
+            ProductIn4 productIn4 = new ProductIn4();
+            productIn4.ShowDialog();
         }
+
     }
 
     public class CTHD
