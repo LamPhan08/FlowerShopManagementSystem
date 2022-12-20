@@ -53,7 +53,8 @@ namespace FlowerShopManagementSystem.Orders
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-
+            Invoice invoice = new Invoice();
+            invoice.ShowDialog();
         }
 
         private void btnEditOrder_Click(object sender, RoutedEventArgs e)

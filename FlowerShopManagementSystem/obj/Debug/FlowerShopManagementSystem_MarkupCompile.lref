@@ -13,6 +13,7 @@ FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\ChooseProduct.x
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\CreateNewOrder.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\EditOrder.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\OrdersView.xaml;;
+FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\ProductIn4.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\ViewOrder.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Products\AddProductForm.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Products\EditProductForm.xaml;;
@@ -22,5 +23,4 @@ FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\AddSupplierF
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\EditSupplierForm.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\SuppliersView.xaml;;
 FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Suppliers\ViewSupplierDetails.xaml;;
-FD:\FlowerShopManagementSystem\FlowerShopManagementSystem\Orders\ProductIn4.xaml;;
 

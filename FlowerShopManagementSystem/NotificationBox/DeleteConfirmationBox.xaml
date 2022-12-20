@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Icon="/Images/logoicon.png"
         Height="270" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="None" MouseDown="Window_MouseDown"
         Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="#FF009B51">

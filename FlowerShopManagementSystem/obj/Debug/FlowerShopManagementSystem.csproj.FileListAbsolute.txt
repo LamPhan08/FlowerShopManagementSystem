@@ -127,3 +127,5 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Dashboard\Vie
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Dashboard\ViewDashboardProduct.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ProductIn4.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ProductIn4.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\Invoice.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\Invoice.baml
