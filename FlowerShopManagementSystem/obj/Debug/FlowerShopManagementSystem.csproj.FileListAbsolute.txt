@@ -118,7 +118,6 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\zh-Hans\Xceed
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ChooseProduct.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Resources\NumericUpDown.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Resources\NumericUpDown.g.cs
-D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\EditOrder.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ViewOrder.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\EditOrder.baml
@@ -129,3 +128,11 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\Produc
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\ProductIn4.baml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\Invoice.g.cs
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Orders\Invoice.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Statistics\StatisticsView.g.cs
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\Statistics\StatisticsView.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.dll
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.Wpf.dll
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.pdb
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.xml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.Wpf.pdb
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.Wpf.xml

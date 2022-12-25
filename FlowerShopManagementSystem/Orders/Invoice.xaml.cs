@@ -37,17 +37,17 @@ namespace FlowerShopManagementSystem.Orders
         {
             try
             {
-                btnPrint.Visibility = Visibility.Hidden;
                 PrintDialog printDialog = new PrintDialog();
 
                 if (printDialog.ShowDialog() == true)
                 {
+                    btnPrint.Visibility = Visibility.Hidden;
                     printDialog.PrintVisual(grdPrint, "Invoice");
                 }
             }
-            catch (Exception ex)
+            finally
             {
-
+                btnPrint.Visibility = Visibility.Visible;
             }
 
         }

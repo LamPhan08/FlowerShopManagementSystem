@@ -201,14 +201,8 @@
                             </DataGridTemplateColumn>
 
                             <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding productName}"/>
-                            <DataGridTemplateColumn Header="Quantity" IsReadOnly="True" Width="*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <components:NumericUpDown MinValue="1" FontSize="18" Text="0" FontWeight="Medium"
-                                                                  Height="32" Width="72" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Quantity" IsReadOnly="True" Width="*" Binding="{Binding productQuantity}"/>
+
                             <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding productPrice, StringFormat={}{0:C}}"/>
 
                             <DataGridTextColumn Header="Total Money" IsReadOnly="True" Width="*" Binding="{Binding productTotalMoney, StringFormat={}{0:C}}"/>
@@ -217,9 +211,9 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button x:Name="btnProductIn4" Style="{StaticResource gridPrintButton}" Cursor="Hand" Click="btnProductIn4_Click"
+                                            <Button x:Name="btnProductIn4" Style="{StaticResource gridEditButton}" Cursor="Hand" Click="btnProductIn4_Click"
                                                     Margin="0 0 5 0">
-                                                <icon:PackIconMaterial Kind="Information" Style="{StaticResource gridButtonIcon}"/>
+                                                <icon:PackIconMaterial Kind="Pencil" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                             <Button x:Name="btnEditRemoveProduct" Style="{StaticResource gridRemoveButton}" Cursor="Hand" Click="btnEditRemoveProduct_Click">
                                                 <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>

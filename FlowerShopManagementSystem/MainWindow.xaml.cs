@@ -26,7 +26,8 @@ namespace FlowerShopManagementSystem
                     Suppliers = 2,
                     Orders = 3,
                     Customers = 4,
-                    Accounts = 5;
+                    Accounts = 5,
+                    statistics = 6;
 
         private int isSelected = -1;
 
@@ -226,6 +227,40 @@ namespace FlowerShopManagementSystem
             WindowState = WindowState.Minimized;
         }
 
+        private void btnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            if (isSelected != statistics)
+            {
+                Statistics.StatisticsView statisticsView = new Statistics.StatisticsView();
+                frame.Content = statisticsView;
+
+                ChangeButtonStyle();
+
+                isSelected = statistics;
+
+                BrushConverter bc = new BrushConverter();
+                btnStatistics.Foreground = (Brush)bc.ConvertFrom("#008851");
+                btnStatistics.Background = Brushes.White;
+            }
+        }
+
+        private void btnStatistics_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BrushConverter bc = new BrushConverter();
+            btnStatistics.Foreground = (Brush)bc.ConvertFrom("#008851");
+            btnStatistics.Background = Brushes.White;
+        }
+
+        private void btnStatistics_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (isSelected != statistics)
+            {
+                BrushConverter bc = new BrushConverter();
+                btnStatistics.Background = (Brush)bc.ConvertFrom("#008851");
+                btnStatistics.Foreground = Brushes.White;
+            }
+        }
+
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
             if (isSelected != Suppliers)
@@ -343,6 +378,14 @@ namespace FlowerShopManagementSystem
                         BrushConverter bc = new BrushConverter();
                         btnAccounts.Background = (Brush)bc.ConvertFrom("#008851");
                         btnAccounts.Foreground = Brushes.White;
+
+                        break;
+                    }
+                case 6:
+                    {
+                        BrushConverter bc = new BrushConverter();
+                        btnStatistics.Background = (Brush)bc.ConvertFrom("#008851");
+                        btnStatistics.Foreground = Brushes.White;
 
                         break;
                     }

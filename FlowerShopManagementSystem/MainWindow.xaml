@@ -93,6 +93,13 @@
                                 </StackPanel>
                             </Button>
 
+                            <Button Name="btnStatistics" Style="{StaticResource menuButton}" Click="btnStatistics_Click" MouseEnter="btnStatistics_MouseEnter" MouseLeave="btnStatistics_MouseLeave">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Images/Icons/statistics.png" Height="15" Width="15" Margin="20 2 20 0"/>
+                                    <TextBlock Text="Statistics" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
                         </StackPanel>
 
                         <Button x:Name="logoutBtn" Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20"

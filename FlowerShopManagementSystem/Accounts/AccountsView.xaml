@@ -158,12 +158,14 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource gridEditButton}" x:Name="btnEditAccount" Click="btnEditAccount_Click">
-                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                <Button Style="{StaticResource gridEditButton}" x:Name="btnEditAccount" Click="btnEditAccount_Click"
+                                        Height="30" Width="30">
+                                    <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"  Height="15" Width="15"/>
                                 </Button>
 
-                                <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" x:Name="btnDeleteAccount" Click="btnDeleteAccount_Click">
-                                    <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" x:Name="btnDeleteAccount" Click="btnDeleteAccount_Click"
+                                         Height="30" Width="30">
+                                    <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"  Height="15" Width="15"/>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
