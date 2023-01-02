@@ -20,22 +20,23 @@ namespace FlowerShopManagementSystem.Suppliers
     /// </summary>
     public partial class SuppliersView : Page
     {
+        private List<Supplier> suppliers = new List<Supplier>();
+        private Resources.PagingCollectionView view;
+
         public SuppliersView()
         {
             InitializeComponent();
 
-            List<Supplier> suppliers = new List<Supplier>();
             suppliers.Add(new Supplier(){ sttNCC = "1", maNCC = "NCC1", tenNCC="UIT", diaChiNCC="Thu Duc", soDTNCC="123"});
             suppliers.Add(new Supplier() { sttNCC = "2", maNCC = "NCC1", tenNCC = "UIT", diaChiNCC = "Thu Duc", soDTNCC = "123" });
             suppliers.Add(new Supplier() { sttNCC = "3", maNCC = "NCC1", tenNCC = "UIT", diaChiNCC = "Thu Duc", soDTNCC = "123" });
             suppliers.Add(new Supplier() { sttNCC = "4", maNCC = "NCC1", tenNCC = "UIT", diaChiNCC = "Thu Duc", soDTNCC = "123" });
             suppliers.Add(new Supplier() { sttNCC = "5", maNCC = "NCC1", tenNCC = "UIT", diaChiNCC = "Thu Duc", soDTNCC = "123" });
 
+            view = new Resources.PagingCollectionView(suppliers, 2);
 
-            suppliersDataGrid.ItemsSource = suppliers;
-
-           
-
+            this.DataContext = view;
+            suppliersDataGrid.ItemsSource = view;
         }
 
         private void btnEditSupplier_Click(object sender, RoutedEventArgs e)
@@ -63,6 +64,26 @@ namespace FlowerShopManagementSystem.Suppliers
             viewSupplierDetails.ShowDialog();
 
             
+        }
+
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
         }
     }
 

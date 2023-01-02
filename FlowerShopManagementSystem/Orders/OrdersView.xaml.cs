@@ -20,11 +20,12 @@ namespace FlowerShopManagementSystem.Orders
     /// </summary>
     public partial class OrdersView : Page
     {
+        private List<HOA_DON> hoadon = new List<HOA_DON>();
+        private Resources.PagingCollectionView view;
+
         public OrdersView()
         {
             InitializeComponent();
-
-            List<HOA_DON> hoadon = new List<HOA_DON>();
 
             hoadon.Add(new HOA_DON { MAHD = "HD01", NGHD = DateTime.Now.ToString(), SODT_KH = "0123456789", MANV = "NV01", TRIGIA = 1000000, sttHD = 1, TINHTRANG = "Paid"});
             hoadon.Add(new HOA_DON { MAHD = "HD02", NGHD = DateTime.Now.ToString(), SODT_KH = "0123456789", MANV = "NV02", TRIGIA = 1000000, sttHD = 2, TINHTRANG = "Unpaid" });
@@ -35,7 +36,10 @@ namespace FlowerShopManagementSystem.Orders
             hoadon.Add(new HOA_DON { MAHD = "HD07", NGHD = DateTime.Now.ToString(), SODT_KH = "0123456789", MANV = "NV07", TRIGIA = 1000000, sttHD = 7, TINHTRANG = "Paid" });
             hoadon.Add(new HOA_DON { MAHD = "HD08", NGHD = DateTime.Now.ToString(), SODT_KH = "0123456789", MANV = "NV08", TRIGIA = 1000000, sttHD = 8, TINHTRANG = "Unpaid" });
 
-            ordersDataGrid.ItemsSource = hoadon;
+            view = new Resources.PagingCollectionView(hoadon, 2);
+
+            this.DataContext = view;
+            ordersDataGrid.ItemsSource = view;
 
         }
 
@@ -66,6 +70,26 @@ namespace FlowerShopManagementSystem.Orders
         private void btnPayment_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
         }
     }
 

@@ -20,6 +20,8 @@ namespace FlowerShopManagementSystem.Products
     /// </summary>
     public partial class ProductsView : Page
     {
+        private Resources.PagingCollectionView view;
+
         public ProductsView()
         {
             InitializeComponent();
@@ -34,9 +36,10 @@ namespace FlowerShopManagementSystem.Products
             products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT"});
             products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT"});
 
-            ListProducts.ItemsSource = products;
+            view = new Resources.PagingCollectionView(products, 4);
 
-
+            this.DataContext = view;
+            ListProducts.ItemsSource = view;
         }
 
         private void btnEditProduct_Click(object sender, RoutedEventArgs e)
@@ -63,6 +66,25 @@ namespace FlowerShopManagementSystem.Products
             viewProductDetails.ShowDialog();
         }
 
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
+        }
     }
 
     public class Product

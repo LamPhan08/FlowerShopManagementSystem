@@ -21,6 +21,7 @@ namespace FlowerShopManagementSystem.Dashboard
     public partial class DashboardView : Page
     {
         List<Product> products = new List<Product>();
+        Resources.PagingCollectionView view;
 
         public DashboardView()
         {
@@ -73,8 +74,18 @@ namespace FlowerShopManagementSystem.Dashboard
             products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100 });
             products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
             products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
+            products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
 
-            DashboardProductsList.ItemsSource = products;
+            view = new Resources.PagingCollectionView(products, 2);
+
+            this.DataContext = view;
+            DashboardProductsList.ItemsSource = view;
 
         }
 
@@ -92,17 +103,32 @@ namespace FlowerShopManagementSystem.Dashboard
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100 });
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
             }
             else if (button.Content.ToString() == "Button1")
             {
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
-                
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
             else if (button.Content.ToString() == "Button2")
@@ -110,9 +136,15 @@ namespace FlowerShopManagementSystem.Dashboard
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
 
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
             else if (button.Content.ToString() == "Button3")
@@ -120,8 +152,14 @@ namespace FlowerShopManagementSystem.Dashboard
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
             else if (button.Content.ToString() == "Button4")
@@ -129,8 +167,17 @@ namespace FlowerShopManagementSystem.Dashboard
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
             else if (button.Content.ToString() == "Button5")
@@ -138,9 +185,13 @@ namespace FlowerShopManagementSystem.Dashboard
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100 });
-                
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
             else if (button.Content.ToString() == "Button6")
@@ -148,8 +199,13 @@ namespace FlowerShopManagementSystem.Dashboard
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
             else if (button.Content.ToString() == "Button7")
@@ -157,8 +213,15 @@ namespace FlowerShopManagementSystem.Dashboard
                 products = new List<Product>();
 
                 products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100 });
+                products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100 });
 
-                DashboardProductsList.ItemsSource = products;
+                view = new Resources.PagingCollectionView(products, 2);
+
+                this.DataContext = view;
+                DashboardProductsList.ItemsSource = view;
 
             }
         }
@@ -184,6 +247,26 @@ namespace FlowerShopManagementSystem.Dashboard
         {
             Orders.CreateNewOrder newOrder = new Orders.CreateNewOrder();
             newOrder.ShowDialog();
+        }
+
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
         }
     }
 

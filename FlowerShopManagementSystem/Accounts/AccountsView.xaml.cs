@@ -21,6 +21,7 @@ namespace FlowerShopManagementSystem.Accounts
     public partial class AccountsView : Page
     {
         List<Account> accounts = new List<Account>();
+        Resources.PagingCollectionView view;
 
         public AccountsView()
         {
@@ -65,7 +66,10 @@ namespace FlowerShopManagementSystem.Accounts
                 priority = "1"
             });
 
-            accountsDataGrid.ItemsSource = accounts;
+            view = new Resources.PagingCollectionView(accounts, 2);
+
+            this.DataContext = view;
+            accountsDataGrid.ItemsSource = view;
         }
 
         private void btnAddAccount_Click(object sender, RoutedEventArgs e)
@@ -89,6 +93,26 @@ namespace FlowerShopManagementSystem.Accounts
         {
             ViewAccountDetails viewAccount = new ViewAccountDetails();
             viewAccount.ShowDialog();
+        }
+
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
         }
     }
 

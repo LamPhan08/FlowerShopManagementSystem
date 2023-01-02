@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Collections.ObjectModel;
 
 namespace FlowerShopManagementSystem.Customers
 {
@@ -21,6 +10,8 @@ namespace FlowerShopManagementSystem.Customers
     /// </summary>
     public partial class CustomersView : Page
     {
+        private Resources.PagingCollectionView view;
+
         public CustomersView()
         {
             InitializeComponent();
@@ -42,9 +33,10 @@ namespace FlowerShopManagementSystem.Customers
             customers.Add(new Customer { sttKH = "13", name = "Lam", address = "Thu Duc", phone = "0123456789", ngayDK = "5/11/2022", doanhSo = 1000000 });
             customers.Add(new Customer { sttKH = "14", name = "Hahaa", address = "Ho Chi MInh", phone = "0123456789", ngayDK = "5/11/2022", doanhSo = 1000000 });
 
+            view = new Resources.PagingCollectionView(customers, 2);
 
-
-            customersDataGrid.ItemsSource = customers;
+            this.DataContext = view;
+            customersDataGrid.ItemsSource = view;
         }
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
@@ -72,6 +64,26 @@ namespace FlowerShopManagementSystem.Customers
         {
             ViewCustomerDetails viewCustomer = new ViewCustomerDetails();
             viewCustomer.ShowDialog();
+        }
+
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
         }
     }
 

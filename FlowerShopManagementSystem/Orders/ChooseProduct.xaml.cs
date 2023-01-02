@@ -19,12 +19,13 @@ namespace FlowerShopManagementSystem.Orders
     /// </summary>
     public partial class ChooseProduct : Window
     {
+        private List<Product> products = new List<Product>();
+        private Resources.PagingCollectionView view;
+
         public ChooseProduct()
         {
             InitializeComponent();
 
-            List<Product> products = new List<Product>();
-
             products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867" });
             products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT" });
             products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT" });
@@ -40,7 +41,10 @@ namespace FlowerShopManagementSystem.Orders
             products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT" });
             products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT" });
 
-            ListProductsChoose.ItemsSource = products;
+            view = new Resources.PagingCollectionView(products, 2);
+
+            this.DataContext = view;
+            ListProductsChoose.ItemsSource = view;
         }
 
         private void btnFindProduct_Click(object sender, RoutedEventArgs e)
@@ -63,6 +67,25 @@ namespace FlowerShopManagementSystem.Orders
 
         }
 
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToFirstPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToPreviousPage();
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToNextPage();
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveToLastPage();
+        }
     }
 
     public class Product

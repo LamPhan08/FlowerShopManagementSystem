@@ -167,6 +167,7 @@
     <Compile Include="Resources\NumericUpDown.xaml.cs">
       <DependentUpon>NumericUpDown.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\PagingCollectionView.cs" />
     <Compile Include="Statistics\StatisticsView.xaml.cs">
       <DependentUpon>StatisticsView.xaml</DependentUpon>
     </Compile>
