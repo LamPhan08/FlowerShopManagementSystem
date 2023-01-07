@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShopManagementSystem.Orders"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Icon="/Images/logoicon.png"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
 
@@ -37,7 +37,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <Border Background="#eff2f7" BorderBrush="#FF008451" BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
@@ -76,10 +76,10 @@
 
 
 
-                <TextBlock Grid.Row="1" Text="PRODUCTS LIST" FontSize="30" FontFamily="Times New Roman" Margin="0 10 0 0" 
+            <TextBlock Grid.Row="1" Text="PRODUCTS LIST" FontSize="30" FontFamily="Times New Roman" Margin="0 10 0 0" 
                            FontWeight="SemiBold" HorizontalAlignment="Center"/>
 
-       
+
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -97,7 +97,7 @@
                 </Grid>
 
                 <Button Grid.Column="2" x:Name="btnFindProduct" Style="{StaticResource findButton}" Cursor="Hand" Click="btnFindProduct_Click"  Width="30" Height="30">
-                    <icon:PackIconMaterial Kind="Magnify" Style="{StaticResource gridButtonIcon}" Height="18" Width="18"/>
+                    <icon:PackIconMaterial Kind="Magnify" Style="{StaticResource gridButtonIcon}" Height="20" Width="20"/>
                 </Button>
             </Grid>
 
@@ -106,10 +106,10 @@
                     <StackPanel>
                         <!--<TextBlock Text="Items" Margin="10" FontSize="22" FontWeight="Medium"/>-->
                         <StackPanel Margin="0 10">
-                            <ItemsControl x:Name="ListProductsChoose" Margin="10 0 0 0">
+                            <ItemsControl x:Name="ListProductsChoose" HorizontalAlignment="Center" Margin="10 0 0 0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox Cursor="Hand">
+                                        <CheckBox x:Name="itemChB" Cursor="Hand" Checked="itemChB_Checked" Unchecked="itemChB_Unchecked">
                                             <CheckBox.Template>
                                                 <ControlTemplate TargetType="{x:Type CheckBox}">
                                                     <Border x:Name="border" Margin="5" CornerRadius="10" Background="White">
@@ -176,36 +176,7 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Border HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
-                CornerRadius="5" Padding="5" Background="White" Margin="0 10 30 10">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource pagingButton}" x:Name="btnFirstPage" Click="btnFirstPage_Click">
-                            <icon:PackIconMaterial Kind="ChevronDoubleLeft" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-
-                        <Button Style="{StaticResource pagingButton}" x:Name="btnPreviousPage" Click="btnPreviousPage_Click">
-                            <icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-
-                        <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                        <TextBlock Text="{Binding CurrentPage}" Style="{StaticResource pagingTextBlock}"/>
-                        <TextBlock Text="of" Style="{StaticResource pagingTextBlock}" Margin="0"/>
-                        <TextBlock Text="{Binding PageCount}" Style="{StaticResource pagingTextBlock}"/>
-
-                        <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                        <Button Style="{StaticResource pagingButton}" x:Name="btnNextPage" Click="btnNextPage_Click">
-                            <icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-
-                        <Button Style="{StaticResource pagingButton}" x:Name="btnLastPage" Click="btnLastPage_Click">
-                            <icon:PackIconMaterial Kind="ChevronDoubleRight" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-
-                    </StackPanel>
-                </Border>
-
+                
                 <Button x:Name="confirmBtn" Content="Confirm" FontWeight="SemiBold" Style="{StaticResource saveButton}" Height="30" Margin="0 10 10 10"
                             FontSize="17" Click="confirmBtn_Click" HorizontalAlignment="Right"  Grid.Column="1" Width="150"/>
             </Grid>

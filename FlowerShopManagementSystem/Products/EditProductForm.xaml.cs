@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -21,6 +22,9 @@ namespace FlowerShopManagementSystem.Products
     /// </summary>
     public partial class EditProductForm : Window
     {
+        string imageToEdit;
+        Product newProductInfo;
+
         public EditProductForm()
         {
             InitializeComponent();
@@ -38,6 +42,10 @@ namespace FlowerShopManagementSystem.Products
             {
                 notify.Visibility = Visibility.Visible;
             }
+            else
+            {
+                UpdateProduct();
+            }
         }
 
         private void btnBackEditProduct_Click(object sender, RoutedEventArgs e)
@@ -54,11 +62,13 @@ namespace FlowerShopManagementSystem.Products
         private void editProductImageBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Image Files|*.jpg;*.png";
+            openFile.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.*)|*.*";
+            openFile.FileName = "hoa_cuc.jpg";
 
             if (openFile.ShowDialog() == true)
             {
-                editProductImage.ImageSource = new BitmapImage(new Uri(openFile.FileName));
+                imageToEdit = openFile.FileName;
+                editProductImage.Source = new BitmapImage(new Uri(openFile.FileName));
             }
         }
 
@@ -96,6 +106,71 @@ namespace FlowerShopManagementSystem.Products
         {
             notify.Visibility = Visibility.Hidden;
 
+        }
+
+        private void UpdateProduct()
+        {
+            try
+            {
+                newProductInfo = new Product();
+                newProductInfo.productCode = tbxProductID.Text.ToString();
+                newProductInfo.productName = tbxEditProductName.Text.ToString();
+                newProductInfo.productType = tbxEditProductType.Text.ToString();
+                newProductInfo.productOccasion = tbxEditEvent.Text.ToString();
+                ComboBoxItem productSupplierCBI = (ComboBoxItem)cbbEditSuppier.SelectedItem;
+                string supplierName = productSupplierCBI.Content.ToString();
+                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                Database result = new Database("RESULT", "select MANCC from NHA_CUNG_CAP where TENNCC = '" + supplierName + "'");
+                newProductInfo.productSupplier = result.Rows[0][0].ToString();
+                newProductInfo.productPrice = double.Parse(tbxEditProductPrice.Text.ToString());
+                if (imageToEdit != "")
+                {
+                    string imageName = System.IO.Path.GetFileName(imageToEdit);
+                    newProductInfo.productImage = imageName;
+                    if (!System.IO.File.Exists("../../Products/Product Image/" + imageName))
+                    {
+                        System.IO.File.Copy(imageToEdit, "../../Products/Product Image/" + imageName);
+                    }
+                }
+                if (newProductInfo.productImage != ProductsView.selectedProduct.productImage)
+                {
+                    using (var sqlConnection = new SqlConnection(Database.connection))
+                    using (var cmd = new SqlDataAdapter())
+                    using (var insertCommand = new SqlCommand(
+                        "update SAN_PHAM " +
+                        "set TENSP = '" + newProductInfo.productName + "', LOAISP = '" + newProductInfo.productType + "', SU_KIEN = '" + newProductInfo.productOccasion.ToLower() + "', MANCC = '" + newProductInfo.productSupplier + "', GIA = '" + newProductInfo.productPrice + "', HINH_ANH = '" + newProductInfo.productImage + "' " +
+                        "where MASP = '" + newProductInfo.productCode + "'"))
+                    {
+                        insertCommand.Connection = sqlConnection;
+                        cmd.InsertCommand = insertCommand;
+                        sqlConnection.Open();
+                        cmd.InsertCommand.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Close();
+                }
+                else
+                {
+                    using (var sqlConnection = new SqlConnection(Database.connection))
+                    using (var cmd = new SqlDataAdapter())
+                    using (var insertCommand = new SqlCommand(
+                        "update SAN_PHAM " +
+                        "set TENSP = '" + newProductInfo.productName + "', LOAISP = '" + newProductInfo.productType + "', SU_KIEN = '" + newProductInfo.productOccasion.ToLower() + "', MANCC = '" + newProductInfo.productSupplier + "', GIA = '" + newProductInfo.productPrice + "' " +
+                        "where MASP = '" + newProductInfo.productCode + "'"))
+                    {
+                        insertCommand.Connection = sqlConnection;
+                        cmd.InsertCommand = insertCommand;
+                        sqlConnection.Open();
+                        cmd.InsertCommand.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

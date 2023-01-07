@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -21,6 +22,9 @@ namespace FlowerShopManagementSystem.Accounts
     /// </summary>
     public partial class EditAccountForm : Window
     {
+        string imageToEdit;
+        Account newAccountInfo;
+
         public EditAccountForm()
         {
             InitializeComponent();
@@ -42,6 +46,10 @@ namespace FlowerShopManagementSystem.Accounts
             {
                 notify.Visibility = Visibility.Visible;
             }
+            else
+            {
+                UpdateSupplier();
+            }
         }
 
         private void tbxEditEmployeePhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -53,11 +61,13 @@ namespace FlowerShopManagementSystem.Accounts
         private void editAvatarBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Image Files|*.jpg;*.png";
+            openFile.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.*)|*.*";
+            openFile.FileName = "avatar1.jpg";
 
             if (openFile.ShowDialog() == true)
             {
-                editavatar.ImageSource = new BitmapImage(new Uri(openFile.FileName));
+                imageToEdit = openFile.FileName;
+                editavatar.ImageSource = new BitmapImage(new Uri(imageToEdit));
             }
         }
 
@@ -107,6 +117,75 @@ namespace FlowerShopManagementSystem.Accounts
         {
             notify.Visibility = Visibility.Hidden;
 
+        }
+
+        private void UpdateSupplier()
+        {
+            string imageName;
+            try
+            {
+                newAccountInfo = new Account();
+                newAccountInfo.employeeCode = tbxEditEmployeeID.Text.ToString();
+                newAccountInfo.employeeName = tbxEditEmployeeName.Text.ToString();
+                newAccountInfo.employeePhone = tbxEditEmployeePhoneNumber.Text.ToString();
+                newAccountInfo.workingDate = dpkEditWorkingDate.Text.ToString();
+                newAccountInfo.username = tbxEditUsername.Text.ToString();
+                newAccountInfo.password = tbxEditPassword.Text.ToString();
+                if (imageToEdit != "")
+                {
+                    imageName = System.IO.Path.GetFileName(imageToEdit);
+                    newAccountInfo.avatarTK = imageName;
+                    if (!System.IO.File.Exists("../../Accounts/AccountAvatar/" + imageName))
+                    {
+                        System.IO.File.Copy(imageToEdit, "../../Accounts/AccountAvatar/" + imageName);
+                    }
+                }
+                ComboBoxItem priorityCBI = (ComboBoxItem)cbbEditAccountPriority.SelectedItem;
+                if (priorityCBI.Content.ToString() == "Manager")
+                {
+                    newAccountInfo.priority = "1";
+                }
+                else
+                {
+                    newAccountInfo.priority = "0";
+                }
+                if (newAccountInfo.avatarTK != AccountsView.accountOldInfo.avatarTK)
+                {
+                    using (var sqlConnection = new SqlConnection(Database.connection))
+                    using (var cmd = new SqlDataAdapter())
+                    using (var insertCommand = new SqlCommand(
+                        "update NHAN_VIEN " +
+                        "set HOTEN = '" + newAccountInfo.employeeName + "', SODT = '" + newAccountInfo.employeePhone + "', NGVL = '" + newAccountInfo.workingDate + "', USERNAME = '" + newAccountInfo.username + "', USER_PASSWORD = '" + newAccountInfo.password + "', USER_PRIORITY = '" + newAccountInfo.priority + "', AVATAR = '" + newAccountInfo.avatarTK + "' " +
+                        "where MANV = '" + newAccountInfo.employeeCode + "'"))
+                    {
+                        insertCommand.Connection = sqlConnection;
+                        cmd.InsertCommand = insertCommand;
+                        sqlConnection.Open();
+                        cmd.InsertCommand.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    using (var sqlConnection = new SqlConnection(Database.connection))
+                    using (var cmd = new SqlDataAdapter())
+                    using (var insertCommand = new SqlCommand(
+                        "update NHAN_VIEN " +
+                        "set HOTEN = '" + newAccountInfo.employeeName + "', SODT = '" + newAccountInfo.employeePhone + "', NGVL = '" + newAccountInfo.workingDate + "', USERNAME = '" + newAccountInfo.username + "', USER_PASSWORD = '" + newAccountInfo.password + "', USER_PRIORITY = '" + newAccountInfo.priority + "' " +
+                        "where MANV = '" + newAccountInfo.employeeCode + "'"))
+                    {
+                        insertCommand.Connection = sqlConnection;
+                        cmd.InsertCommand = insertCommand;
+                        sqlConnection.Open();
+                        cmd.InsertCommand.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

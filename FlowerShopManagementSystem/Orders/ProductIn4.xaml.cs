@@ -23,6 +23,8 @@ namespace FlowerShopManagementSystem.Orders
     public partial class ProductIn4 : Window, INotifyPropertyChanged
     {
         #region Fields
+        public int selectedItem = -1;
+        public static List<CTHD> _cthd;
 
         public event EventHandler propertyChanged;
         public event EventHandler ValueChanged;
@@ -246,7 +248,37 @@ namespace FlowerShopManagementSystem.Orders
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                //var ct = CreateNewOrder.cTHDs1.Where(x => x.productID == txtblckProductID.Text).FirstOrDefault();
+                //if (ct != null)
+                //{
+                //    ct.productID = txtblckProductID.Text;
+                //    ct.productName = txtblckProductName.Text;
+                //    ct.productPrice = double.Parse(txtblckProductPrice.Text.ToString());
+                //    ct.productQuantity = int.Parse(tb_main.Text.ToString());
+                //    ct.productTotalMoney = Calculate;
+                //}
+               
 
+                for (int i = 0; i < _cthd.Count; i++)
+                {
+                    if (i == selectedItem)
+                    {
+                        _cthd[i].productID = txtblckProductID.Text;
+                        _cthd[i].productName = txtblckProductName.Text;
+                        _cthd[i].productPrice = double.Parse(txtblckProductPrice.Text.ToString());
+                        _cthd[i].productQuantity = int.Parse(tb_main.Text.ToString());
+                        _cthd[i].productTotalMoney = Calculate;
+                    }
+                }
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,12 +21,13 @@ namespace FlowerShopManagementSystem.Customers
     /// </summary>
     public partial class EditCustomerForm : Window
     {
+        Customer customerNewInfo;
+
         public EditCustomerForm()
         {
             InitializeComponent();
 
             notify.Visibility = Visibility.Hidden;
-
         }
 
         private void btnEditBackCustomer_Click(object sender, RoutedEventArgs e)
@@ -42,6 +44,10 @@ namespace FlowerShopManagementSystem.Customers
             {
                 notify.Visibility = Visibility.Visible;
 
+            }
+            else
+            {
+                UpdateCustomer();
             }
         }
 
@@ -106,6 +112,49 @@ namespace FlowerShopManagementSystem.Customers
         private void dpkEditRegistrationDate_CalendarOpened(object sender, RoutedEventArgs e)
         {
             notify.Visibility = Visibility.Hidden;
+        }
+
+        private void UpdateCustomer()
+        {
+            try
+            {
+                customerNewInfo = new Customer();
+                customerNewInfo.name = tbxEditCustomerName.Text;
+                ComboBoxItem newDistrictCBI = (ComboBoxItem)cbbEditDistrict.SelectedItem,
+                            newCityCBI = (ComboBoxItem)cbbEditCity.SelectedItem,
+                            newProvinceCBI = (ComboBoxItem)cbbEditProvince.SelectedItem;
+                string newDistrict = newDistrictCBI.Content.ToString(),
+                        newCity = newCityCBI.Content.ToString(),
+                        newProvince = newProvinceCBI.Content.ToString();
+                if (newProvince == "(Empty)")
+                {
+                    customerNewInfo.address = tbxEditCustomerHouseNumber.Text.ToString() + ", " + tbxEditCustomerStreet.Text.ToString() + ", " + newDistrict + ", " + newCity;
+                }
+                else
+                {
+                    customerNewInfo.address = tbxEditCustomerHouseNumber.Text.ToString() + ", " + tbxEditCustomerStreet.Text.ToString() + ", " + newDistrict + ", " + newCity + ", " + newProvince;
+                }
+                customerNewInfo.phone = tbxEditCustomerPhone.Text.ToString();
+                customerNewInfo.doanhSo = double.Parse(tbxEditCustomerSales.Text.ToString());
+                customerNewInfo.ngayDK = dpkEditRegistrationDate.Text.ToString();
+                using (var sqlConnection = new SqlConnection(Database.connection))
+                using (var cmd = new SqlDataAdapter())
+                using (var insertCommand = new SqlCommand(
+                    "update KHACH_HANG " +
+                    "set HOTEN = '" + customerNewInfo.name + "', DIACHI = '" + customerNewInfo.address + "', DOANHSO = '" + customerNewInfo.doanhSo + "', NGDK = '" + customerNewInfo.ngayDK + "' " +
+                    "where SODT_KH = '" + customerNewInfo.phone + "'"))
+                {
+                    insertCommand.Connection = sqlConnection;
+                    cmd.InsertCommand = insertCommand;
+                    sqlConnection.Open();
+                    cmd.InsertCommand.ExecuteNonQuery();
+                }
+                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,32 +22,43 @@ namespace FlowerShopManagementSystem.Orders
     /// </summary>
     public partial class ChooseProduct : Window
     {
-        private List<Product> products = new List<Product>();
-        private Resources.PagingCollectionView view;
-
+        List<Product> products;
+        public static Product selectedItem;
+        public static CTHD selectedCTHD;
+        public static List<CTHD> cthdList;
+        public static int stt = 0;
+        public static bool isListEmpty;
+        public static double totalMoney;
+        //public static double total;
         public ChooseProduct()
         {
             InitializeComponent();
 
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT" });
-            products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT" });
+            isListEmpty = false;
 
-            view = new Resources.PagingCollectionView(products, 2);
+            products = new List<Product>();
 
-            this.DataContext = view;
-            ListProductsChoose.ItemsSource = view;
+            cthdList = new List<CTHD>();
+
+            totalMoney = 0;
+
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa mai.jpg", productName = "Hoa mai", productPrice = 100, productSupplier = "123456788989867" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa đào.jpg", productName = "Hoa đào", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa hồng.jpg", productName = "Hoa hồng", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa lan.jpg", productName = "Hoa lan", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa ly.jpg", productName = "Hoa ly", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa cúc.jpg", productName = "Hoa cúc", productPrice = 100, productSupplier = "UIT" });
+            //products.Add(new Product { productImage = "/Products/Product Image/Hoa vạn thọ.png", productName = "Hoa vạn thọ", productPrice = 100, productSupplier = "UIT" });
+
+            //ListProductsChoose.ItemsSource = products;
+            LoadData(products);
         }
 
         private void btnFindProduct_Click(object sender, RoutedEventArgs e)
@@ -64,32 +78,170 @@ namespace FlowerShopManagementSystem.Orders
 
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (cthdList == null)
+            {
+                isListEmpty = true;
+            }
+            Close();
+        }
+
+        private void LoadData(List<Product> products)
+        {
+            //total = 0;
+            //cthdList = new List<CTHD>();
+            //stt = 0;
+            try
+            {
+                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                Database results = new Database("RESULT", "select * from SAN_PHAM");
+                for (int i = 0; i < results.Rows.Count; i++)
+                {
+                    products.Add(new Product
+                    {
+                        productID = results.Rows[i][0].ToString(),
+                        productName = results.Rows[i][1].ToString(),
+                        productSupplier = results.Rows[i][4].ToString(),
+                        productPrice = double.Parse(results.Rows[i][5].ToString()),
+                        //productPrice = double.Parse(results.Rows[i][4].ToString()),
+                        productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
+                    });
+                }
+                ListProductsChoose.ItemsSource = products;
+                //txtProductsOneOf.Text = "1 of " + products.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void itemChB_Checked(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("Checked!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+            CheckBox checkBox = sender as CheckBox;
+            selectedItem = checkBox.DataContext as Product;
+            AddTempProduct();
+            //total += long.Parse(selectedItem.productPrice.ToString());
+        }
+
+        private void itemChB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("Unchecked!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+            CheckBox checkBox = sender as CheckBox;
+            selectedItem = checkBox.DataContext as Product;
+            RemoveTempProduct();
+            //total -= long.Parse(selectedItem.productPrice.ToString());
+        }
+
+        protected void AddTempProduct()
+        {
+            try
+            {
+                //using (var sqlConnection = new SqlConnection(Database.connection))
+                //using (var cmd = new SqlDataAdapter())
+                //using (var insertCommand = new SqlCommand("insert into TEMPDATA_CTHD (MASP, TENSP, SL, TRIGIA, TONGTRIGIA) " +
+                //    "values ('" + selectedItem.productID + "', '" + selectedItem.productName + "', '1', '" + selectedItem.productPrice + "', '" + selectedItem.productPrice + "')"))
+                //{
+                //    insertCommand.Connection = sqlConnection;
+                //    cmd.InsertCommand = insertCommand;
+                //    sqlConnection.Open();
+                //    cmd.InsertCommand.ExecuteNonQuery();
+                //}
+                //total += long.Parse(selectedItem.productPrice.ToString());
+                //Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                //Database results = new Database("RESULT", "select * from SAN_PHAM");
+                cthdList.Add(new CTHD
+                {
+                    sttSanPham = (stt + 1).ToString(),
+                    productID = selectedItem.productID,
+                    productName = selectedItem.productName,
+                    productPrice = selectedItem.productPrice,
+                    productQuantity = 1,
+                    productTotalMoney = selectedItem.productPrice
+                });
+
+                totalMoney += selectedItem.productPrice;
+            }
+            catch
+            {
+                MessageBox.Show("Error:\nYou cannot choose the same product!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                selectedItem.IsChecked = false;
+            }
+            //GetSumOfMoney();
+        }
+
+        protected void RemoveTempProduct()
+        {
+            try
+            {
+                //using (var sqlConnection = new SqlConnection(Database.connection))
+                //using (var cmd = new SqlDataAdapter())
+                //using (var insertCommand = new SqlCommand("delete from TEMPDATA_CTHD where MASP = '" + selectedItem.productID + "'"))
+                //{
+                //    insertCommand.Connection = sqlConnection;
+                //    cmd.InsertCommand = insertCommand;
+                //    sqlConnection.Open();
+                //    cmd.InsertCommand.ExecuteNonQuery();
+                //}
+                //total -= long.Parse(selectedItem.productPrice.ToString());
+                var index = cthdList.FindIndex(a => a.productID == selectedItem.productID);
+                totalMoney -= selectedItem.productPrice;
+                cthdList.RemoveAt(index);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            //GetSumOfMoney();
+        }
+
+        private void GetSumOfMoney()
+        {
+            try
+            {
+                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                Database results = new Database("RESULT", "select sum(TRIGIA) from TEMPDATA_CTHD");
+                string strTotal = results.Rows[0][0].ToString();
+                if (results.Rows.Count > 0)
+                {
+                    //total = double.Parse(strTotal);
+                }
+                else
+                {
+                    //total = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
-            view.MoveToFirstPage();
+
         }
 
         private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
         {
-            view.MoveToPreviousPage();
+
         }
 
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
-            view.MoveToNextPage();
+
         }
 
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
-            view.MoveToLastPage();
+
         }
     }
 
-    public class Product
+    public class Product : INotifyPropertyChanged
     {
+        public string productID { get; set; }
         public string productName { get; set; }
         public double productPrice { get; set; }
         public string productImage { get; set; }
@@ -101,5 +253,19 @@ namespace FlowerShopManagementSystem.Orders
         //    productPrice = price;
         //    productImage = image;
         //}
+
+        private bool _isChecked;
+        public bool IsChecked
+        {
+            get { return _isChecked; }
+            set { _isChecked = value; NotifyPropertyChanged(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

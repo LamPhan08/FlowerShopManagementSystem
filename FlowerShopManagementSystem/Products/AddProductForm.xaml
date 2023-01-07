@@ -112,7 +112,11 @@
                               DropDownOpened="cbbSuppier_DropDownOpened"
                               FontFamily="Sitka Subheading"
                               FontWeight="SemiBold" Cursor="Hand">
-                            
+                            <ComboBoxItem IsSelected="True">Sai Gon - Dam Sen</ComboBoxItem>
+                            <ComboBoxItem>Ho Thi Ky</ComboBoxItem>
+                            <ComboBoxItem>Cho hoa Hau Giang</ComboBoxItem>
+                            <ComboBoxItem>Cho hoa cong vien 23/9</ComboBoxItem>
+                            <ComboBoxItem>Ben Binh Dong</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
 
@@ -141,9 +145,7 @@
                     </StackPanel>
 
                     <Border CornerRadius="10"  Margin="0 30 0 0" Height="280">
-                        <Border.Background>
-                            <ImageBrush  x:Name="productImage" ImageSource="/Images/sunflower.png"/>
-                        </Border.Background>
+                        <Image  x:Name="productImage" Source="/Images/sunflower.png"/>
                     </Border>
                 </StackPanel>
             </Grid>

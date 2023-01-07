@@ -89,7 +89,36 @@
                     <ComboBox x:Name="cbbSupplierWard" Padding="5" Tag="null" FontSize="15"
                               DropDownOpened="cbbSupplierWard_DropDownOpened"
                               FontFamily="Sitka Subheading"
-                              FontWeight="SemiBold" Cursor="Hand"/>
+                              FontWeight="SemiBold" Cursor="Hand">
+                        <ComboBoxItem IsSelected="True">P1</ComboBoxItem>
+                        <ComboBoxItem>P2</ComboBoxItem>
+                        <ComboBoxItem>P3</ComboBoxItem>
+                        <ComboBoxItem>P4</ComboBoxItem>
+                        <ComboBoxItem>P5</ComboBoxItem>
+                        <ComboBoxItem>P6</ComboBoxItem>
+                        <ComboBoxItem>P7</ComboBoxItem>
+                        <ComboBoxItem>P8</ComboBoxItem>
+                        <ComboBoxItem>P9</ComboBoxItem>
+                        <ComboBoxItem>P10</ComboBoxItem>
+                        <ComboBoxItem>P11</ComboBoxItem>
+                        <ComboBoxItem>P12</ComboBoxItem>
+                        <ComboBoxItem>P13</ComboBoxItem>
+                        <ComboBoxItem>P14</ComboBoxItem>
+                        <ComboBoxItem>P15</ComboBoxItem>
+                        <ComboBoxItem>P16</ComboBoxItem>
+                        <ComboBoxItem>P17</ComboBoxItem>
+                        <ComboBoxItem>P18</ComboBoxItem>
+                        <ComboBoxItem>P19</ComboBoxItem>
+                        <ComboBoxItem>P20</ComboBoxItem>
+                        <ComboBoxItem>P21</ComboBoxItem>
+                        <ComboBoxItem>P22</ComboBoxItem>
+                        <ComboBoxItem>P23</ComboBoxItem>
+                        <ComboBoxItem>P24</ComboBoxItem>
+                        <ComboBoxItem>P25</ComboBoxItem>
+                        <ComboBoxItem>P26</ComboBoxItem>
+                        <ComboBoxItem>P27</ComboBoxItem>
+                        <ComboBoxItem>P28</ComboBoxItem>
+                    </ComboBox>
 
                 </StackPanel>
 
@@ -104,7 +133,28 @@
                               FontFamily="Sitka Subheading"
                               Cursor="Hand"
                               FontWeight="SemiBold">
-
+                        <ComboBoxItem IsSelected="True">TP.Thu Duc</ComboBoxItem>
+                        <ComboBoxItem>Q1</ComboBoxItem>
+                        <ComboBoxItem>Q3</ComboBoxItem>
+                        <ComboBoxItem>Q4</ComboBoxItem>
+                        <ComboBoxItem>Q5</ComboBoxItem>
+                        <ComboBoxItem>Q6</ComboBoxItem>
+                        <ComboBoxItem>Q7</ComboBoxItem>
+                        <ComboBoxItem>Q8</ComboBoxItem>
+                        <ComboBoxItem>Q10</ComboBoxItem>
+                        <ComboBoxItem>Q11</ComboBoxItem>
+                        <ComboBoxItem>Q12</ComboBoxItem>
+                        <ComboBoxItem>Q.Binh Tan</ComboBoxItem>
+                        <ComboBoxItem>Q.Binh Thanh</ComboBoxItem>
+                        <ComboBoxItem>Q.Go Vap</ComboBoxItem>
+                        <ComboBoxItem>Q.Phu Nhuan</ComboBoxItem>
+                        <ComboBoxItem>Q.Tan Binh</ComboBoxItem>
+                        <ComboBoxItem>Q.Tan Phu</ComboBoxItem>
+                        <ComboBoxItem>H.Binh Chanh</ComboBoxItem>
+                        <ComboBoxItem>H.Can Gio</ComboBoxItem>
+                        <ComboBoxItem>H.Cu Chi</ComboBoxItem>
+                        <ComboBoxItem>H.Hoc Mon</ComboBoxItem>
+                        <ComboBoxItem>H.Nha Be</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </Grid>
@@ -119,7 +169,7 @@
                               DropDownOpened="cbbSupplierCity_DropDownOpened"
                               FontFamily="Sitka Subheading"
                               FontWeight="SemiBold" Cursor="Hand">
-
+                    <ComboBoxItem IsSelected="True">TPHCM</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
 

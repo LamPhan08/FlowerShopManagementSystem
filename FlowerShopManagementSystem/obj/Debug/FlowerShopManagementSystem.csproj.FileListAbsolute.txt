@@ -136,3 +136,5 @@ D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.pd
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.xml
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.Wpf.pdb
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\bin\Debug\LiveCharts.Wpf.xml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\NotificationBox\PaymentConfirmation.baml
+D:\FlowerShopManagementSystem\FlowerShopManagementSystem\obj\Debug\NotificationBox\PaymentConfirmation.g.cs

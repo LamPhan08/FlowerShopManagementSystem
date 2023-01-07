@@ -39,9 +39,9 @@
                         </Border>
 
                         <!--Tên-->
-                        <TextBlock Text="Lam Phan" Foreground="White" FontSize="20" FontWeight="SemiBold"
+                        <TextBlock x:Name="txbUsername" Text="Username" Foreground="White" FontSize="20" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10" TextWrapping="Wrap"/>
-                        <TextBlock Text="Manager" Foreground="LightGray" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center"/>
+                        <TextBlock x:Name="txbRole" Text="Manager" Foreground="LightGray" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center"/>
                         
                         <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#007747"/>
 

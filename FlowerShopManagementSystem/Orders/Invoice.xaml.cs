@@ -19,50 +19,14 @@ namespace FlowerShopManagementSystem.Orders
     /// </summary>
     public partial class Invoice : Window
     {
-        private List<CTHD> cTHDs = new List<CTHD>();
-
-        public Invoice()
+        List<CTHD> cthds;
+        HOA_DON hd1;
+        public Invoice(HOA_DON hd)
         {
             InitializeComponent();
-
-            cTHDs.Add(new CTHD { sttSanPham = "1", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-            cTHDs.Add(new CTHD { sttSanPham = "2", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-            cTHDs.Add(new CTHD { sttSanPham = "3", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-
-
-            invoiceDetails.ItemsSource = cTHDs;
-        }
-
-        private void btnPrint_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                PrintDialog printDialog = new PrintDialog();
-
-                if (printDialog.ShowDialog() == true)
-                {
-                    btnPrint.Visibility = Visibility.Hidden;
-                    printDialog.PrintVisual(grdPrint, "Invoice");
-                }
-            }
-            finally
-            {
-                btnPrint.Visibility = Visibility.Visible;
-            }
-
-        }
-
-        private void invoiceDetails_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-            long total = 0;
-
-            for (int i = 0; i < cTHDs.Count; i++)
-            {
-                total += cTHDs[i].productTotalMoney;
-            }
-
-
-            txbTotal.Text = total.ToString() + "$";
+            cthds = new List<CTHD>();
+            hd1 = new HOA_DON(hd);
+            LoadInvoiceDetails(cthds, hd1);
         }
 
         private void wdBillTemplate_MouseDown(object sender, MouseButtonEventArgs e)
@@ -72,7 +36,56 @@ namespace FlowerShopManagementSystem.Orders
                 this.DragMove();
             }
         }
+
+        private void invoiceDetails_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                btnPrint.Visibility = Visibility.Hidden;
+                PrintDialog printDialog = new PrintDialog();
+
+                if (printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintVisual(grdPrint, "Invoice");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void LoadInvoiceDetails(List<CTHD> cthds, HOA_DON hd)
+        {
+            try
+            {
+                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                Database results = new Database("RESULT", "select * from CTHD where MAHD = '" + hd.MAHD + "'"),
+                    result1;
+                for (int i = 0; i < results.Rows.Count; i++)
+                {
+                    result1 = new Database("RESULT1", "select * from SAN_PHAM where MASP = '" + results.Rows[i][1].ToString() + "'");
+                    cthds.Add(new CTHD
+                    {
+                        sttSanPham = (i + 1).ToString(),
+                        productID = results.Rows[i][1].ToString(),
+                        productName = result1.Rows[0][1].ToString(),
+                        productPrice = double.Parse(result1.Rows[0][5].ToString()),
+                        productQuantity = int.Parse(results.Rows[i][2].ToString()),
+                        productTotalMoney = double.Parse(results.Rows[i][3].ToString()),
+                    });
+                }
+                invoiceDetails.ItemsSource = cthds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
-
-
 }

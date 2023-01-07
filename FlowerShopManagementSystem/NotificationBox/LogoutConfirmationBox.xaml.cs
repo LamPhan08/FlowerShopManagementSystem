@@ -44,7 +44,7 @@ namespace FlowerShopManagementSystem.NotificationBox
         {
 
             Login login = new Login();
-            
+
             this.Close();
 
             login.Show();

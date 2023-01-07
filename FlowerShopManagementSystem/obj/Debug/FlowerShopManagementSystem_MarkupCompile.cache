@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\FlowerShopManagementSystem\FlowerShopManagementSystem\App.xaml
-321237532078
+33-237851531
 
-3729113036
+40200817336
 26-1752121927
-Accounts\AddAccountForm.xaml;Accounts\EditAccountForm.xaml;Accounts\ViewAccountDetails.xaml;Dashboard\ViewDashboardProduct.xaml;NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;Orders\ChooseProduct.xaml;Orders\CreateNewOrder.xaml;Orders\EditOrder.xaml;Orders\Invoice.xaml;Orders\OrdersView.xaml;Orders\ProductIn4.xaml;Orders\ViewOrder.xaml;Products\AddProductForm.xaml;Products\EditProductForm.xaml;Products\ProductsView.xaml;Products\ViewProductDetails.xaml;Resources\NumericUpDown.xaml;Statistics\StatisticsView.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
+Accounts\AddAccountForm.xaml;Accounts\EditAccountForm.xaml;Accounts\ViewAccountDetails.xaml;Dashboard\ViewDashboardProduct.xaml;NotificationBox\CannotDeleteBox.xaml;NotificationBox\LogoutConfirmationBox.xaml;Customers\AddCustomerForm.xaml;Accounts\AccountsView.xaml;Customers\CustomersView.xaml;Customers\EditCustomerForm.xaml;Customers\ViewCustomerDetails.xaml;Dashboard\DashboardView.xaml;NotificationBox\DeleteConfirmationBox.xaml;Login.xaml;MainWindow.xaml;NotificationBox\PaymentConfirmation.xaml;Orders\ChooseProduct.xaml;Orders\CreateNewOrder.xaml;Orders\EditOrder.xaml;Orders\Invoice.xaml;Orders\OrdersView.xaml;Orders\ProductIn4.xaml;Orders\ViewOrder.xaml;Products\AddProductForm.xaml;Products\EditProductForm.xaml;Products\ProductsView.xaml;Products\ViewProductDetails.xaml;Resources\NumericUpDown.xaml;Statistics\StatisticsView.xaml;Suppliers\AddSupplierForm.xaml;Suppliers\EditSupplierForm.xaml;Suppliers\SuppliersView.xaml;Suppliers\ViewSupplierDetails.xaml;
 
 False
 

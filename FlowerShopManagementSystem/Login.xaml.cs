@@ -19,6 +19,10 @@ namespace FlowerShopManagementSystem
     /// </summary>
     public partial class Login : Window
     {
+        public static int priority;
+        public static string username, role;
+        public static string imageName;
+
         public Login()
         {
             InitializeComponent();
@@ -65,19 +69,55 @@ namespace FlowerShopManagementSystem
                 }
                 else
                 {
-                    if (tbxUsername.Text != "admin" || tbxPassword.Password.ToString() != "admin")
+                    CheckValidAccount();
+                }
+            }
+        }
+
+        private void CheckValidAccount()
+        {
+            try
+            {
+                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                Database TableRight = new Database("RESULT", "select * from NHAN_VIEN where USERNAME = '" + tbxUsername.Text
+                    + "' and USER_PASSWORD = '" + tbxPassword.Password + "'");
+                if (TableRight.Rows.Count > 0)
+                {
+                    if (TableRight.Rows[0][6].ToString() == "1")
                     {
-                        loginNotification("Invalid Username or Password!");
-                        tbxUsername.BorderBrush = new SolidColorBrush(Colors.Red);
-                        tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+
+                        priority = 1;
+                        username = TableRight.Rows[0][1].ToString();
+                        role = "Manager";
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.txbUsername.Text = username;
+                        mainWindow.txbRole.Text = role;
+                        mainWindow.avatar.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + TableRight.Rows[0][7].ToString(), UriKind.Relative));
+                        mainWindow.Show();
+                        this.Close();
                     }
                     else
                     {
+                        priority = 0;
+                        username = TableRight.Rows[0][1].ToString();
+                        role = "Employee";
                         MainWindow mainWindow = new MainWindow();
+                        mainWindow.txbUsername.Text = username;
+                        mainWindow.txbRole.Text = role;
+                        mainWindow.btnAccounts.Visibility = Visibility.Collapsed;
+                        mainWindow.btnSuppliers.Visibility = Visibility.Collapsed;
+                        mainWindow.btnProducts.Visibility = Visibility.Collapsed;
+                        mainWindow.btnStatistics.Visibility = Visibility.Collapsed;
+                        mainWindow.avatar.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + TableRight.Rows[0][7].ToString(), UriKind.Relative));
                         mainWindow.Show();
                         this.Close();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
             }
         }
 

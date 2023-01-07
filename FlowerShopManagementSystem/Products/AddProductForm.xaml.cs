@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -21,6 +22,9 @@ namespace FlowerShopManagementSystem.Products
     /// </summary>
     public partial class AddProductForm : Window
     {
+        string image;
+        ProductsView productsView;
+
         public AddProductForm()
         {
             InitializeComponent();
@@ -41,7 +45,10 @@ namespace FlowerShopManagementSystem.Products
                 || tbxEvent.Text == "" || tbxProductPrice.Text == "") {
                 notify.Visibility = Visibility.Visible;
             }
-
+            else
+            {
+                AddProduct();
+            }
         }
 
         private void btnBackAddProduct_Click(object sender, RoutedEventArgs e)
@@ -51,14 +58,14 @@ namespace FlowerShopManagementSystem.Products
 
         private void uploadProductImageBtn_Click(object sender, RoutedEventArgs e)
         {
-            notify.Visibility = Visibility.Hidden;
-
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Image Files|*.jpg;*.png";
+            openFile.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.*)|*.*";
+            openFile.FileName = "";
 
             if (openFile.ShowDialog() == true)
             {
-                productImage.ImageSource = new BitmapImage(new Uri(openFile.FileName));
+                image = openFile.FileName;
+                productImage.Source = new BitmapImage(new Uri(openFile.FileName));
             }
         }
 
@@ -96,6 +103,50 @@ namespace FlowerShopManagementSystem.Products
         {
             notify.Visibility = Visibility.Hidden;
 
+        }
+
+        private void AddProduct()
+        {
+            try
+            {
+                productsView = new ProductsView();
+                Product product = new Product();
+                product.productCode = tbxProductID.Text.ToString();
+                product.productName = tbxProductName.Text.ToString();
+                product.productType = tbxProductType.Text.ToString();
+                product.productOccasion = tbxEvent.Text.ToString();
+                ComboBoxItem productSupplierCBI = (ComboBoxItem)cbbSuppier.SelectedItem;
+                string supplierName = productSupplierCBI.Content.ToString();
+                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                Database result = new Database("RESULT", "select MANCC from NHA_CUNG_CAP where TENNCC = '" + supplierName + "'");
+                product.productSupplier = result.Rows[0][0].ToString();
+                product.productPrice = double.Parse(tbxProductPrice.Text.ToString());
+                if (image != "")
+                {
+                    string imageName = System.IO.Path.GetFileName(image);
+                    product.productImage = imageName;
+                    if (!System.IO.File.Exists("../../Products/Product Image/" + imageName))
+                    {
+                        System.IO.File.Copy(image, "../../Products/Product Image/" + imageName);
+                    }
+                }
+                using (var sqlConnection = new SqlConnection(Database.connection))
+                using (var cmd = new SqlDataAdapter())
+                using (var insertCommand = new SqlCommand("insert into SAN_PHAM(MASP, TENSP, LOAISP, SU_KIEN, MANCC, GIA, HINH_ANH) " +
+                    "values ('" + product.productCode + "','" + product.productName + "','" + product.productType + "','" + product.productOccasion.ToLower() + "','" + product.productSupplier + "','" + product.productPrice + "','" + product.productImage + "')"))
+                {
+                    insertCommand.Connection = sqlConnection;
+                    cmd.InsertCommand = insertCommand;
+                    sqlConnection.Open();
+                    cmd.InsertCommand.ExecuteNonQuery();
+                }
+                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

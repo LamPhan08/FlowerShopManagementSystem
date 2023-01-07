@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,6 +21,8 @@ namespace FlowerShopManagementSystem.Suppliers
     /// </summary>
     public partial class EditSupplierForm : Window
     {
+        Supplier supplierNewInfo;
+
         public EditSupplierForm()
         {
             InitializeComponent();
@@ -35,6 +38,10 @@ namespace FlowerShopManagementSystem.Suppliers
                 || cbbEditSupplierWard.Text == "" || cbbEditSupplierDistrict.Text == "" || cbbEditSuppierCity.Text == "")
             {
                 notify.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                UpdateSupplier();
             }
         }
 
@@ -89,6 +96,42 @@ namespace FlowerShopManagementSystem.Suppliers
         {
             notify.Visibility = Visibility.Hidden;
 
+        }
+
+        private void UpdateSupplier()
+        {
+            try
+            {
+                supplierNewInfo = new Supplier();
+                supplierNewInfo.maNCC = tbxEditSupplierID.Text.ToString();
+                supplierNewInfo.tenNCC = tbxEditSupplierName.Text.ToString();
+                ComboBoxItem newWardCBI = (ComboBoxItem)cbbEditSupplierWard.SelectedItem,
+                            newDistrictCBI = (ComboBoxItem)cbbEditSupplierDistrict.SelectedItem,
+                            newCityCBI = (ComboBoxItem)cbbEditSuppierCity.SelectedItem;
+                string newWard = newWardCBI.Content.ToString(),
+                        newDistrict = newDistrictCBI.Content.ToString(),
+                        newCity = newCityCBI.Content.ToString();
+                supplierNewInfo.diaChiNCC = tbxEditSupplierStreet.Text.ToString() + ", " + newWard + ", " + newDistrict + ", " + newCity;
+                supplierNewInfo.soDTNCC = tbxEditSupplierPhoneNumber.Text.ToString();
+                using (var sqlConnection = new SqlConnection(Database.connection))
+                using (var cmd = new SqlDataAdapter())
+                using (var insertCommand = new SqlCommand(
+                    "update NHA_CUNG_CAP " +
+                    "set TENNCC = '" + supplierNewInfo.tenNCC + "', DIACHI = '" + supplierNewInfo.diaChiNCC + "', SODT = '" + supplierNewInfo.soDTNCC + "' " +
+                    "where MANCC = '" + supplierNewInfo.maNCC + "'"))
+                {
+                    insertCommand.Connection = sqlConnection;
+                    cmd.InsertCommand = insertCommand;
+                    sqlConnection.Open();
+                    cmd.InsertCommand.ExecuteNonQuery();
+                }
+                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

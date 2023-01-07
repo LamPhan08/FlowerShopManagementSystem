@@ -127,7 +127,7 @@
                     </Grid.RowDefinitions>
 
                     <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                              x:Name="orderDetailsDataGrid" Grid.Row="0" LoadingRow="orderDetailsDataGrid_LoadingRow">
+                              x:Name="orderDetailsDataGrid" Grid.Row="0" LoadingRow="orderDetailsDataGrid_LoadingRow" >
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Margin" Value="0 4 0 0" />
@@ -185,9 +185,6 @@
                         </DataGrid.RowStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding sttSanPham}"/>
-
-                          
                             <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding productName}"/>
                             <DataGridTextColumn Header="Quantity" IsReadOnly="True" Width="*" Binding="{Binding productQuantity}"/>
                             <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding productPrice, StringFormat={}{0:C}}"/>
@@ -198,8 +195,8 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button x:Name="btnProductIn4" Style="{StaticResource gridEditButton}" Cursor="Hand" Click="btnProductIn4_Click"
-                                                    Margin="0 0 5 0">
+                                            <Button x:Name="btnEditProductIn4" Style="{StaticResource gridEditButton}" Cursor="Hand" Click="btnEditProductIn4_Click"
+                                                    Margin="0 0 5 0" Visibility="Collapsed">
                                                 <icon:PackIconMaterial Kind="Pencil" Style="{StaticResource gridButtonIcon}"/>
                                             </Button>
                                             <Button x:Name="btnRemoveProduct" Style="{StaticResource gridRemoveButton}" Cursor="Hand" Click="btnRemoveProduct_Click">
@@ -227,8 +224,7 @@
                             <TextBlock Text="Total Money" FontWeight="SemiBold" FontSize="15" Margin="0 5 0 0"/>
 
                             <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8" Margin="5 0 0 0">
-                                <TextBlock x:Name="txtblckTotalMoney" Padding="7 4 0 0"  FontSize="13" VerticalAlignment="Center" FontWeight="Bold" Height="25" Width="200" TextAlignment="Left"
-                                           Text="100$"/>
+                                <TextBlock x:Name="txtblckTotalMoney" Padding="7 4 0 0"  FontSize="13" VerticalAlignment="Center" FontWeight="Bold" Height="25" Width="200" TextAlignment="Left"/>
                             </Border>
                         </StackPanel>
 

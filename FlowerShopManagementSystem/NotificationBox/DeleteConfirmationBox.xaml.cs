@@ -19,9 +19,11 @@ namespace FlowerShopManagementSystem.NotificationBox
     /// </summary>
     public partial class DeleteConfirmationBox : Window
     {
+        public static bool isDeleteBtnClicked = false;
         public DeleteConfirmationBox()
         {
             InitializeComponent();
+            isDeleteBtnClicked = true;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -34,17 +36,19 @@ namespace FlowerShopManagementSystem.NotificationBox
 
         private void exitBoxBtn_Click(object sender, RoutedEventArgs e)
         {
+            isDeleteBtnClicked = false;
             this.Close();
         }
 
         private void btnCancelBox_Click(object sender, RoutedEventArgs e)
         {
+            isDeleteBtnClicked = false;
             this.Close();
         }
 
         private void btnDeleteBox_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

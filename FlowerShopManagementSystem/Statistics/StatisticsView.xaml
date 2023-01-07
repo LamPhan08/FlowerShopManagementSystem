@@ -233,9 +233,6 @@
                               Margin="65 0 0 10" Padding="7 10 0 0"
                               Cursor="Hand"
                               DropDownClosed="cbbChooseEmployee_DropDownClosed">
-
-                        <ComboBoxItem Content="Phan Nhat Lam"/>
-                        <ComboBoxItem Content="Nguyen Cong Doan"/>
                     </ComboBox>
 
                     <Wpf:CartesianChart x:Name="employeeTurnoverChart" LegendLocation="Bottom" Grid.Row="1">

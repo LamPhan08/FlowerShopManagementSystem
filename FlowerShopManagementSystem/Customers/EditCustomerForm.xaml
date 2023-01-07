@@ -91,7 +91,30 @@
                     <ComboBox x:Name="cbbEditDistrict" Padding="5" Tag="null" FontSize="15"
                               DropDownOpened="cbbEditDistrict_DropDownOpened"
                               FontFamily="Sitka Subheading"
-                              FontWeight="SemiBold" Cursor="Hand"/>
+                              FontWeight="SemiBold" Cursor="Hand">
+                        <ComboBoxItem IsSelected="True">TP.Thu Duc</ComboBoxItem>
+                        <ComboBoxItem>Q1</ComboBoxItem>
+                        <ComboBoxItem>Q3</ComboBoxItem>
+                        <ComboBoxItem>Q4</ComboBoxItem>
+                        <ComboBoxItem>Q5</ComboBoxItem>
+                        <ComboBoxItem>Q6</ComboBoxItem>
+                        <ComboBoxItem>Q7</ComboBoxItem>
+                        <ComboBoxItem>Q8</ComboBoxItem>
+                        <ComboBoxItem>Q10</ComboBoxItem>
+                        <ComboBoxItem>Q11</ComboBoxItem>
+                        <ComboBoxItem>Q12</ComboBoxItem>
+                        <ComboBoxItem>Q.Binh Tan</ComboBoxItem>
+                        <ComboBoxItem>Q.Binh Thanh</ComboBoxItem>
+                        <ComboBoxItem>Q.Go Vap</ComboBoxItem>
+                        <ComboBoxItem>Q.Phu Nhuan</ComboBoxItem>
+                        <ComboBoxItem>Q.Tan Binh</ComboBoxItem>
+                        <ComboBoxItem>Q.Tan Phu</ComboBoxItem>
+                        <ComboBoxItem>H.Binh Chanh</ComboBoxItem>
+                        <ComboBoxItem>H.Can Gio</ComboBoxItem>
+                        <ComboBoxItem>H.Cu Chi</ComboBoxItem>
+                        <ComboBoxItem>H.Hoc Mon</ComboBoxItem>
+                        <ComboBoxItem>H.Nha Be</ComboBoxItem>
+                    </ComboBox>
 
                 </StackPanel>
 
@@ -105,6 +128,7 @@
                               DropDownOpened="cbbEditCity_DropDownOpened"
                               FontFamily="Sitka Subheading"
                               FontWeight="SemiBold" Cursor="Hand">
+                        <ComboBoxItem IsSelected="True">TPHCM</ComboBoxItem>
 
                     </ComboBox>
                 </StackPanel>
@@ -120,6 +144,7 @@
                               DropDownOpened="cbbEditProvince_DropDownOpened"
                               FontFamily="Sitka Subheading"
                               FontWeight="SemiBold" Cursor="Hand">
+                    <ComboBoxItem IsSelected="True">(Empty)</ComboBoxItem>
 
                 </ComboBox>
             </StackPanel>
