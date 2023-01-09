@@ -110,7 +110,7 @@
                 </Border>
             </StackPanel>
 
-            <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+            <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical" Grid.ColumnSpan="2">
                 <TextBlock Text="Registration Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
 
                 <!--<TextBox x:Name="txtblckRegistrationDate" FontWeight="Medium"/>-->
@@ -120,15 +120,9 @@
                 </Border>
             </StackPanel>
 
-            <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
-                <TextBlock Text="Sales" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-
-                <!--<TextBox x:Name="txtblckCustomerSales" FontWeight="Medium"/>-->
-
-                <Border CornerRadius="5" Background="Transparent" BorderThickness="1" BorderBrush="#FFA8A8A8">
-                    <TextBlock x:Name="txtblckCustomerSales" Padding="10 8" FontSize="13" VerticalAlignment="Center" FontWeight="Medium"/>
-                </Border>
-            </StackPanel>
+            <!--<StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
+                
+            </StackPanel>-->
 
 
             <Button x:Name="btnBackCustomerView" Grid.Row="6" Content="Back" HorizontalAlignment="Left" Margin="0 40 0 10" Style="{StaticResource backButton}" FontWeight="SemiBold" Cursor="Hand" Click="btnBackCustomerView_Click"/>

@@ -177,7 +177,7 @@
                                     Foreground="Black"
                                     Text="1"
                                     TextChanged="tb_main_TextChanged" 
-                                    PreviewTextInput="tb_main_PreviewTextInput" IsTabStop="False" >
+                                    PreviewTextInput="tb_main_PreviewTextInput" IsTabStop="False" IsReadOnly="True">
                                 </TextBox>
                                 <Button 
                                     x:Name="cmdUp" 

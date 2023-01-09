@@ -40,7 +40,7 @@ namespace FlowerShopManagementSystem.Customers
             if (tbxCustomerName.Text == "" || tbxCustomerPhone.Text == ""
                 || tbxCustomerHouseNumber.Text == "" || tbxCustomerStreet.Text == ""
                 || cbbDistrict.Text == "" || cbbCity.Text == "" || cbbProvince.Text == ""
-                || tbxCustomerSales.Text == "" || dpkRegistrationDate.Text == "")
+                || dpkRegistrationDate.Text == "")
             {
                 notify.Visibility = Visibility.Visible;
 
@@ -134,12 +134,11 @@ namespace FlowerShopManagementSystem.Customers
                     finalAddress = customer.address;
                 }
                 customer.phone = tbxCustomerPhone.Text.ToString();
-                customer.doanhSo = double.Parse(tbxCustomerSales.Text.ToString());
                 customer.ngayDK = dpkRegistrationDate.Text.ToString();
                 using (var sqlConnection = new SqlConnection(Database.connection))
                 using (var cmd = new SqlDataAdapter())
-                using (var insertCommand = new SqlCommand("insert into KHACH_HANG (SODT_KH, HOTEN, DIACHI, DOANHSO, NGDK) " +
-                    "values ('" + customer.phone + "', '" + customer.name + "', '" + customer.address + "', '" + customer.doanhSo + "', '" + DateTime.Parse(customer.ngayDK) + "')"))
+                using (var insertCommand = new SqlCommand("insert into KHACH_HANG (SODT_KH, HOTEN, DIACHI, NGDK) " +
+                    "values ('" + customer.phone + "', '" + customer.name + "', '" + customer.address + "', '" + DateTime.Parse(customer.ngayDK) + "')"))
                 {
                     insertCommand.Connection = sqlConnection;
                     cmd.InsertCommand = insertCommand;

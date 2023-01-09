@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShopManagementSystem.Orders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,20 @@ namespace FlowerShopManagementSystem.Dashboard
 
         private void btnBackCreateOrder_Click(object sender, RoutedEventArgs e)
         {
+            DashboardView.isOneProdOnly = true;
             Orders.CreateNewOrder createNewOrder = new Orders.CreateNewOrder();
+            createNewOrder.cTHDs.Add(new CTHD
+            {
+                sttSanPham = "1",
+                productID = txtblckProductID.Text.ToString(),
+                productName = txtblckProductName.Text.ToString(),
+                productPrice = double.Parse(txtblckProductPrice.Text.ToString()),
+                productQuantity = 1,
+                productTotalMoney = double.Parse(txtblckProductPrice.Text.ToString()),
+            });
+            //newOrder.txtblckTotalMoney.Text = ct.productPrice.ToString();
+            ChooseProduct.totalMoney = 0;
+            ChooseProduct.totalMoney += double.Parse(txtblckProductPrice.Text.ToString());
             createNewOrder.ShowDialog();
 
             this.Close();

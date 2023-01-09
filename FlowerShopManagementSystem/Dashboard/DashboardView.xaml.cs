@@ -244,6 +244,7 @@ namespace FlowerShopManagementSystem.Dashboard
                 productTotalMoney = ct.productPrice,
             });
             //newOrder.txtblckTotalMoney.Text = ct.productPrice.ToString();
+            ChooseProduct.totalMoney = 0;
             ChooseProduct.totalMoney += ct.productPrice;
             newOrder.ShowDialog();
         }

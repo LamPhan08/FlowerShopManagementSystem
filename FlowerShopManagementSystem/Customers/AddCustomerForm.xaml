@@ -152,7 +152,7 @@
 
             </StackPanel>
 
-            <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+            <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical" Grid.ColumnSpan="2">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Registration Date" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
                     <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
@@ -170,15 +170,9 @@
                 </DatePicker>
             </StackPanel>
 
-            <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Sales" Foreground="#97A5B4" FontSize="13" Margin="0 0 0 8"/>
-                    <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
-                </StackPanel>
-
-                <TextBox x:Name="tbxCustomerSales" FontWeight="Medium" PreviewTextInput="tbxCustomerSales_PreviewTextInput"
-                         TextChanged="tbxCustomerSales_TextChanged" Margin="0 3 0 0"/>
-            </StackPanel>
+            <!--<StackPanel Margin="20 10" Grid.Column="0" Grid.Row="5" Orientation="Vertical">
+                
+            </StackPanel>-->
 
             <TextBlock Text="Please input full information!"
                         x:Name="notify"

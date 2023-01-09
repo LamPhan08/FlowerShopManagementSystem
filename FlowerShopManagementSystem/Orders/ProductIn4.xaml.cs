@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -30,10 +31,13 @@ namespace FlowerShopManagementSystem.Orders
         public event EventHandler ValueChanged;
         public event EventHandler TextChanged;
         #endregion
-
+        public static bool isBtnCofirmClicked;
+        public string orderID;
         public ProductIn4()
         {
             InitializeComponent();
+
+            isBtnCofirmClicked = false;
 
             DataContext = this;
 
@@ -259,20 +263,37 @@ namespace FlowerShopManagementSystem.Orders
                 //    ct.productQuantity = int.Parse(tb_main.Text.ToString());
                 //    ct.productTotalMoney = Calculate;
                 //}
-               
 
-                for (int i = 0; i < _cthd.Count; i++)
+
+                //for (int i = 0; i < _cthd.Count; i++)
+                //{
+                //    if (i == selectedItem)
+                //    {
+                //        _cthd[i].productID = txtblckProductID.Text;
+                //        _cthd[i].productName = txtblckProductName.Text;
+                //        _cthd[i].productPrice = double.Parse(txtblckProductPrice.Text.ToString());
+                //        _cthd[i].productQuantity = int.Parse(tb_main.Text.ToString());
+                //        _cthd[i].productTotalMoney = Calculate;
+                //    }
+                //}
+
+                int quantity = int.Parse(tb_main.Text.ToString());
+                double price = double.Parse(txtblckProductPrice.Text.ToString());
+                double totalMoney = quantity * price;
+
+                using (var sqlConnection = new SqlConnection(Database.connection))
+                using (var cmd = new SqlDataAdapter())
+                using (var insertCommand = new SqlCommand(
+                    "update CTHD " +
+                    "set SL = '" + quantity.ToString() + "', " +
+                        "TONGTRIGIA = '" + totalMoney.ToString() + "' " +
+                        "where MASP = '" + txtblckProductID.Text.ToString() + "' and MAHD = '" + orderID + "'"))
                 {
-                    if (i == selectedItem)
-                    {
-                        _cthd[i].productID = txtblckProductID.Text;
-                        _cthd[i].productName = txtblckProductName.Text;
-                        _cthd[i].productPrice = double.Parse(txtblckProductPrice.Text.ToString());
-                        _cthd[i].productQuantity = int.Parse(tb_main.Text.ToString());
-                        _cthd[i].productTotalMoney = Calculate;
-                    }
+                    insertCommand.Connection = sqlConnection;
+                    cmd.InsertCommand = insertCommand;
+                    sqlConnection.Open();
+                    cmd.InsertCommand.ExecuteNonQuery();
                 }
-
                 Close();
             }
             catch (Exception ex)

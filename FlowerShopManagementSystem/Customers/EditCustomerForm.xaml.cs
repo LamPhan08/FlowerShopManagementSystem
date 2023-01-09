@@ -41,7 +41,7 @@ namespace FlowerShopManagementSystem.Customers
             if (tbxEditCustomerName.Text == "" || tbxEditCustomerPhone.Text == ""
                 || tbxEditCustomerHouseNumber.Text == "" || tbxEditCustomerStreet.Text == ""
                 || cbbEditDistrict.Text == "" || cbbEditCity.Text == "" || cbbEditProvince.Text == ""
-                || tbxEditCustomerSales.Text == "" || dpkEditRegistrationDate.Text == "")
+                || dpkEditRegistrationDate.Text == "")
             {
                 notify.Visibility = Visibility.Visible;
 
@@ -138,14 +138,13 @@ namespace FlowerShopManagementSystem.Customers
                     finalEditedAddress = customerNewInfo.address;
                 }
                 customerNewInfo.phone = tbxEditCustomerPhone.Text.ToString();
-                customerNewInfo.doanhSo = double.Parse(tbxEditCustomerSales.Text.ToString());
                 customerNewInfo.ngayDK = dpkEditRegistrationDate.Text.ToString();
                 Console.WriteLine(customerNewInfo.ngayDK);
                 using (var sqlConnection = new SqlConnection(Database.connection))
                 using (var cmd = new SqlDataAdapter())
                 using (var insertCommand = new SqlCommand(
                     "update KHACH_HANG " +
-                    "set HOTEN = '" + customerNewInfo.name + "', DIACHI = '" + customerNewInfo.address + "', DOANHSO = '" + customerNewInfo.doanhSo + "', NGDK = '" + customerNewInfo.ngayDK + "' " +
+                    "set HOTEN = '" + customerNewInfo.name + "', DIACHI = '" + customerNewInfo.address + "', NGDK = '" + customerNewInfo.ngayDK + "' " +
                     "where SODT_KH = '" + customerNewInfo.phone + "'"))
                 {
                     insertCommand.Connection = sqlConnection;
@@ -154,6 +153,7 @@ namespace FlowerShopManagementSystem.Customers
                     cmd.InsertCommand.ExecuteNonQuery();
                 }
                 MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                Close();
             }
             catch (Exception ex)
             {

@@ -48,12 +48,10 @@ namespace FlowerShopManagementSystem.Customers
                 disrict = addressParts[2].Trim(),
                 city = addressParts[3].Trim(),
                 province = "(Empty)";
-            string sales = oldInfo.doanhSo.ToString();
             string regDate = String.Format("{0:d}", oldInfo.ngayDK);
             editCustomerForm.tbxEditCustomerName.Text = name;
             editCustomerForm.tbxEditCustomerPhone.Text = phoneNumber;
             editCustomerForm.dpkEditRegistrationDate.Text = regDate;
-            editCustomerForm.tbxEditCustomerSales.Text = sales;
             editCustomerForm.tbxEditCustomerHouseNumber.Text = homeNumber;
             editCustomerForm.tbxEditCustomerStreet.Text = street;
             editCustomerForm.cbbEditDistrict.Text = disrict;
@@ -99,7 +97,6 @@ namespace FlowerShopManagementSystem.Customers
             viewCustomer.txtblckCustomerName.Text = selectedCustomer.name.Trim();
             viewCustomer.txtblckPhoneNumber.Text = selectedCustomer.phone.Trim();
             viewCustomer.txtblckRegistrationDate.Text = selectedCustomer.ngayDK.ToString();
-            viewCustomer.txtblckCustomerSales.Text = selectedCustomer.doanhSo.ToString();
             string addressFV = selectedCustomer.address.ToString();
             string[] addressParts = addressFV.Split(',');
             string homeNumber = addressParts[0].Trim(),
@@ -124,15 +121,14 @@ namespace FlowerShopManagementSystem.Customers
                 Database results = new Database("RESULT", "select * from KHACH_HANG");
                 for (int i = 0; i < results.Rows.Count; i++)
                 {
-                    dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][4].ToString()));
+                    dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][3].ToString()));
                     customers.Add(new Customer
                     {
                         sttKH = (i + 1).ToString(),
                         name = results.Rows[i][1].ToString(),
                         address = results.Rows[i][2].ToString(),
                         phone = results.Rows[i][0].ToString(),
-                        ngayDK = results.Rows[i][4].ToString().Substring(0, 10),
-                        doanhSo = double.Parse(results.Rows[i][3].ToString())
+                        ngayDK = results.Rows[i][3].ToString().Substring(0, 10),
                     });
                 }
 
@@ -194,7 +190,5 @@ namespace FlowerShopManagementSystem.Customers
         public string phone { get; set; }
 
         public string ngayDK { get; set; }
-
-        public double doanhSo { get; set; }
     }
 }
