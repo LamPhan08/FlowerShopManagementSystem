@@ -414,7 +414,20 @@ namespace FlowerShopManagementSystem.Orders
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    if(tbxEmployeeID.Text.Length > 5 || tbxEmployeeID.Text.Length < 5)
+                    {
+                        MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    if(tbxCustomerPhone.Text.Length < 10 || tbxCustomerPhone.Text.Length > 11)
+                    {
+                        MessageBox.Show("Error:\nEmployee's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    if(tbxOrderID.Text.Length < 5 || tbxOrderID.Text.Length > 5)
+                    {
+                        MessageBox.Show("Error:\nOrder ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
 
             }
@@ -450,7 +463,19 @@ namespace FlowerShopManagementSystem.Orders
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (tbxEmployeeID.Text.Length > 5 || tbxEmployeeID.Text.Length < 5)
+                {
+                    MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxCustomerPhone.Text.Length < 10 || tbxCustomerPhone.Text.Length > 11)
+                {
+                    MessageBox.Show("Error:\nEmployee's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxOrderID.Text.Length < 5 || tbxOrderID.Text.Length > 5)
+                {
+                    MessageBox.Show("Error:\nOrder ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -484,7 +509,19 @@ namespace FlowerShopManagementSystem.Orders
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (tbxEmployeeID.Text.Length > 5 || tbxEmployeeID.Text.Length < 5)
+                {
+                    MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxCustomerPhone.Text.Length < 10 || tbxCustomerPhone.Text.Length > 11)
+                {
+                    MessageBox.Show("Error:\nEmployee's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxOrderID.Text.Length < 5 || tbxOrderID.Text.Length > 5)
+                {
+                    MessageBox.Show("Error:\nOrder ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

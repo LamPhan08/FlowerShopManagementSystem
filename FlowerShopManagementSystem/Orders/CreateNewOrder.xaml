@@ -104,7 +104,7 @@
                             <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
                         </StackPanel>
 
-                        <TextBox x:Name="tbxEmployeeID" FontWeight="Medium" IsReadOnly="True" TextChanged="tbxEmployeeID_TextChanged"/>
+                        <TextBox x:Name="tbxEmployeeID" FontWeight="Medium" IsReadOnly="False" TextChanged="tbxEmployeeID_TextChanged"/>
                     </StackPanel>
 
                     <StackPanel Margin="20 10" Grid.Row="3" Orientation="Vertical">

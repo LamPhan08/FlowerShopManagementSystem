@@ -226,7 +226,15 @@ namespace FlowerShopManagementSystem.Orders
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (tbxEditEmployeeID.Text.Length > 5 || tbxEditEmployeeID.Text.Length < 5)
+                {
+                    MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxEditCustomerPhone.Text.Length < 10 || tbxEditCustomerPhone.Text.Length > 11)
+                {
+                    MessageBox.Show("Error:\nEmployee's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

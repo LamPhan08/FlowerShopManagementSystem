@@ -22,7 +22,7 @@ namespace FlowerShopManagementSystem.Customers
     public partial class AddCustomerForm : Window
     {
         CustomersView customersView;
-
+        string finalAddress;
         public AddCustomerForm()
         {
             InitializeComponent();
@@ -126,10 +126,12 @@ namespace FlowerShopManagementSystem.Customers
                 if (province == "(Empty)")
                 {
                     customer.address = tbxCustomerHouseNumber.Text.ToString() + ", " + tbxCustomerStreet.Text.ToString() + ", " + district + ", " + city;
+                    finalAddress = customer.address;
                 }
                 else
                 {
                     customer.address = tbxCustomerHouseNumber.Text.ToString() + ", " + tbxCustomerStreet.Text.ToString() + ", " + district + ", " + city + ", " + province;
+                    finalAddress = customer.address;
                 }
                 customer.phone = tbxCustomerPhone.Text.ToString();
                 customer.doanhSo = double.Parse(tbxCustomerSales.Text.ToString());
@@ -149,7 +151,15 @@ namespace FlowerShopManagementSystem.Customers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(tbxCustomerName.Text.Length > 40)
+                {
+                    MessageBox.Show("Error:\nCustomer's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(finalAddress.Length > 50)
+                {
+                    MessageBox.Show("Error:\nCustomer's address must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

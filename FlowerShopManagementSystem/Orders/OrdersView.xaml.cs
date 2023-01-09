@@ -98,6 +98,7 @@ namespace FlowerShopManagementSystem.Orders
             try
             {
                 HOA_DON hd = (HOA_DON)ordersDataGrid.SelectedItem as HOA_DON;
+                Console.WriteLine(hd.TINHTRANG);
                 if (hd.TINHTRANG == "Paid")
                 {
                     MessageBox.Show("You have already paid for the order!", "Message:", MessageBoxButton.OK, MessageBoxImage.Warning);

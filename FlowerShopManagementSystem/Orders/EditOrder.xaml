@@ -62,7 +62,7 @@
                             <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
                         </StackPanel>
 
-                        <TextBox x:Name="tbxEditOrderID" FontWeight="Medium" TextChanged="tbxEditOrderID_TextChanged"/>
+                        <TextBox x:Name="tbxEditOrderID" FontWeight="Medium" TextChanged="tbxEditOrderID_TextChanged" IsReadOnly="True"/>
 
                     </StackPanel>
 

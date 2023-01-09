@@ -55,7 +55,7 @@
                 </StackPanel>
 
                 <TextBox x:Name="tbxEditCustomerPhone" FontWeight="Medium" PreviewTextInput="tbxEditCustomerPhone_PreviewTextInput"
-                         TextChanged="tbxEditCustomerPhone_TextChanged"/>
+                         TextChanged="tbxEditCustomerPhone_TextChanged" IsReadOnly="True"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="0" Grid.Row="3" Orientation="Vertical">

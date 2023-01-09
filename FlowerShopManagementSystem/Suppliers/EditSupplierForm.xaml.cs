@@ -22,6 +22,7 @@ namespace FlowerShopManagementSystem.Suppliers
     public partial class EditSupplierForm : Window
     {
         Supplier supplierNewInfo;
+        string finalEditedAddress;
 
         public EditSupplierForm()
         {
@@ -112,6 +113,7 @@ namespace FlowerShopManagementSystem.Suppliers
                         newDistrict = newDistrictCBI.Content.ToString(),
                         newCity = newCityCBI.Content.ToString();
                 supplierNewInfo.diaChiNCC = tbxEditSupplierStreet.Text.ToString() + ", " + newWard + ", " + newDistrict + ", " + newCity;
+                finalEditedAddress = supplierNewInfo.diaChiNCC;
                 supplierNewInfo.soDTNCC = tbxEditSupplierPhoneNumber.Text.ToString();
                 using (var sqlConnection = new SqlConnection(Database.connection))
                 using (var cmd = new SqlDataAdapter())
@@ -130,7 +132,23 @@ namespace FlowerShopManagementSystem.Suppliers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (tbxEditSupplierID.Text.Length < 6 || tbxEditSupplierID.Text.Length > 6)
+                {
+                    MessageBox.Show("Error:\nSupplier's ID must not have more/less than 6 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxEditSupplierName.Text.Length > 40)
+                {
+                    MessageBox.Show("Error:\nSupplier's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (finalEditedAddress.Length > 50)
+                {
+                    MessageBox.Show("Error:\nSupplier's address must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (tbxEditSupplierPhoneNumber.Text.Length < 10 || tbxEditSupplierPhoneNumber.Text.Length > 11)
+                {
+                    MessageBox.Show("Error:\nSupplier's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

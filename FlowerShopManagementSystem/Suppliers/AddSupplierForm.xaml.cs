@@ -22,7 +22,7 @@ namespace FlowerShopManagementSystem.Suppliers
     public partial class AddSupplierForm : Window
     {
         SuppliersView suppliersView;
-
+        string finalAddress;
         public AddSupplierForm()
         {
             InitializeComponent();
@@ -113,6 +113,7 @@ namespace FlowerShopManagementSystem.Suppliers
                         district = districtCBI.Content.ToString(),
                         city = cityCBI.Content.ToString();
                 supplier.diaChiNCC = street + ", " + ward + ", " + district + ", " + city;
+                finalAddress = supplier.diaChiNCC;
                 supplier.soDTNCC = tbxSupplierPhoneNumber.Text.ToString();
                 using (var sqlConnection = new SqlConnection(Database.connection))
                 using (var cmd = new SqlDataAdapter())
@@ -129,7 +130,23 @@ namespace FlowerShopManagementSystem.Suppliers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(tbxSupplierID.Text.Length < 6 || tbxSupplierID.Text.Length > 6)
+                {
+                    MessageBox.Show("Error:\nSupplier's ID must not have more/less than 6 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxSupplierName.Text.Length > 40)
+                {
+                    MessageBox.Show("Error:\nSupplier's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(finalAddress.Length > 50)
+                {
+                    MessageBox.Show("Error:\nSupplier's address must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxSupplierPhoneNumber.Text.Length < 10 || tbxSupplierPhoneNumber.Text.Length > 11)
+                {
+                    MessageBox.Show("Error:\nSupplier's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

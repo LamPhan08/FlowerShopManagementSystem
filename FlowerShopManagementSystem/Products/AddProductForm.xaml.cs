@@ -22,7 +22,7 @@ namespace FlowerShopManagementSystem.Products
     /// </summary>
     public partial class AddProductForm : Window
     {
-        string image;
+        string image, imageName;
         ProductsView productsView;
 
         public AddProductForm()
@@ -123,7 +123,7 @@ namespace FlowerShopManagementSystem.Products
                 product.productPrice = double.Parse(tbxProductPrice.Text.ToString());
                 if (image != "")
                 {
-                    string imageName = System.IO.Path.GetFileName(image);
+                    imageName = System.IO.Path.GetFileName(image);
                     product.productImage = imageName;
                     if (!System.IO.File.Exists("../../Products/Product Image/" + imageName))
                     {
@@ -145,7 +145,27 @@ namespace FlowerShopManagementSystem.Products
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(imageName.Length > 100)
+                {
+                    MessageBox.Show("Error:\nImage's name must not have more than 100 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxProductID.Text.Length > 5 || tbxProductID.Text.Length < 5)
+                {
+                    MessageBox.Show("Error:\nProduct's ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxProductName.Text.Length > 40)
+                {
+                    MessageBox.Show("Error:\nProduct's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxProductType.Text.Length > 50)
+                {
+                    MessageBox.Show("Error:\nProduct's type must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxEvent.Text.Length > 50)
+                {
+                    MessageBox.Show("Error:\nThe event must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

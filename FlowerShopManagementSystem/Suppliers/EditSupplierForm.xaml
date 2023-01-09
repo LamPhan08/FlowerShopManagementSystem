@@ -43,7 +43,7 @@
                     <TextBlock Text="*" Foreground="Red" Margin="3 0 0 0"/>
                 </StackPanel>
 
-                <TextBox x:Name="tbxEditSupplierID" FontWeight="Medium" TextChanged="tbxEditSupplierID_TextChanged"/>
+                <TextBox x:Name="tbxEditSupplierID" FontWeight="Medium" TextChanged="tbxEditSupplierID_TextChanged" IsReadOnly="True"/>
             </StackPanel>
 
             <StackPanel Margin="20 10" Grid.Column="1" Grid.Row="2" Orientation="Vertical">

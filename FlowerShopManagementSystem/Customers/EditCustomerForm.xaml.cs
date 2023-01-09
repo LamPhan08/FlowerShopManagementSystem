@@ -22,6 +22,7 @@ namespace FlowerShopManagementSystem.Customers
     public partial class EditCustomerForm : Window
     {
         Customer customerNewInfo;
+        string finalEditedAddress;
 
         public EditCustomerForm()
         {
@@ -129,14 +130,17 @@ namespace FlowerShopManagementSystem.Customers
                 if (newProvince == "(Empty)")
                 {
                     customerNewInfo.address = tbxEditCustomerHouseNumber.Text.ToString() + ", " + tbxEditCustomerStreet.Text.ToString() + ", " + newDistrict + ", " + newCity;
+                    finalEditedAddress = customerNewInfo.address;
                 }
                 else
                 {
                     customerNewInfo.address = tbxEditCustomerHouseNumber.Text.ToString() + ", " + tbxEditCustomerStreet.Text.ToString() + ", " + newDistrict + ", " + newCity + ", " + newProvince;
+                    finalEditedAddress = customerNewInfo.address;
                 }
                 customerNewInfo.phone = tbxEditCustomerPhone.Text.ToString();
                 customerNewInfo.doanhSo = double.Parse(tbxEditCustomerSales.Text.ToString());
                 customerNewInfo.ngayDK = dpkEditRegistrationDate.Text.ToString();
+                Console.WriteLine(customerNewInfo.ngayDK);
                 using (var sqlConnection = new SqlConnection(Database.connection))
                 using (var cmd = new SqlDataAdapter())
                 using (var insertCommand = new SqlCommand(
@@ -153,7 +157,15 @@ namespace FlowerShopManagementSystem.Customers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(tbxEditCustomerName.Text.Length > 40)
+                {
+                    MessageBox.Show("Error:\nCustomer's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(finalEditedAddress.Length > 50)
+                {
+                    MessageBox.Show("Error:\nCustomer's address must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

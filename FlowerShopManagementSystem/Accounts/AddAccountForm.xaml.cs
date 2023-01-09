@@ -22,7 +22,7 @@ namespace FlowerShopManagementSystem.Accounts
     /// </summary>
     public partial class AddAccountForm : Window
     {
-        string image;
+        string image, imageName;
         AccountsView accountsView;
 
         public AddAccountForm()
@@ -133,7 +133,7 @@ namespace FlowerShopManagementSystem.Accounts
                 account.password = tbxPassword.Text.ToString();
                 if (image != "")
                 {
-                    string imageName = System.IO.Path.GetFileName(image);
+                    imageName = System.IO.Path.GetFileName(image);
                     account.avatarTK = imageName;
                     if (!System.IO.File.Exists("../../Accounts/AccountAvatar/" + imageName))
                     {
@@ -163,7 +163,31 @@ namespace FlowerShopManagementSystem.Accounts
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(tbxEmployeeID.Text.Length < 5 || tbxEmployeeID.Text.Length > 5)
+                {
+                    MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxEmployeeName.Text.Length > 40)
+                {
+                    MessageBox.Show("Error:\nEmployee's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxEmployeePhoneNumber.Text.Length < 10 || tbxEmployeePhoneNumber.Text.Length > 11)
+                {
+                    MessageBox.Show("Error:\nEmployee ID must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxUsername.Text.Length > 50)
+                {
+                    MessageBox.Show("Error:\nEmployee's username must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(tbxPassword.Text.Length > 50)
+                {
+                    MessageBox.Show("Error:\nEmployee's password must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(imageName.Length > 100)
+                {
+                    MessageBox.Show("Error:\nImage's name must not have more than 100 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

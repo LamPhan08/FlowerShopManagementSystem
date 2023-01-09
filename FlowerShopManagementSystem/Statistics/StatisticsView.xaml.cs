@@ -75,7 +75,8 @@ namespace FlowerShopManagementSystem.Statistics
             txbRevenueThisMonth.Text = revenue4.ToString();
             txbIncreasing.Text = percentage.ToString() + "%";
             txbNumberofOrders.Text = numOfOrders.ToString();
-
+            tblckRevenueThisMonth.Text = String.Format("{0:Y}", DateTime.Now);
+            tblckOrdersThisMonth.Text = String.Format("{0:Y}", DateTime.Now);
         }
 
 
@@ -134,46 +135,87 @@ namespace FlowerShopManagementSystem.Statistics
         private void cbbChooseEmployee_DropDownClosed(object sender, EventArgs e)
         {
 
+            #region this session is still in progress.
+            //try
+            //{
+            //    ComboBoxItem employeeCBI = (ComboBoxItem)cbbChooseEmployee.SelectedItem;
+            //    string name = employeeCBI.Content.ToString();
+            //    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+            //    // these are not the correct sql queries, if correct, it causes the below exception.
+            //    Database results = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 10"),
+            //            results1 = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 11"),
+            //            results2 = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 12"),
+            //            results3 = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 1");
 
-            try
+            //    string strR1 = results.Rows.Count < 1 ? "0" : results.Rows[0][0].ToString(),
+            //            strR2 = results1.Rows.Count < 1 ? "0" : results1.Rows[0][0].ToString(),
+            //            strR3 = results2.Rows.Count < 1 ? "0" : results2.Rows[0][0].ToString(),
+            //            strR4 = results3.Rows.Count < 1 ? "0" : results3.Rows[0][0].ToString();
+            //    double revenue1 = double.Parse(strR1), // exception from here.
+            //            revenue2 = double.Parse(strR2),
+            //            revenue3 = double.Parse(strR3),
+            //            revenue4 = double.Parse(strR4);// to here.
+
+
+            //    employeeTurnoverChart.Visibility = Visibility.Visible;
+
+            //    employeeSeriesCollection = new SeriesCollection
+            //{
+            //    new ColumnSeries
+            //    {
+            //        Title = "Turnover",
+            //        Values = new ChartValues<double> {revenue1, revenue2, revenue3 , revenue4}
+            //    }
+            //};
+
+            //    employeeLabels = new[] { "1", "2", "3", "4" };
+            //    employeeYFormatter = value => value.ToString("C");
+            //    employeeTurnoverChart.Series = employeeSeriesCollection;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+            #endregion
+
+            switch (cbbChooseEmployee.SelectedIndex)
             {
-                ComboBoxItem employeeCBI = (ComboBoxItem)cbbChooseEmployee.SelectedItem;
-                string name = employeeCBI.Content.ToString();
-                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                // these are not the correct sql queries, if correct, it causes the below exception.
-                Database results = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 10"),
-                        results1 = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 11"),
-                        results2 = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 12"),
-                        results3 = new Database("RESULT", "select sum(TRIGIA) from HOA_DON where DatePart(MONTH, NGHD) = 1");
+                case 0:
+                    {
+                        employeeTurnoverChart.Visibility = Visibility.Visible;
+                        employeeSeriesCollection = new SeriesCollection
+                        {
+                            new LineSeries
+                            {
+                                Title = "Turnover",
+                                Values = new ChartValues<double> { 1000, 20000, 45000, 600000 }
+                            },
+                        };
 
-                string strR1 = results.Rows.Count < 1 ? "0" : results.Rows[0][0].ToString(),
-                        strR2 = results1.Rows.Count < 1 ? "0" : results1.Rows[0][0].ToString(),
-                        strR3 = results2.Rows.Count < 1 ? "0" : results2.Rows[0][0].ToString(),
-                        strR4 = results3.Rows.Count < 1 ? "0" : results3.Rows[0][0].ToString();
-                double revenue1 = double.Parse(strR1), // exception from here.
-                        revenue2 = double.Parse(strR2),
-                        revenue3 = double.Parse(strR3),
-                        revenue4 = double.Parse(strR4);// to here.
+                        employeeLabels = new[] { "10", "11", "12", "1" };
+                        employeeYFormatter = value => value.ToString("C");
+                        employeeTurnoverChart.Series = employeeSeriesCollection;
 
+                        break;
+                    }
+                case 1:
+                    {
+                        employeeTurnoverChart.Visibility = Visibility.Visible;
+                        employeeSeriesCollection = new SeriesCollection
+                        {
+                            new LineSeries
+                            {
+                                Title = "Turnover",
+                                Values = new ChartValues<double> { 10000, 5000, 20000, 15000 }
+                            },
+                        };
 
-                employeeTurnoverChart.Visibility = Visibility.Visible;
+                        employeeLabels = new[] { "10", "11", "12", "1" };
+                        employeeYFormatter = value => value.ToString("C");
+                        employeeTurnoverChart.Series = employeeSeriesCollection;
 
-                employeeSeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "Turnover",
-                    Values = new ChartValues<double> {revenue1, revenue2, revenue3 , revenue4}
-                }
-            };
-
-                employeeLabels = new[] { "1", "2", "3", "4" };
-                employeeYFormatter = value => value.ToString("C");
-                employeeTurnoverChart.Series = employeeSeriesCollection;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    }
             }
         }
     }
