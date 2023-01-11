@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Orders
 {
@@ -114,7 +107,6 @@ namespace FlowerShopManagementSystem.Orders
             {
                 MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            //btnBackEditOrder.Visibility = Visibility.Collapsed;
             ReloadData(cthds, hd1);
             txtblckTotalMoney.Text = RecalculateMoney().ToString();
             ReplacePrice();
@@ -127,7 +119,6 @@ namespace FlowerShopManagementSystem.Orders
             {
                 Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
                 Database results = new Database("RESULT", "select sum(TONGTRIGIA) from CTHD where MAHD = '" + hd1.MAHD + "'");
-                //txtblckTotalMoney.Text = results.Rows[0][0].ToString();
                 money = double.Parse(results.Rows[0][0].ToString());
 
             }
@@ -226,9 +217,8 @@ namespace FlowerShopManagementSystem.Orders
                 MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 if (tbxEditEmployeeID.Text.Length > 5 || tbxEditEmployeeID.Text.Length < 5)
                 {
                     MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -267,13 +257,8 @@ namespace FlowerShopManagementSystem.Orders
             productIn4.txtblckProductName.Text = ct.productName;
             productIn4.txtblckProductPrice.Text = ct.productPrice.ToString();
             productIn4.tb_main.Text = ct.productQuantity.ToString();
-            //productIn4.priceTB.Text = ct.productPrice.ToString();
             Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
             Database results = new Database("RESULT", "select HINH_ANH from SAN_PHAM where MASP = '" + ct.productID + "'");
-            /*
-             * string productImage = selectedProduct.productImage.Trim();
-            string[] imageParts = productImage.Split('/');
-             */
             productIn4.viewProductImage.Source = new BitmapImage(new Uri(@"../../Products/Product Image/" + results.Rows[0][0].ToString(), UriKind.Relative));
             productIn4.ShowDialog();
             ReloadData(cthds, hd1);

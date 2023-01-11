@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Customers
 {
@@ -155,9 +146,8 @@ namespace FlowerShopManagementSystem.Customers
                 MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 if(tbxEditCustomerName.Text.Length > 40)
                 {
                     MessageBox.Show("Error:\nCustomer's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);

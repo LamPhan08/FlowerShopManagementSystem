@@ -2,18 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Accounts
 {
@@ -149,7 +141,6 @@ namespace FlowerShopManagementSystem.Accounts
                         avatarTK = "/Accounts/AccountAvatar/" + results.Rows[i][7].ToString()
                     });
                 }
-                //accountsDataGrid.ItemsSource = accounts;
                 view = new Resources.PagingCollectionView(accounts, 2);
 
                 this.DataContext = view;
@@ -167,7 +158,6 @@ namespace FlowerShopManagementSystem.Accounts
             {
                 accounts = new List<Account>();
                 LoadData(accounts);
-                //tbxAccountsOneOf.Text = "1 of " + accounts.Count.ToString();
             }
             catch (Exception ex)
             {

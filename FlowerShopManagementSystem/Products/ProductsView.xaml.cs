@@ -2,18 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Products
 {
@@ -46,7 +37,6 @@ namespace FlowerShopManagementSystem.Products
             edit.tbxEditEvent.Text = selectedProduct.productOccasion.ToUpper();
             Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
             Database TableRight = new Database("RESULT", "select * from NHA_CUNG_CAP where MANCC = '" + selectedProduct.productSupplier + "'");
-            //viewProductDetails.txtblckProductSupplier.Text = selectedProduct.productSupplier;
             edit.cbbEditSuppier.Text = TableRight.Rows[0][1].ToString();
             edit.tbxEditProductPrice.Text = selectedProduct.productPrice.ToString();
             string productImage = selectedProduct.productImage.Trim();
@@ -96,7 +86,6 @@ namespace FlowerShopManagementSystem.Products
         private void btnProductIn4_Click(object sender, RoutedEventArgs e)
         {
             ViewProductDetails viewProductDetails = new ViewProductDetails();
-            //Product selectedProduct = (Product)ListProducts.ItemContainerGenerator.ContainerFromIndex(ListProducts.TabIndex);
             Button btn = sender as Button;
             Product selectedProduct = btn.DataContext as Product;
             viewProductDetails.txtblckProductID.Text = selectedProduct.productCode;
@@ -105,7 +94,6 @@ namespace FlowerShopManagementSystem.Products
             viewProductDetails.txtblckEvent.Text = selectedProduct.productOccasion.ToUpper();
             Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
             Database TableRight = new Database("RESULT", "select * from NHA_CUNG_CAP where MANCC = '" + selectedProduct.productSupplier + "'");
-            //viewProductDetails.txtblckProductSupplier.Text = selectedProduct.productSupplier;
             viewProductDetails.txtblckProductSupplier.Text = TableRight.Rows[0][1].ToString();
             viewProductDetails.txtblckProductPrice.Text = selectedProduct.productPrice.ToString();
             string productImage = selectedProduct.productImage.Trim();
@@ -130,11 +118,9 @@ namespace FlowerShopManagementSystem.Products
                         productOccasion = results.Rows[i][3].ToString(),
                         productSupplier = results.Rows[i][4].ToString(),
                         productPrice = double.Parse(results.Rows[i][5].ToString()),
-                        //productPrice = double.Parse(results.Rows[i][4].ToString()),
                         productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
                     });
                 }
-                //ListProducts.ItemsSource = products;
                 view = new Resources.PagingCollectionView(products, 4);
 
                 this.DataContext = view;
@@ -152,7 +138,6 @@ namespace FlowerShopManagementSystem.Products
             {
                 products = new List<Product>();
                 LoadData(products);
-                //tbxProductsOneOf.Text = "1 of " + products.Count.ToString();
             }
             catch (Exception ex)
             {
@@ -190,12 +175,5 @@ namespace FlowerShopManagementSystem.Products
         public string productOccasion { get; set; }
         public string productType { get; set; }
         public string productSupplier { get; set; }
-
-        //public Product(string name, double price, string image)
-        //{
-        //    productName = name;
-        //    productPrice = price;
-        //    productImage = image;
-        //}
     }
 }

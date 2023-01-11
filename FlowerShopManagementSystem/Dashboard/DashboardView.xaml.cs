@@ -1,19 +1,9 @@
 ﻿using FlowerShopManagementSystem.Orders;
-using FlowerShopManagementSystem.Products;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Dashboard
 {
@@ -31,44 +21,6 @@ namespace FlowerShopManagementSystem.Dashboard
             InitializeComponent();
             isOneProdOnly = false;
 
-            //List<filterButton> filters = new List<filterButton>();
-
-            //filters.Add(new filterButton { buttonContent = "Tất cả" });
-            //filters.Add(new filterButton { buttonContent = "Tình yêu" });
-            //filters.Add(new filterButton { buttonContent = "Đám tang" });
-            //filters.Add(new filterButton { buttonContent = "Đám cưới" });
-            //filters.Add(new filterButton { buttonContent = "Tất cả" });
-            //filters.Add(new filterButton { buttonContent = "Tình yêu" });
-            //filters.Add(new filterButton { buttonContent = "Đám tang" });
-            //filters.Add(new filterButton { buttonContent = "Đám cưới" });
-            //filters.Add(new filterButton { buttonContent = "Tất cả" });
-            //filters.Add(new filterButton { buttonContent = "Tình yêu" });
-            //filters.Add(new filterButton { buttonContent = "Đám tang" });
-            //filters.Add(new filterButton { buttonContent = "Đám cưới" });
-
-            //listButton.ItemsSource = filters;
-
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    RadioButton button = new RadioButton();
-
-            //    if (i == 0)
-            //    {
-            //        button.IsChecked = true;
-            //        button.Content = "All";
-            //    }
-            //    else
-            //    {
-            //        button.Content = "Button" + i.ToString();
-            //    }
-
-            //    button.Click += Button_Click;
-
-            //    var style = Application.Current.TryFindResource("buttonFilter") as Style;
-            //    button.Style = style;
-
-            //    stkpnl.Children.Add(button);
-            //}
             RadioButton[] buttons = new RadioButton[7]
             {
                 new RadioButton(),
@@ -96,15 +48,6 @@ namespace FlowerShopManagementSystem.Dashboard
                 stkpnl.Children.Add(button);
             }
 
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_mai.jpg", productName = "Hoa mai", productPrice = 100 });
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_dao.jpg", productName = "Hoa đào", productPrice = 100 });
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_hong.jpg", productName = "Hoa hồng", productPrice = 100 });
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_lan.jpg", productName = "Hoa lan", productPrice = 100 });
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_ly.jpg", productName = "Hoa ly", productPrice = 100 });
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_cuc.jpg", productName = "Hoa cúc", productPrice = 100 });
-            //products.Add(new Product { productImage = "/Products/Product Image/hoa_van_tho.png", productName = "Hoa vạn thọ", productPrice = 100 });
-
-            //DashboardProductsList.ItemsSource = products;
             LoadData(products);
 
         }
@@ -114,87 +57,6 @@ namespace FlowerShopManagementSystem.Dashboard
             var button = sender as RadioButton;
             string filter = button.Content.ToString();
             LoadDataViaFilter(products, filter);
-            //if (button.Content.ToString() == "ALL")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_mai.jpg", productName = "Hoa mai", productPrice = 100 });
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_dao.jpg", productName = "Hoa đào", productPrice = 100 });
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_hong.jpg", productName = "Hoa hồng", productPrice = 100 });
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_lan.jpg", productName = "Hoa lan", productPrice = 100 });
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_ly.jpg", productName = "Hoa ly", productPrice = 100 });
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_cuc.jpg", productName = "Hoa cúc", productPrice = 100 });
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_van_tho.png", productName = "Hoa vạn thọ", productPrice = 100 });
-
-            //    DashboardProductsList.ItemsSource = products;
-            //}
-            //else if (button.Content.ToString() == "LOVE")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_mai.jpg", productName = "Hoa mai", productPrice = 100 });
-
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-            //else if (button.Content.ToString() == "BIRTHDAY")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_dao.jpg", productName = "Hoa đào", productPrice = 100 });
-
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-            //else if (button.Content.ToString() == "NEW")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_hong.jpg", productName = "Hoa hồng", productPrice = 100 });
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-            //else if (button.Content.ToString() == "OFFICE")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_lan.jpg", productName = "Hoa lan", productPrice = 100 });
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-            //else if (button.Content.ToString() == "CONGRATS")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_ly.jpg", productName = "Hoa ly", productPrice = 100 });
-
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-            //else if (button.Content.ToString() == "CONDOLENCE")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_cuc.jpg", productName = "Hoa cúc", productPrice = 100 });
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-            //else if (button.Content.ToString() == "Button7")
-            //{
-            //    products = new List<Product>();
-
-            //    products.Add(new Product { productImage = "/Products/Product Image/hoa_van_tho.png", productName = "Hoa vạn thọ", productPrice = 100 });
-
-            //    DashboardProductsList.ItemsSource = products;
-
-            //}
-
         }
 
         private void shiftLeft_Click(object sender, RoutedEventArgs e)
@@ -218,7 +80,6 @@ namespace FlowerShopManagementSystem.Dashboard
             viewDashboardProduct.txtblckEvent.Text = selectedProduct.productOccasion.ToUpper();
             Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
             Database TableRight = new Database("RESULT", "select * from NHA_CUNG_CAP where MANCC = '" + selectedProduct.productSupplier + "'");
-            //viewProductDetails.txtblckProductSupplier.Text = selectedProduct.productSupplier;
             viewDashboardProduct.txtblckProductSupplier.Text = TableRight.Rows[0][1].ToString();
             viewDashboardProduct.txtblckProductPrice.Text = selectedProduct.productPrice.ToString();
             string productImage = selectedProduct.productImage.Trim();
@@ -243,7 +104,6 @@ namespace FlowerShopManagementSystem.Dashboard
                 productQuantity = 1,
                 productTotalMoney = ct.productPrice,
             });
-            //newOrder.txtblckTotalMoney.Text = ct.productPrice.ToString();
             ChooseProduct.totalMoney = 0;
             ChooseProduct.totalMoney += ct.productPrice;
             newOrder.ShowDialog();
@@ -259,9 +119,6 @@ namespace FlowerShopManagementSystem.Dashboard
                 {
                     products.Add(new Product
                     {
-                        //productName = results.Rows[i][1].ToString(),
-                        //productPrice = double.Parse(results.Rows[i][5].ToString()),
-                        //productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
                         productCode = results.Rows[i][0].ToString(),
                         productName = results.Rows[i][1].ToString(),
                         productType = results.Rows[i][2].ToString(),
@@ -271,12 +128,10 @@ namespace FlowerShopManagementSystem.Dashboard
                         productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
                     });
                 }
-                //DashboardProductsList.ItemsSource = products;
                 view = new Resources.PagingCollectionView(products, 12);
 
                 this.DataContext = view;
                 DashboardProductsList.ItemsSource = view;
-                //txtDashboardOneOf.Text = "1 of " + products.Count.ToString();
             }
             catch (Exception ex)
             {
@@ -290,45 +145,12 @@ namespace FlowerShopManagementSystem.Dashboard
             {
                 products = new List<Product>();
                 string additionalQuery = filter == "ALL" ? "" : " where SU_KIEN = '" + filter.ToLower() + "'";
-                //if (filter == "ALL")
-                //{
-                //    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                //    Database results = new Database("RESULT", "select * from SAN_PHAM");
-                //    for(int i = 0; i < results.Rows.Count; i++)
-                //    {
-                //        products.Add(new Product
-                //        {
-                //            productName = results.Rows[i][1].ToString(),
-                //            productPrice = double.Parse(results.Rows[i][5].ToString()),
-                //            productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
-                //        });
-                //    }
-                //    DashboardProductsList.ItemsSource = products;
-                //}
-                //else
-                //{
-                //    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                //    Database results = new Database("RESULT", "select * from SAN_PHAM where SU_KIEN = '" + filter.ToLower() + "'");
-                //    for (int i = 0; i < results.Rows.Count; i++)
-                //    {
-                //        products.Add(new Product
-                //        {
-                //            productName = results.Rows[i][1].ToString(),
-                //            productPrice = double.Parse(results.Rows[i][5].ToString()),
-                //            productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
-                //        });
-                //    }
-                //    DashboardProductsList.ItemsSource = products;
-                //}
                 Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
                 Database results = new Database("RESULT", "select * from SAN_PHAM" + additionalQuery);
                 for (int i = 0; i < results.Rows.Count; i++)
                 {
                     products.Add(new Product
                     {
-                        //productName = results.Rows[i][1].ToString(),
-                        //productPrice = double.Parse(results.Rows[i][5].ToString()),
-                        //productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
                         productCode = results.Rows[i][0].ToString(),
                         productName = results.Rows[i][1].ToString(),
                         productType = results.Rows[i][2].ToString(),
@@ -338,7 +160,6 @@ namespace FlowerShopManagementSystem.Dashboard
                         productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
                     });
                 }
-                //DashboardProductsList.ItemsSource = products;
                 view = new Resources.PagingCollectionView(products, 12);
 
                 this.DataContext = view;
@@ -385,15 +206,5 @@ namespace FlowerShopManagementSystem.Dashboard
         public string productOccasion { get; set; }
         public string productType { get; set; }
         public string productSupplier { get; set; }
-
-        /*
-         * public string productCode { get; set; }
-        public string productName { get; set; }
-        public double productPrice { get; set; }
-        public string productImage { get; set; }
-        public string productOccasion { get; set; }
-        public string productType { get; set; }
-        public string productSupplier { get; set; }
-         */
     }
 }

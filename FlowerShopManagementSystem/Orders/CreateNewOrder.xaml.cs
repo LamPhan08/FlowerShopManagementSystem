@@ -3,19 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Orders
 {
@@ -32,9 +25,6 @@ namespace FlowerShopManagementSystem.Orders
             InitializeComponent();
 
             cTHDs = new List<CTHD>();
-            //cTHDs = ChooseProduct.cthdList;
-
-            //RemoveTempData();
 
             LoadData(cTHDs);
 
@@ -65,18 +55,6 @@ namespace FlowerShopManagementSystem.Orders
             try
             {
                 CTHD ct = (CTHD)orderDetailsDataGrid.SelectedItem;
-                //ChooseProduct.total -= long.Parse(ct.productPrice.ToString());
-                //Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                //using (var sqlConnection = new SqlConnection(Database.connection))
-                //using (var cmd = new SqlDataAdapter())
-                //using (var insertCommand = new SqlCommand("delete from TEMPDATA_CTHD where MASP = '" + ct.productID + "'"))
-                //{
-                //    insertCommand.Connection = sqlConnection;
-                //    cmd.InsertCommand = insertCommand;
-                //    sqlConnection.Open();
-                //    cmd.InsertCommand.ExecuteNonQuery();
-                //}
-                //cTHDs.Remove(ct);
                 ChooseProduct.cthdList.Remove(ct);
                 ReloadData(cTHDs);
             }
@@ -103,8 +81,6 @@ namespace FlowerShopManagementSystem.Orders
                 if (DashboardView.isOneProdOnly)
                 {
                     AddInvoice1();
-                    //AddListOfInvoiceDetails();
-                    //RemoveTempData();
                     AddListOfInvoiceDetails1();
                     MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                     Close();
@@ -113,8 +89,6 @@ namespace FlowerShopManagementSystem.Orders
                 else
                 {
                     AddInvoice2();
-                    //AddListOfInvoiceDetails();
-                    //RemoveTempData();
                     AddListOfInvoiceDetails2();
                     MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                     Close();
@@ -132,25 +106,6 @@ namespace FlowerShopManagementSystem.Orders
         {
             try
             {
-                //if (tbxOrderID.Text == "" || tbxCustomerPhone.Text == ""
-                //|| tbxCustomerName.Text == "" || cTHDs.Count == 0)
-                //{
-                //    notify.Visibility = Visibility.Visible;
-
-                //}
-                //else
-                //{
-                //    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                //    Database results = new Database("RESULT", "select HOTEN from KHACH_HANG where SODT_KH = '" + tbxCustomerPhone.Text + "'");
-                //    if(results.Rows.Count < 1)
-                //    {
-                //        MessageBox.Show("There's no customer that matches your search!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                //    }
-                //    else
-                //    {
-                //        tbxCustomerName.Text = results.Rows[0][0].ToString();
-                //    }
-                //}
                 Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
                 Database results = new Database("RESULT", "select HOTEN from KHACH_HANG where SODT_KH = '" + tbxCustomerPhone.Text + "'");
                 if (results.Rows.Count < 1)
@@ -171,82 +126,21 @@ namespace FlowerShopManagementSystem.Orders
 
         private void orderDetailsDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-            //long total = 0;
-
-            //for (int i = 0; i < cTHDs.Count; i++)
-            //{
-            //    total += long.Parse(cTHDs[i].productTotalMoney.ToString());
-            //}
-
-
             txtblckTotalMoney.Text = GetTotal().ToString();
-
         }
 
         private double GetTotal()
         {
             double total = ChooseProduct.totalMoney;
-
-            //for (int i = 0; i < cTHDs.Count; i++)
-            //{
-            //    total += long.Parse(cTHDs[i].productTotalMoney.ToString());
-            //}
             return total;
-  
         }
-
-        //private void quantityNumericUD_ValueChanged(object sender, EventArgs e)
-        //{
-        //    //CTHD ct = (CTHD)orderDetailsDataGrid.SelectedItem as CTHD;
-        //    //double totalPrice = ct.productQuantity * ct.productPrice;
-        //    //ct.productTotalMoney = totalPrice;
-        //    //double total = 0;
-
-        //    //for (int i = 0; i < cTHDs.Count; i++)
-        //    //{
-        //    //    total += cTHDs[i].productTotalMoney;
-        //    //}
-        //    ////ReloadData(cTHDs);
-
-        //    //txtblckTotalMoney.Text = total.ToString();
-
-        //}
 
         private void LoadData(List<CTHD> cTHDs)
         {
-            //cTHDs.Add(new CTHD { sttSanPham = "1", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-            //cTHDs.Add(new CTHD { sttSanPham = "2", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-            //cTHDs.Add(new CTHD { sttSanPham = "3", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-            //cTHDs.Add(new CTHD { sttSanPham = "4", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-            //cTHDs.Add(new CTHD { sttSanPham = "5", productID = "SP01", productName = "Hoa hồng", productQuantity = 2, productPrice = 3000, productTotalMoney = 6000 });
-
             try
             {
-                //Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                //Database results = new Database("RESULT", "select * from TEMPDATA_CTHD");
-                //for(int i = 0; i < results.Rows.Count; i++)
-                //{
-                //    cTHDs.Add(new CTHD
-                //    {
-                //        sttSanPham = (i+1).ToString(),
-                //        productID = results.Rows[i][0].ToString(),
-                //        productName = results.Rows[i][1].ToString(),
-                //        productQuantity = int.Parse(results.Rows[i][2].ToString()),
-                //        productPrice = double.Parse(results.Rows[i][3].ToString()),
-                //        productTotalMoney = double.Parse(results.Rows[i][4].ToString())
-                //    });
-                //}
-                ////Database results1 = new Database("RESULT", "select sum(TRIGIA) as TOTALPRICE from TEMPDATA_CTHD");
-                ////long total = long.Parse(results1.Rows[0][0].ToString());
-                ////txtblckTotalMoney.Text = GetTotal().ToString();//total.ToString();
-                //orderDetailsDataGrid.ItemsSource = cTHDs;
-                //foreach(var item in ChooseProduct.cthdList)
-                //{
-                //    cTHDs.Add(item);
-                //}
                 orderDetailsDataGrid.ItemsSource = cTHDs;
                 cTHDs1 = cTHDs;
-                //txtblckTotalMoney.Text = GetSumOfPrice().ToString();
                 RaisePropertyChanged(nameof(GetTotal));
             }
             catch (Exception ex)
@@ -260,7 +154,6 @@ namespace FlowerShopManagementSystem.Orders
         {
             try
             {
-                //cTHDs = new List<CTHD>();
                 if (ChooseProduct.isListEmpty)
                 {
                     cTHDs = new List<CTHD>();
@@ -270,11 +163,6 @@ namespace FlowerShopManagementSystem.Orders
                     cTHDs = ChooseProduct.cthdList;
                 }
                 LoadData(cTHDs);
-                //Database results1 = new Database("RESULT", "select sum(TRIGIA) as TOTALPRICE from TEMPDATA_CTHD");
-                //long total = long.Parse(results1.Rows[0][0].ToString());
-                ////txtblckTotalMoney.Text = GetTotal().ToString();
-                //txtblckTotalMoney.Text = total.ToString();
-                //txtblckTotalMoney.Text = ChooseProduct.total.ToString();
             }
             catch (Exception ex)
             {
@@ -312,15 +200,8 @@ namespace FlowerShopManagementSystem.Orders
             findNotify.Visibility = Visibility.Hidden;
         }
 
-        //private void btnProductIn4_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Products.ViewProductDetails viewProductDetails = new Products.ViewProductDetails();
-        //    viewProductDetails.ShowDialog();
-        //}
-
         private void btnEditProductIn4_Click(object sender, RoutedEventArgs e)
         {
-            //cTHDs1 = cTHDs;
             ProductIn4 productIn4 = new ProductIn4();
 
             productIn4.selectedItem = orderDetailsDataGrid.SelectedIndex;
@@ -331,13 +212,8 @@ namespace FlowerShopManagementSystem.Orders
             productIn4.txtblckProductName.Text = ct.productName;
             productIn4.txtblckProductPrice.Text = ct.productPrice.ToString();
             productIn4.tb_main.Text = ct.productQuantity.ToString();
-            //productIn4.priceTB.Text = ct.productPrice.ToString();
             Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
             Database results = new Database("RESULT", "select HINH_ANH from SAN_PHAM where MASP = '" + ct.productID + "'");
-            /*
-             * string productImage = selectedProduct.productImage.Trim();
-            string[] imageParts = productImage.Split('/');
-             */
             productIn4.viewProductImage.Source = new BitmapImage(new Uri(@"../../Products/Product Image/" + results.Rows[0][0].ToString(), UriKind.Relative));
             productIn4.ShowDialog();
             ReloadDatagrid(ProductIn4._cthd);
@@ -365,21 +241,6 @@ namespace FlowerShopManagementSystem.Orders
 
         private void AddInvoice2()
         {
-            //if(ChooseProduct.cthdList == null && cTHDs == null)
-            //{
-            //    MessageBox.Show("The order must not be empty!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //}
-            //else
-            //{
-            //    if (cTHDs != null)
-            //    {
-            //        Add_cTHDs(cTHDs);
-            //    }
-            //    else if (ChooseProduct.cthdList != null)
-            //    {
-            //        Add_cthdList(ChooseProduct.cthdList);
-            //    }
-            //}
             if (ChooseProduct.cthdList == null)
             {
                 MessageBox.Show("The order must not be empty!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -408,13 +269,9 @@ namespace FlowerShopManagementSystem.Orders
                         sqlConnection.Open();
                         cmd.InsertCommand.ExecuteNonQuery();
                     }
-                    //MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //Close();
-                    //AddListOfInvoiceDetails();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                     if(tbxEmployeeID.Text.Length > 5 || tbxEmployeeID.Text.Length < 5)
                     {
                         MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -457,13 +314,9 @@ namespace FlowerShopManagementSystem.Orders
                     sqlConnection.Open();
                     cmd.InsertCommand.ExecuteNonQuery();
                 }
-                //MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                //Close();
-                //AddListOfInvoiceDetails();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 if (tbxEmployeeID.Text.Length > 5 || tbxEmployeeID.Text.Length < 5)
                 {
                     MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -503,13 +356,9 @@ namespace FlowerShopManagementSystem.Orders
                     sqlConnection.Open();
                     cmd.InsertCommand.ExecuteNonQuery();
                 }
-                //MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                //Close();
-                //AddListOfInvoiceDetails();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 if (tbxEmployeeID.Text.Length > 5 || tbxEmployeeID.Text.Length < 5)
                 {
                     MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -548,37 +397,10 @@ namespace FlowerShopManagementSystem.Orders
                     }
                 }
             }
-
-            //for (int i = 0; i < cTHDs.Count; i++)
-            //{
-            //    AddInvoiceDetails(cTHDs[i]);
-            //}
         }
 
         private void AddListOfInvoiceDetails2()
         {
-            //if (ChooseProduct.cthdList == null && cTHDs == null)
-            //{
-            //    MessageBox.Show("Cannot add an empty list!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //}
-            //else
-            //{
-            //    if(cTHDs != null)
-            //    {
-            //        foreach (var item in cTHDs)
-            //        {
-            //            AddInvoiceDetails(item);
-            //        }
-            //    }
-            //    else if (ChooseProduct.cthdList != null)
-            //    {
-            //        foreach (var item in ChooseProduct.cthdList)
-            //        {
-            //            AddInvoiceDetails(item);
-            //        }
-            //    }
-            //}
-
             if (ChooseProduct.cthdList == null)
             {
                 MessageBox.Show("Cannot add an empty list!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -590,11 +412,6 @@ namespace FlowerShopManagementSystem.Orders
                     AddInvoiceDetails(item);
                 }
             }
-
-            //for (int i = 0; i < cTHDs.Count; i++)
-            //{
-            //    AddInvoiceDetails(cTHDs[i]);
-            //}
         }
 
         private void AddInvoiceDetails(CTHD ct)
@@ -627,15 +444,6 @@ namespace FlowerShopManagementSystem.Orders
             double total = 0;
             try
             {
-                //using (var sqlConnection = new SqlConnection(Database.connection))
-                //using (var cmd = new SqlDataAdapter())
-                //using (var insertCommand = new SqlCommand("delete from TEMPDATA_CTHD"))
-                //{
-                //    insertCommand.Connection = sqlConnection;
-                //    cmd.InsertCommand = insertCommand;
-                //    sqlConnection.Open();
-                //    cmd.InsertCommand.ExecuteNonQuery();
-                //}
                 foreach (var item in cTHDs)
                 {
                     total += double.Parse(item.productTotalMoney.ToString());
@@ -663,7 +471,5 @@ namespace FlowerShopManagementSystem.Orders
         public double productPrice { get; set; }
         public int productQuantity { get; set; }
         public double productTotalMoney { get; set; }
-
-
     }
 }

@@ -1,19 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Accounts
 {
@@ -72,9 +64,7 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void cbbAccountPriority_DropDownOpened(object sender, EventArgs e)
         {
-            //cbbAccountPriority.Background = Brushes.LightGray;
             notify.Visibility = Visibility.Hidden;
-
         }
 
 
@@ -161,9 +151,8 @@ namespace FlowerShopManagementSystem.Accounts
                 MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 if(tbxEmployeeID.Text.Length < 5 || tbxEmployeeID.Text.Length > 5)
                 {
                     MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Suppliers
 {
@@ -130,9 +121,8 @@ namespace FlowerShopManagementSystem.Suppliers
                 MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 if (tbxEditSupplierID.Text.Length < 6 || tbxEditSupplierID.Text.Length > 6)
                 {
                     MessageBox.Show("Error:\nSupplier's ID must not have more/less than 6 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);

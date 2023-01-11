@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Orders
 {
@@ -254,29 +247,6 @@ namespace FlowerShopManagementSystem.Orders
         {
             try
             {
-                //var ct = CreateNewOrder.cTHDs1.Where(x => x.productID == txtblckProductID.Text).FirstOrDefault();
-                //if (ct != null)
-                //{
-                //    ct.productID = txtblckProductID.Text;
-                //    ct.productName = txtblckProductName.Text;
-                //    ct.productPrice = double.Parse(txtblckProductPrice.Text.ToString());
-                //    ct.productQuantity = int.Parse(tb_main.Text.ToString());
-                //    ct.productTotalMoney = Calculate;
-                //}
-
-
-                //for (int i = 0; i < _cthd.Count; i++)
-                //{
-                //    if (i == selectedItem)
-                //    {
-                //        _cthd[i].productID = txtblckProductID.Text;
-                //        _cthd[i].productName = txtblckProductName.Text;
-                //        _cthd[i].productPrice = double.Parse(txtblckProductPrice.Text.ToString());
-                //        _cthd[i].productQuantity = int.Parse(tb_main.Text.ToString());
-                //        _cthd[i].productTotalMoney = Calculate;
-                //    }
-                //}
-
                 int quantity = int.Parse(tb_main.Text.ToString());
                 double price = double.Parse(txtblckProductPrice.Text.ToString());
                 double totalMoney = quantity * price;

@@ -1,14 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem
 {
@@ -37,15 +29,11 @@ namespace FlowerShopManagementSystem
             Dashboard.DashboardView dashboard = new Dashboard.DashboardView();
             frame.Content = dashboard;
             isSelected = Dashboard;
-            //avatar.ImageSource = new BitmapImage(new System.Uri("pack://application:,,,/Images/Person.jpg"));
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //if (e.ChangedButton == MouseButton.Left)
-            //{
-            //    this.DragMove();
-            //}
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,10 +43,6 @@ namespace FlowerShopManagementSystem
 
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Login login = new Login();
-            //login.Show();
-            //this.Close();
-
             NotificationBox.LogoutConfirmationBox logoutConfirmationBox = new NotificationBox.LogoutConfirmationBox();
             logoutConfirmationBox.ShowDialog();
 

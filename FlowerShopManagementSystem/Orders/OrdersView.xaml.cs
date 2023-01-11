@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlowerShopManagementSystem.Orders
 {
@@ -112,7 +103,6 @@ namespace FlowerShopManagementSystem.Orders
                 }
                 else
                 {
-                    //MessageBox.Show("Please wait...", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                     EditOrder edit = new EditOrder(hd);
                     LoadEditScreen(edit);
                 }
@@ -148,27 +138,6 @@ namespace FlowerShopManagementSystem.Orders
                 }
                 else
                 {
-                    //MessageBox.Show("Please wait...", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //NotificationBox.PaymentConfirmation confirmation = new NotificationBox.PaymentConfirmation();
-                    //confirmation.ShowDialog();
-                    //if(NotificationBox.PaymentConfirmation.isBtnConfirmClicked)
-                    //{
-                    //    //HOA_DON selectedHD = (HOA_DON)ordersDataGrid.SelectedItem;
-                    //    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                    //    using (var sqlConnection = new SqlConnection(Database.connection))
-                    //    using (var cmd = new SqlDataAdapter())
-                    //    using (var insertCommand = new SqlCommand(
-                    //        "update HOA_DON " +
-                    //        "set TINHTRANG = 'Paid' " +
-                    //        "where MAHD = '" + hd.MAHD + "'"))
-                    //    {
-                    //        insertCommand.Connection = sqlConnection;
-                    //        cmd.InsertCommand = insertCommand;
-                    //        sqlConnection.Open();
-                    //        cmd.InsertCommand.ExecuteNonQuery();
-                    //    }
-                    //    MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //}
                     LoadViewInvoiceScreen(hd);
                 }
             }
@@ -198,8 +167,6 @@ namespace FlowerShopManagementSystem.Orders
                     });
 
                 }
-                //ordersDataGrid.ItemsSource = hoadons;
-                //txtOrdersOneOf.Text = "1 of " + hoadons.Count.ToString();
                 view = new Resources.PagingCollectionView(hoadons, 5);
 
                 this.DataContext = view;

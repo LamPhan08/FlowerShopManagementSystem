@@ -30,9 +30,6 @@ namespace FlowerShopManagementSystem.Customers
             Customers.AddCustomerForm addCustomerForm = new Customers.AddCustomerForm();
             addCustomerForm.ShowDialog();
             ReloadData(customers);
-
-            //Customers.ViewCustomerDetails addCustomerForm = new Customers.ViewCustomerDetails();
-            //addCustomerForm.ShowDialog();
         }
 
         private void btnEditCustomer_Click(object sender, RoutedEventArgs e)
@@ -132,7 +129,6 @@ namespace FlowerShopManagementSystem.Customers
                     });
                 }
 
-                //customersDataGrid.ItemsSource = customers;
                 view = new Resources.PagingCollectionView(customers, 2);
 
                 this.DataContext = view;
@@ -150,7 +146,6 @@ namespace FlowerShopManagementSystem.Customers
             {
                 customers = new List<Customer>();
                 LoadData(customers);
-                //tbxCustomersOneOf.Text = "1 of " + customers.Count.ToString();
             }
             catch (Exception ex)
             {
