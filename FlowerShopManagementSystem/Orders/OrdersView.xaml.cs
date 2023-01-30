@@ -167,7 +167,21 @@ namespace FlowerShopManagementSystem.Orders
                     });
 
                 }
-                view = new Resources.PagingCollectionView(hoadons, 5);
+
+                if (hoadons.Count == 0)
+                {
+                    ordersCount.Text = "There are no Orders!";
+                }
+                else if (hoadons.Count == 1)
+                {
+                    ordersCount.Text = hoadons.Count.ToString() + " Order";
+                }
+                else
+                {
+                    ordersCount.Text = hoadons.Count.ToString() + " Orders";
+                }
+
+                view = new Resources.PagingCollectionView(hoadons, 10);
 
                 this.DataContext = view;
                 ordersDataGrid.ItemsSource = view;

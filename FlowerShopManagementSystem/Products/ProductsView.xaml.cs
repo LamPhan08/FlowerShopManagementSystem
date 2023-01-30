@@ -121,7 +121,21 @@ namespace FlowerShopManagementSystem.Products
                         productImage = "/Products/Product Image/" + results.Rows[i][6].ToString()
                     });
                 }
-                view = new Resources.PagingCollectionView(products, 4);
+                
+                if (products.Count == 0)
+                {
+                    productsCount.Text = "There are no Products!";
+                }
+                else if (products.Count == 1)
+                {
+                    productsCount.Text = products.Count.ToString() + " Product";
+                }
+                else
+                {
+                    productsCount.Text = products.Count.ToString() + " Products";
+                }
+
+                view = new Resources.PagingCollectionView(products, 10);
 
                 this.DataContext = view;
                 ListProducts.ItemsSource = view;

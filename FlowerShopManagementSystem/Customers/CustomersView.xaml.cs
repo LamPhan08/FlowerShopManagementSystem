@@ -129,7 +129,20 @@ namespace FlowerShopManagementSystem.Customers
                     });
                 }
 
-                view = new Resources.PagingCollectionView(customers, 2);
+                if (customers.Count == 0)
+                {
+                    customersCount.Text = "There are no Customers!";
+                }
+                else if (customers.Count == 1)
+                {
+                    customersCount.Text = customers.Count.ToString() + " Customer";
+                }
+                else
+                {
+                    customersCount.Text = customers.Count.ToString() + " Customers";
+                }
+
+                view = new Resources.PagingCollectionView(customers, 10);
 
                 this.DataContext = view;
                 customersDataGrid.ItemsSource = view;

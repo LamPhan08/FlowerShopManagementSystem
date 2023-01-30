@@ -160,7 +160,7 @@
 
                 <!--<TextBox x:Name="tbxCustomerRegistrationDate" FontWeight="Medium"/>-->
 
-                <DatePicker x:Name="dpkRegistrationDate" Focusable="False" materialDesign:HintAssist.Hint="Select Working Date"
+                <DatePicker x:Name="dpkRegistrationDate" Focusable="False" materialDesign:HintAssist.Hint="Select Registration Date"
                                     FontSize="15" FontFamily="Sitka Subheading" FontWeight="SemiBold" CalendarOpened="dpkRegistrationDate_CalendarOpened">
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox">

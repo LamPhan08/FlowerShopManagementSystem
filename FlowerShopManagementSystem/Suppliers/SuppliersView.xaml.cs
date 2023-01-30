@@ -133,7 +133,21 @@ namespace FlowerShopManagementSystem.Suppliers
                         soDTNCC = results.Rows[i][3].ToString()
                     });
                 }
-                view = new Resources.PagingCollectionView(suppliers, 2);
+
+                if (suppliers.Count == 0)
+                {
+                    suppliersCount.Text = "There are no Suppliers!";
+                }
+                else if (suppliers.Count == 1)
+                {
+                    suppliersCount.Text = suppliers.Count.ToString() + " Supplier";
+                }
+                else
+                {
+                    suppliersCount.Text = suppliers.Count.ToString() + " Suppliers";
+                }
+
+                view = new Resources.PagingCollectionView(suppliers, 10);
 
                 this.DataContext = view;
                 suppliersDataGrid.ItemsSource = view;

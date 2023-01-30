@@ -141,7 +141,21 @@ namespace FlowerShopManagementSystem.Accounts
                         avatarTK = "/Accounts/AccountAvatar/" + results.Rows[i][7].ToString()
                     });
                 }
-                view = new Resources.PagingCollectionView(accounts, 2);
+
+                if (accounts.Count == 0)
+                {
+                    accountsCount.Text = "There are no Accounts!";
+                }
+                else if (accounts.Count == 1)
+                {
+                    accountsCount.Text = accounts.Count.ToString() + " Account";
+                }
+                else
+                {
+                    accountsCount.Text = accounts.Count.ToString() + " Accounts";
+                }
+
+                view = new Resources.PagingCollectionView(accounts, 10);
 
                 this.DataContext = view;
                 accountsDataGrid.ItemsSource = view;
