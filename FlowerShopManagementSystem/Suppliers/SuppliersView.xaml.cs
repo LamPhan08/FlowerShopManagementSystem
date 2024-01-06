@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using FlowerShopManagementSystem.Suppliers.StrategyForSupplier_CRUD;
 
 namespace FlowerShopManagementSystem.Suppliers
 {
@@ -15,14 +16,20 @@ namespace FlowerShopManagementSystem.Suppliers
     {
         internal List<Supplier> suppliers;
         private Resources.PagingCollectionView view;
+        ISupplierStrategy _strategy;
 
         public SuppliersView()
         {
             InitializeComponent();
-
+            _strategy = new DefaultSupplierStrategy();
             suppliers = new List<Supplier>();
-
+            
             LoadData(suppliers);
+        }
+
+        public void SetStrategy(ISupplierStrategy strategy)
+        {
+            _strategy = strategy;
         }
 
         private void btnEditSupplier_Click(object sender, RoutedEventArgs e)
@@ -59,17 +66,8 @@ namespace FlowerShopManagementSystem.Suppliers
                 try
                 {
                     Supplier supplier = (Supplier)suppliersDataGrid.SelectedItem as Supplier;
-                    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                    using (var sqlConnection = new SqlConnection(Database.connection))
-                    using (var cmd = new SqlDataAdapter())
-                    using (var insertCommand = new SqlCommand("delete from NHA_CUNG_CAP where TENNCC = '" + supplier.tenNCC + "'"))
-                    {
-                        insertCommand.Connection = sqlConnection;
-                        cmd.InsertCommand = insertCommand;
-                        sqlConnection.Open();
-                        cmd.InsertCommand.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                    SetStrategy(new DeleteSupplierStrategy(new SuppliersView()));
+                    _strategy.Execute(supplier);
                 }
                 catch (Exception ex)
                 {
@@ -88,32 +86,8 @@ namespace FlowerShopManagementSystem.Suppliers
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            try
-            {
-                ViewSupplierDetails viewSupplierDetails = new ViewSupplierDetails();
-                Supplier selectedSupplier = (Supplier)suppliersDataGrid.SelectedItem as Supplier;
-                string supplierID = selectedSupplier.maNCC.Trim(),
-                    supplierName = selectedSupplier.tenNCC.Trim(),
-                    supplierAddress = selectedSupplier.diaChiNCC.ToString();
-                string[] addressParts = supplierAddress.Split(',');
-                string street = addressParts[0].Trim(),
-                    ward = addressParts[1].Trim(),
-                    district = addressParts[2].Trim(),
-                    city = addressParts[3].Trim();
-                string phoneNumber = selectedSupplier.soDTNCC.Trim();
-                viewSupplierDetails.txtblckSupplierID.Text = supplierID;
-                viewSupplierDetails.txtblckSupplierName.Text = supplierName;
-                viewSupplierDetails.txtblckSupplierPhoneNumber.Text = phoneNumber;
-                viewSupplierDetails.txtblckSupplierStreet.Text = street;
-                viewSupplierDetails.txtblckSupplierWard.Text = ward;
-                viewSupplierDetails.txtblckSupplierDistrict.Text = district;
-                viewSupplierDetails.txtblckSupplierCity.Text = city;
-                viewSupplierDetails.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            SetStrategy(new ReadSupplierStrategy());
+            _strategy.Execute((Supplier)suppliersDataGrid.SelectedItem as Supplier);
         }
 
         public void LoadData(List<Supplier> suppliers)
@@ -190,14 +164,5 @@ namespace FlowerShopManagementSystem.Suppliers
         {
             view.MoveToLastPage();
         }
-    }
-
-    public class Supplier
-    {
-        public string sttNCC { get; set; }
-        public string maNCC { get; set; }
-        public string tenNCC { get; set; }
-        public string diaChiNCC { get; set; }
-        public string soDTNCC { get; set; }
     }
 }

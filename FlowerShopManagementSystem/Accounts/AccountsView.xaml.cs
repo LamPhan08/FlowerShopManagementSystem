@@ -1,11 +1,10 @@
-﻿using FlowerShopManagementSystem.NotificationBox;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
+using FlowerShopManagementSystem.Accounts.CommandForAccount;
+using FlowerShopManagementSystem.Accounts.StrategyForAccount_CRUD;
 
 namespace FlowerShopManagementSystem.Accounts
 {
@@ -14,110 +13,58 @@ namespace FlowerShopManagementSystem.Accounts
     /// </summary>
     public partial class AccountsView : Page
     {
-        List<Account> accounts;
+        internal List<Account> accounts;
         public static Account accountOldInfo;
-        PasswordGenerator generator = new PasswordGenerator();
+        internal PasswordGenerator generator = new PasswordGenerator();
         Resources.PagingCollectionView view;
+
+        private IAccountViewCommand _addAccountViewCommand;
+        private IAccountViewCommand _editAccountViewCommand;
+        //private IAccountCommand _deleteAccountCommand;
+
+
+        IAccountStrategy _strategy;
 
         public AccountsView()
         {
             InitializeComponent();
+            // Initialize commands
+            _addAccountViewCommand = new AddAccountViewCommand(this);
+            _editAccountViewCommand = new EditAccountViewCommand(this);
+            //_deleteAccountCommand = new DeleteAccountCommand(this);
 
+            _strategy = new DefaultAccountStrategy();
             accounts = new List<Account>();
             LoadData(accounts);
         }
 
+        public void SetStrategy(IAccountStrategy strategy)
+        {
+            _strategy = strategy;
+        }
+
         private void btnAddAccount_Click(object sender, RoutedEventArgs e)
         {
-            AddAccountForm accountForm = new AddAccountForm();
-            accountForm.tbxPassword.Text = generator.GeneratePassword();
-            accountForm.ShowDialog();
-            ReloadData(accounts);
+            _addAccountViewCommand.Execute();
         }
 
         private void btnEditAccount_Click(object sender, RoutedEventArgs e)
         {
-            EditAccountForm editAccountForm = new EditAccountForm();
-            accountOldInfo = (Account)accountsDataGrid.SelectedItem;
-            string employeeID = accountOldInfo.employeeCode.Trim(),
-                    employeeName = accountOldInfo.employeeName.Trim(),
-                    employeePhoneNumber = accountOldInfo.employeePhone.Trim(),
-                    employeeWorkingDate = accountOldInfo.workingDate.Trim(),
-                    employeeUsername = accountOldInfo.username.Trim(),
-                    employeePassword = accountOldInfo.password.Trim();
-            string employeeAvatar = accountOldInfo.avatarTK.Trim();
-            string[] imageNameParts = employeeAvatar.Split('/');
-            string employeePriority = accountOldInfo.priority;
-            editAccountForm.tbxEditEmployeeID.Text = employeeID;
-            editAccountForm.tbxEditEmployeeName.Text = employeeName;
-            editAccountForm.tbxEditEmployeePhoneNumber.Text = employeePhoneNumber;
-            editAccountForm.dpkEditWorkingDate.Text = employeeWorkingDate;
-            editAccountForm.tbxEditUsername.Text = employeeUsername;
-            editAccountForm.tbxEditPassword.Text = employeePassword;
-            editAccountForm.editavatar.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + imageNameParts[imageNameParts.Length - 1], UriKind.Relative));
-            if (employeePriority == "0")
-            {
-                editAccountForm.cbbEditAccountPriority.Text = "Employee";
-            }
-            else
-            {
-                editAccountForm.cbbEditAccountPriority.Text = "Manager";
-            }
-            editAccountForm.ShowDialog();
-            ReloadData(accounts);
+            _editAccountViewCommand.Execute();
         }
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            DeleteConfirmationBox deleteConfirmationBox = new DeleteConfirmationBox();
-            deleteConfirmationBox.ShowDialog();
-            if (DeleteConfirmationBox.isDeleteBtnClicked)
-            {
-                try
-                {
-                    Account account = (Account)accountsDataGrid.SelectedItem;
-                    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                    using (var sqlConnection = new SqlConnection(Database.connection))
-                    using (var cmd = new SqlDataAdapter())
-                    using (var insertCommand = new SqlCommand("delete from NHAN_VIEN where MANV = '" + account.employeeCode + "'"))
-                    {
-                        insertCommand.Connection = sqlConnection;
-                        cmd.InsertCommand = insertCommand;
-                        sqlConnection.Open();
-                        cmd.InsertCommand.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            ReloadData(accounts);
+            //_deleteAccountCommand.Execute();
+            SetStrategy(new DeleteAccountStrategy(new AccountsView()));
+            _strategy.Execute((Account)accountsDataGrid.SelectedItem, "", "");
         }
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ViewAccountDetails viewAccount = new ViewAccountDetails();
-            Account selectedAccount = (Account)accountsDataGrid.SelectedItem as Account;
-            viewAccount.txtblckEmployeeID.Text = selectedAccount.employeeCode;
-            viewAccount.txtblckEmployeeName.Text = selectedAccount.employeeName;
-            viewAccount.txtblckEmployeePhone.Text = selectedAccount.employeePhone;
-            viewAccount.txtblckWorkingDate.Text = selectedAccount.workingDate;
-            viewAccount.txtblckUsername.Text = selectedAccount.username;
-            viewAccount.txtblckPassword.Text = selectedAccount.password;
-            string employeeAvatar = selectedAccount.avatarTK.Trim();
-            string[] imageParts = employeeAvatar.Split('/');
-            viewAccount.avatarIB.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + imageParts[imageParts.Length - 1], UriKind.Relative));
-            if (selectedAccount.priority == "0")
-            {
-                viewAccount.txtblckPriority.Text = "Employee";
-            }
-            else
-            {
-                viewAccount.txtblckPriority.Text = "Manager";
-            }
-            viewAccount.ShowDialog();
+            SetStrategy(new ReadAccountStrategy());
+            _strategy.Execute((Account)accountsDataGrid.SelectedItem as Account, "", "");
+            ReloadData(accounts);
         }
 
         public void LoadData(List<Account> accounts)
@@ -198,18 +145,5 @@ namespace FlowerShopManagementSystem.Accounts
         {
             view.MoveToLastPage();
         }
-    }
-
-    public class Account
-    {
-        public int sttTK { get; set; }
-        public string employeeCode { get; set; }
-        public string employeeName { get; set; }
-        public string employeePhone { get; set; }
-        public string workingDate { get; set; }
-        public string avatarTK { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string priority { get; set; }
     }
 }
