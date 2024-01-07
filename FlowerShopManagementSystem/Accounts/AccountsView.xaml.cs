@@ -20,7 +20,8 @@ namespace FlowerShopManagementSystem.Accounts
 
         private IAccountViewCommand _addAccountViewCommand;
         private IAccountViewCommand _editAccountViewCommand;
-        //private IAccountCommand _deleteAccountCommand;
+
+        private AccountInvoker _accountInvoker;
 
 
         IAccountStrategy _strategy;
@@ -28,12 +29,19 @@ namespace FlowerShopManagementSystem.Accounts
         public AccountsView()
         {
             InitializeComponent();
-            // Initialize commands
-            _addAccountViewCommand = new AddAccountViewCommand(this);
-            _editAccountViewCommand = new EditAccountViewCommand(this);
-            //_deleteAccountCommand = new DeleteAccountCommand(this);
+            #region Command - Client
+            AccountReceiver account = new AccountReceiver(this);
 
+            _addAccountViewCommand = new AddAccountViewCommand(account);
+            _editAccountViewCommand = new EditAccountViewCommand(account);
+
+            _accountInvoker = new AccountInvoker(_addAccountViewCommand, _editAccountViewCommand);
+            #endregion
+
+            #region Strategy - Client
             _strategy = new DefaultAccountStrategy();
+            #endregion
+
             accounts = new List<Account>();
             LoadData(accounts);
         }
@@ -45,12 +53,14 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void btnAddAccount_Click(object sender, RoutedEventArgs e)
         {
-            _addAccountViewCommand.Execute();
+            //_addAccountViewCommand.Execute();
+            _accountInvoker.viewAddAccountForm();
         }
 
         private void btnEditAccount_Click(object sender, RoutedEventArgs e)
         {
-            _editAccountViewCommand.Execute();
+            //_editAccountViewCommand.Execute();
+            _accountInvoker.viewEditAccountForm();
         }
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)

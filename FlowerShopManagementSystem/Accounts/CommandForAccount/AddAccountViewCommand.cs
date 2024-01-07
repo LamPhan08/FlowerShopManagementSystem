@@ -8,18 +8,14 @@ namespace FlowerShopManagementSystem.Accounts.CommandForAccount
 {
     public class AddAccountViewCommand : IAccountViewCommand
     {
-        private AccountsView _accountsView;
-        public AddAccountViewCommand(AccountsView accountsView)
+        private AccountReceiver account;
+        public AddAccountViewCommand(AccountReceiver account)
         {
-            _accountsView = accountsView;
+            this.account = account;
         }
         public void Execute()
         {
-            // Logic to add an account
-            AddAccountForm accountForm = new AddAccountForm();
-            accountForm.tbxPassword.Text = _accountsView.generator.GeneratePassword();
-            accountForm.ShowDialog();
-            _accountsView.ReloadData(_accountsView.accounts);
+            account.openAddAccountForm();
         }
     }
 }
