@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShopManagementSystem.Orders.OrderState;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
@@ -13,11 +14,20 @@ namespace FlowerShopManagementSystem.Orders
     {
         List<CTHD> cthds;
         HOA_DON hd1;
+        private IOrderState orderState;
         public ViewOrder(HOA_DON hd)
         {
             InitializeComponent();
             cthds = new List<CTHD>();
             hd1 = new HOA_DON(hd);
+            if(hd.TINHTRANG == "Paid")
+            {
+                orderState = new PaidState();
+            }
+            else
+            {
+                orderState = new UnpaidState();
+            }
             LoadData(cthds, hd1);
         }
 
@@ -35,8 +45,7 @@ namespace FlowerShopManagementSystem.Orders
         {
             try
             {
-                Invoice invoice = new Invoice(hd1);
-                LoadPrintInvoiceScreen(invoice, hd1);
+                orderState.PrintInvoice(this, hd1);
             }
             catch (Exception ex)
             {
@@ -44,46 +53,9 @@ namespace FlowerShopManagementSystem.Orders
             }
         }
 
-        private void LoadPrintInvoiceScreen(Invoice invoice, HOA_DON hd)
-        {
-            invoice.txbBillId.Text = hd.MAHD;
-            invoice.txbInvoiceDate.Text = hd.NGHD;
-            Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-            Database results = new Database("RESULT", "select * from KHACH_HANG where SODT_KH = '" + hd.SODT_KH + "'"),
-                results1 = new Database("RESULT", "select * from NHAN_VIEN where MANV = '" + hd.MANV + "'");
-            invoice.txbCustomerName.Text = results.Rows[0][1].ToString();
-            invoice.txbCustomerPhoneNumber.Text = hd.SODT_KH;
-            invoice.txbTotal.Text = hd.TRIGIA.ToString();
-            invoice.txbEmployeeName.Text = results1.Rows[0][1].ToString();
-            invoice.ShowDialog();
-        }
-
         private void btnPayment_Click(object sender, RoutedEventArgs e)
         {
-            NotificationBox.PaymentConfirmation confirmation = new NotificationBox.PaymentConfirmation();
-            confirmation.ShowDialog();
-            if (NotificationBox.PaymentConfirmation.isBtnConfirmClicked)
-            {
-                Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                using (var sqlConnection = new SqlConnection(Database.connection))
-                using (var cmd = new SqlDataAdapter())
-                using (var insertCommand = new SqlCommand(
-                    "update HOA_DON " +
-                    "set TINHTRANG = 'Paid' " +
-                    "where MAHD = '" + hd1.MAHD + "'"))
-                {
-                    insertCommand.Connection = sqlConnection;
-                    cmd.InsertCommand = insertCommand;
-                    sqlConnection.Open();
-                    cmd.InsertCommand.ExecuteNonQuery();
-                }
-                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                btnPayment.Visibility = Visibility.Hidden;
-                orderStatusPanel.Visibility = Visibility.Visible;
-
-                btnPrintInvoice.Opacity = 1;
-                btnPrintInvoice.IsEnabled = true;
-            }
+            orderState.HandlePayment(this, hd1);
         }
 
         private void LoadData(List<CTHD> cthds, HOA_DON hd)

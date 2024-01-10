@@ -119,7 +119,20 @@ namespace FlowerShopManagementSystem.Customers
                 for (int i = 0; i < results.Rows.Count; i++)
                 {
 
-                    dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][4].ToString()));
+                    //dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][3].ToString()));
+                    string inputDateString = results.Rows[i][4].ToString();
+                    string dateToFormat;
+
+                    DateTime dateTimeValue;
+                    if (DateTime.TryParse(results.Rows[i][4].ToString(), out dateTimeValue))
+                    {
+                        dateToFormat = dateTimeValue.ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        dateToFormat = "Invalid Date";
+                    }
+
 
                     customers.Add(new Customer
                     {
@@ -128,7 +141,7 @@ namespace FlowerShopManagementSystem.Customers
                         address = results.Rows[i][2].ToString(),
                         phone = results.Rows[i][0].ToString(),
 
-                        ngayDK = results.Rows[i][4].ToString().Substring(0, 10),
+                        ngayDK = dateToFormat,
 
                     });
                 }
