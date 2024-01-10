@@ -46,13 +46,6 @@ namespace FlowerShopManagementSystem.Orders
             Database results = new Database("RESULT", "select * from KHACH_HANG where SODT_KH = '" + hd.SODT_KH + "'");
             view.txtblckOrderCustomerName.Text = results.Rows[0][1].ToString();
             view.txtblckTotalMoney.Text = hd.TRIGIA.ToString();
-            if(hd.TINHTRANG == "Paid")
-            {
-                view.btnPayment.IsEnabled = false;
-                view.btnPayment.Opacity = 0.3;
-                view.btnPrintInvoice.IsEnabled = true;
-                view.btnPrintInvoice.Opacity = 1;
-            }
             view.ShowDialog();
         }
 

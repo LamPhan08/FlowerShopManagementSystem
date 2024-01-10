@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FlowerShopManagementSystem.Customers.CustomerBuilder;
+using System;
 using System.Data.SqlClient;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +14,7 @@ namespace FlowerShopManagementSystem.Customers
     /// </summary>
     public partial class AddCustomerForm : Window
     {
+        NewCustomerBuilder builder;
         CustomersView customersView;
         string finalAddress;
         public AddCustomerForm()
@@ -39,7 +42,27 @@ namespace FlowerShopManagementSystem.Customers
             else
             {
                 notify.Visibility = Visibility.Collapsed;
-                AddCustomer();
+                ComboBoxItem districtCBI = (ComboBoxItem)cbbDistrict.SelectedItem,
+                            cityCBI = (ComboBoxItem)cbbCity.SelectedItem,
+                            provinceCBI = (ComboBoxItem)cbbProvince.SelectedItem;
+                string district = districtCBI.Content.ToString(),
+                        city = cityCBI.Content.ToString(),
+                        province = provinceCBI.Content.ToString();
+                if (province == "(Empty)")
+                {
+                    finalAddress = tbxCustomerHouseNumber.Text.ToString() + ", " + tbxCustomerStreet.Text.ToString() + ", " + district + ", " + city;
+                }
+                else
+                {
+                    finalAddress = tbxCustomerHouseNumber.Text.ToString() + ", " + tbxCustomerStreet.Text.ToString() + ", " + district + ", " + city + ", " + province;
+                }
+                builder = new NewCustomerConcreteBuilder();
+                builder.setName(tbxCustomerName.Text.ToString())
+                    .setAddress(finalAddress)
+                    .setPhone(tbxCustomerPhone.Text.ToString())
+                    .setNgayDK(dpkRegistrationDate.Text.ToString())
+                    .setDoanhSo("0");
+                AddCustomer(builder.build());
             }
         }
 
@@ -101,35 +124,16 @@ namespace FlowerShopManagementSystem.Customers
             notify.Visibility = Visibility.Hidden;
         }
 
-        private void AddCustomer()
+        private void AddCustomer(NewCustomer customer)
         {
             try
             {
                 customersView = new CustomersView();
-                Customer customer = new Customer();
-                customer.name = tbxCustomerName.Text.ToString();
-                ComboBoxItem districtCBI = (ComboBoxItem)cbbDistrict.SelectedItem,
-                            cityCBI = (ComboBoxItem)cbbCity.SelectedItem,
-                            provinceCBI = (ComboBoxItem)cbbProvince.SelectedItem;
-                string district = districtCBI.Content.ToString(),
-                        city = cityCBI.Content.ToString(),
-                        province = provinceCBI.Content.ToString();
-                if (province == "(Empty)")
-                {
-                    customer.address = tbxCustomerHouseNumber.Text.ToString() + ", " + tbxCustomerStreet.Text.ToString() + ", " + district + ", " + city;
-                    finalAddress = customer.address;
-                }
-                else
-                {
-                    customer.address = tbxCustomerHouseNumber.Text.ToString() + ", " + tbxCustomerStreet.Text.ToString() + ", " + district + ", " + city + ", " + province;
-                    finalAddress = customer.address;
-                }
-                customer.phone = tbxCustomerPhone.Text.ToString();
-                customer.ngayDK = dpkRegistrationDate.Text.ToString();
+
                 using (var sqlConnection = new SqlConnection(Database.connection))
                 using (var cmd = new SqlDataAdapter())
-                using (var insertCommand = new SqlCommand("insert into KHACH_HANG (SODT_KH, HOTEN, DIACHI, NGDK) " +
-                    "values ('" + customer.phone + "', '" + customer.name + "', '" + customer.address + "', '" + DateTime.Parse(customer.ngayDK) + "')"))
+                using (var insertCommand = new SqlCommand("insert into KHACH_HANG (SODT_KH, HOTEN, DIACHI, NGDK, DOANHSO) " +
+                    "values ('" + customer.phone + "', '" + customer.name + "', '" + customer.address + "', '" + DateTime.Parse(customer.ngayDK) + "', 0)"))
                 {
                     insertCommand.Connection = sqlConnection;
                     cmd.InsertCommand = insertCommand;
@@ -141,11 +145,11 @@ namespace FlowerShopManagementSystem.Customers
             }
             catch (Exception)
             {
-                if(tbxCustomerName.Text.Length > 40)
+                if (tbxCustomerName.Text.Length > 40)
                 {
                     MessageBox.Show("Error:\nCustomer's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                if(finalAddress.Length > 50)
+                if (finalAddress.Length > 50)
                 {
                     MessageBox.Show("Error:\nCustomer's address must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
