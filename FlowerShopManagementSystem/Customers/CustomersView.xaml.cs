@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -111,21 +112,24 @@ namespace FlowerShopManagementSystem.Customers
 
         public void LoadData(List<Customer> customers)
         {
-            string dateToFormat;
             try
             {
                 Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
                 Database results = new Database("RESULT", "select * from KHACH_HANG");
                 for (int i = 0; i < results.Rows.Count; i++)
                 {
+
                     dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][4].ToString()));
+
                     customers.Add(new Customer
                     {
                         sttKH = (i + 1).ToString(),
                         name = results.Rows[i][1].ToString(),
                         address = results.Rows[i][2].ToString(),
                         phone = results.Rows[i][0].ToString(),
+
                         ngayDK = results.Rows[i][4].ToString().Substring(0, 10),
+
                     });
                 }
 
