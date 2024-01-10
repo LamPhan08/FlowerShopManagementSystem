@@ -92,12 +92,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Accounts\Account.cs" />
     <Compile Include="Accounts\AddAccountForm.xaml.cs">
       <DependentUpon>AddAccountForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Accounts\CommandForAccount\AccountInvoker.cs" />
+    <Compile Include="Accounts\CommandForAccount\AccountReceiver.cs" />
+    <Compile Include="Accounts\CommandForAccount\AddAccountViewCommand.cs" />
+    <Compile Include="Accounts\CommandForAccount\EditAccountViewCommand.cs" />
+    <Compile Include="Accounts\CommandForAccount\IAccountViewCommand.cs" />
     <Compile Include="Accounts\EditAccountForm.xaml.cs">
       <DependentUpon>EditAccountForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Accounts\StrategyForAccount_CRUD\AddAccountStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_CRUD\DefaultAccountStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_CRUD\DeleteAccountStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_CRUD\EditAccountStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_CRUD\IAccountStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_CRUD\ReadAccountStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_ErrorHandling\DefaultErrorHandlingStrategy.cs" />
+    <Compile Include="Accounts\StrategyForAccount_ErrorHandling\IErrorHandlingStrategy.cs" />
     <Compile Include="Accounts\ViewAccountDetails.xaml.cs">
       <DependentUpon>ViewAccountDetails.xaml</DependentUpon>
     </Compile>
@@ -194,6 +208,13 @@
     <Compile Include="Suppliers\EditSupplierForm.xaml.cs">
       <DependentUpon>EditSupplierForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Suppliers\StrategyForSupplier_CRUD\AddSupplierStrategy.cs" />
+    <Compile Include="Suppliers\StrategyForSupplier_CRUD\DefaultSupplierStrategy.cs" />
+    <Compile Include="Suppliers\StrategyForSupplier_CRUD\DeleteSupplierStrategy.cs" />
+    <Compile Include="Suppliers\StrategyForSupplier_CRUD\EditSupplierStrategy.cs" />
+    <Compile Include="Suppliers\StrategyForSupplier_CRUD\ISupplierStrategy.cs" />
+    <Compile Include="Suppliers\StrategyForSupplier_CRUD\ReadSupplierStrategy.cs" />
+    <Compile Include="Suppliers\Supplier.cs" />
     <Compile Include="Suppliers\SuppliersView.xaml.cs">
       <DependentUpon>SuppliersView.xaml</DependentUpon>
     </Compile>

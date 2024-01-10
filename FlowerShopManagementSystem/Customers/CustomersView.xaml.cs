@@ -118,19 +118,8 @@ namespace FlowerShopManagementSystem.Customers
                 Database results = new Database("RESULT", "select * from KHACH_HANG");
                 for (int i = 0; i < results.Rows.Count; i++)
                 {
-                    //dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][3].ToString()));
-                    string inputDateString = results.Rows[i][4].ToString();
-                    string dateToFormat;
 
-                    DateTime dateTimeValue;
-                    if (DateTime.TryParse(results.Rows[i][4].ToString(), out dateTimeValue))
-                    {
-                        dateToFormat = dateTimeValue.ToString("dd/MM/yyyy");
-                    }
-                    else
-                    {
-                        dateToFormat = "Invalid Date";
-                    }
+                    dateToFormat = String.Format("{0:d}", DateTime.Parse(results.Rows[i][4].ToString()));
 
                     customers.Add(new Customer
                     {
@@ -138,7 +127,9 @@ namespace FlowerShopManagementSystem.Customers
                         name = results.Rows[i][1].ToString(),
                         address = results.Rows[i][2].ToString(),
                         phone = results.Rows[i][0].ToString(),
-                        ngayDK = dateToFormat,
+
+                        ngayDK = results.Rows[i][4].ToString().Substring(0, 10),
+
                     });
                 }
 

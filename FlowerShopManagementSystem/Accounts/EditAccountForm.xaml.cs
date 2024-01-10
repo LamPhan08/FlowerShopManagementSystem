@@ -1,11 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using FlowerShopManagementSystem.Accounts.StrategyForAccount_ErrorHandling;
+using FlowerShopManagementSystem.Accounts.StrategyForAccount_CRUD;
 
 namespace FlowerShopManagementSystem.Accounts
 {
@@ -16,15 +17,21 @@ namespace FlowerShopManagementSystem.Accounts
     {
         string imageToEdit, imageName;
         Account newAccountInfo;
+        private IErrorHandlingStrategy errorHandlingStrategy;
+        private IAccountStrategy _strategy;
 
         public EditAccountForm()
         {
             InitializeComponent();
-            
             notify.Visibility = Visibility.Hidden;
+            errorHandlingStrategy = new DefaultErrorHandlingStrategy(); // Set a default strategy
+            _strategy = new DefaultAccountStrategy();
+        }
+        public void SetAccountStrategy(IAccountStrategy strategy)
+        {
+            _strategy = strategy;
         }
 
-      
         private void btnBackEditEmployee_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -113,93 +120,8 @@ namespace FlowerShopManagementSystem.Accounts
 
         private void UpdateSupplier()
         {
-            try
-            {
-                newAccountInfo = new Account();
-                newAccountInfo.employeeCode = tbxEditEmployeeID.Text.ToString();
-                newAccountInfo.employeeName = tbxEditEmployeeName.Text.ToString();
-                newAccountInfo.employeePhone = tbxEditEmployeePhoneNumber.Text.ToString();
-                newAccountInfo.workingDate = dpkEditWorkingDate.Text.ToString();
-                newAccountInfo.username = tbxEditUsername.Text.ToString();
-                newAccountInfo.password = tbxEditPassword.Text.ToString();
-                if (imageToEdit != "")
-                {
-                    imageName = System.IO.Path.GetFileName(imageToEdit);
-                    newAccountInfo.avatarTK = imageName;
-                    if (!System.IO.File.Exists("../../Accounts/AccountAvatar/" + imageName))
-                    {
-                        System.IO.File.Copy(imageToEdit, "../../Accounts/AccountAvatar/" + imageName);
-                    }
-                }
-                ComboBoxItem priorityCBI = (ComboBoxItem)cbbEditAccountPriority.SelectedItem;
-                if (priorityCBI.Content.ToString() == "Manager")
-                {
-                    newAccountInfo.priority = "1";
-                }
-                else
-                {
-                    newAccountInfo.priority = "0";
-                }
-                if (newAccountInfo.avatarTK != AccountsView.accountOldInfo.avatarTK)
-                {
-                    using (var sqlConnection = new SqlConnection(Database.connection))
-                    using (var cmd = new SqlDataAdapter())
-                    using (var insertCommand = new SqlCommand(
-                        "update NHAN_VIEN " +
-                        "set HOTEN = '" + newAccountInfo.employeeName + "', SODT = '" + newAccountInfo.employeePhone + "', NGVL = '" + newAccountInfo.workingDate + "', USERNAME = '" + newAccountInfo.username + "', USER_PASSWORD = '" + newAccountInfo.password + "', USER_PRIORITY = '" + newAccountInfo.priority + "', AVATAR = '" + newAccountInfo.avatarTK + "' " +
-                        "where MANV = '" + newAccountInfo.employeeCode + "'"))
-                    {
-                        insertCommand.Connection = sqlConnection;
-                        cmd.InsertCommand = insertCommand;
-                        sqlConnection.Open();
-                        cmd.InsertCommand.ExecuteNonQuery();
-                    }
-                }
-                else
-                {
-                    using (var sqlConnection = new SqlConnection(Database.connection))
-                    using (var cmd = new SqlDataAdapter())
-                    using (var insertCommand = new SqlCommand(
-                        "update NHAN_VIEN " +
-                        "set HOTEN = '" + newAccountInfo.employeeName + "', SODT = '" + newAccountInfo.employeePhone + "', NGVL = '" + newAccountInfo.workingDate + "', USERNAME = '" + newAccountInfo.username + "', USER_PASSWORD = '" + newAccountInfo.password + "', USER_PRIORITY = '" + newAccountInfo.priority + "' " +
-                        "where MANV = '" + newAccountInfo.employeeCode + "'"))
-                    {
-                        insertCommand.Connection = sqlConnection;
-                        cmd.InsertCommand = insertCommand;
-                        sqlConnection.Open();
-                        cmd.InsertCommand.ExecuteNonQuery();
-                    }
-                }
-                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                Close();
-            }
-            catch (Exception)
-            {
-                if (tbxEditEmployeeID.Text.Length < 5 || tbxEditEmployeeID.Text.Length > 5)
-                {
-                    MessageBox.Show("Error:\nEmployee ID must not have more/less than 5 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (tbxEditEmployeeName.Text.Length > 40)
-                {
-                    MessageBox.Show("Error:\nEmployee's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (tbxEditEmployeePhoneNumber.Text.Length < 10 || tbxEditEmployeePhoneNumber.Text.Length > 11)
-                {
-                    MessageBox.Show("Error:\nEmployee ID must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (tbxEditUsername.Text.Length > 50)
-                {
-                    MessageBox.Show("Error:\nEmployee's username must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (tbxEditPassword.Text.Length > 50)
-                {
-                    MessageBox.Show("Error:\nEmployee's password must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (imageName.Length > 100)
-                {
-                    MessageBox.Show("Error:\nImage's name must not have more than 100 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
+            SetAccountStrategy(new EditAccountStrategy(this));
+            _strategy.Execute(newAccountInfo, imageToEdit, imageName);
         }
     }
 }
