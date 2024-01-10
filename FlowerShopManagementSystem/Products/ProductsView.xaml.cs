@@ -1,4 +1,5 @@
 ﻿using FlowerShopManagementSystem.NotificationBox;
+using FlowerShopManagementSystem.Products.ProductMementor;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,6 +17,7 @@ namespace FlowerShopManagementSystem.Products
         List<Product> products;
         public static Product selectedProduct;
         private Resources.PagingCollectionView view;
+        ProductRepository productRepository = new ProductRepository();
 
         public ProductsView()
         {
@@ -56,21 +58,22 @@ namespace FlowerShopManagementSystem.Products
                 {
                     Button btn = sender as Button;
                     Product selectedProduct = btn.DataContext as Product;
-                    Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
-                    using (var sqlConnection = new SqlConnection(Database.connection))
-                    using (var cmd = new SqlDataAdapter())
-                    using (var insertCommand = new SqlCommand("delete from SAN_PHAM where MASP = '" + selectedProduct.productCode + "'"))
-                    {
-                        insertCommand.Connection = sqlConnection;
-                        cmd.InsertCommand = insertCommand;
-                        sqlConnection.Open();
-                        cmd.InsertCommand.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //Database.connection = "Server=" + Database.connectionName + ";Database=FlowerShopManagement;Integrated Security=true";
+                    //using (var sqlConnection = new SqlConnection(Database.connection))
+                    //using (var cmd = new SqlDataAdapter())
+                    //using (var insertCommand = new SqlCommand("delete from SAN_PHAM where MASP = '" + selectedProduct.productCode + "'"))
+                    //{
+                    //    insertCommand.Connection = sqlConnection;
+                    //    cmd.InsertCommand = insertCommand;
+                    //    sqlConnection.Open();
+                    //    cmd.InsertCommand.ExecuteNonQuery();
+                    //}
+                    productRepository.DeleteProduct(selectedProduct);
+                    MessageBox.Show("Done! You can restore data before application application ", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error: Sản phẩm đang có trong hóa đơn không thể xóa", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             ReloadData(products);
@@ -178,16 +181,16 @@ namespace FlowerShopManagementSystem.Products
         {
             view.MoveToLastPage();
         }
-    }
 
-    public class Product
-    {
-        public string productCode { get; set; }
-        public string productName { get; set; }
-        public double productPrice { get; set; }
-        public string productImage { get; set; }
-        public string productOccasion { get; set; }
-        public string productType { get; set; }
-        public string productSupplier { get; set; }
-    }
+        private void undoDelete_Click(object sender, RoutedEventArgs e)
+        {
+            NotificationBox.UndoBox undoConfirmationBox = new NotificationBox.UndoBox();
+            undoConfirmationBox.ShowDialog();
+            if (UndoBox.isDeleteBtnClicked)
+            {
+                productRepository.UndoDelete();
+                ReloadData(products);
+            }    
+        }
+    }   
 }

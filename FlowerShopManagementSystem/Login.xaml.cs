@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShopManagementSystem.PermissionFactoryMethod;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -78,33 +79,26 @@ namespace FlowerShopManagementSystem
                 {
                     if (TableRight.Rows[0][6].ToString() == "1")
                     {
-
                         priority = 1;
-                        username = TableRight.Rows[0][1].ToString();
                         role = "Manager";
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.txbUsername.Text = username;
-                        mainWindow.txbRole.Text = role;
-                        mainWindow.avatar.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + TableRight.Rows[0][7].ToString(), UriKind.Relative));
-                        mainWindow.Show();
-                        this.Close();
                     }
                     else
                     {
                         priority = 0;
-                        username = TableRight.Rows[0][1].ToString();
                         role = "Employee";
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.txbUsername.Text = username;
-                        mainWindow.txbRole.Text = role;
-                        mainWindow.btnAccounts.Visibility = Visibility.Collapsed;
-                        mainWindow.btnSuppliers.Visibility = Visibility.Collapsed;
-                        mainWindow.btnProducts.Visibility = Visibility.Collapsed;
-                        mainWindow.btnStatistics.Visibility = Visibility.Collapsed;
-                        mainWindow.avatar.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + TableRight.Rows[0][7].ToString(), UriKind.Relative));
-                        mainWindow.Show();
-                        this.Close();
                     }
+
+                    AccessPermission accessPermission = AccessPermissionFactory.CreateAccessPermission(priority);
+
+                    username = TableRight.Rows[0][1].ToString();
+
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.txbUsername.Text = username;
+                    mainWindow.txbRole.Text = role;
+                    accessPermission.SetPermissions(mainWindow);
+                    mainWindow.avatar.ImageSource = new BitmapImage(new Uri(@"../../Accounts/AccountAvatar/" + TableRight.Rows[0][7].ToString(), UriKind.Relative));
+                    mainWindow.Show();
+                    this.Close();
                 }
             }
             catch (Exception ex)

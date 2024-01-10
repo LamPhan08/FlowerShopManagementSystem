@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using FlowerShopManagementSystem.Suppliers.StrategyForSupplier_CRUD;
 
 namespace FlowerShopManagementSystem.Suppliers
 {
@@ -13,14 +14,20 @@ namespace FlowerShopManagementSystem.Suppliers
     public partial class EditSupplierForm : Window
     {
         Supplier supplierNewInfo;
-        string finalEditedAddress;
+        //string finalEditedAddress;
+        private ISupplierStrategy _strategy;
 
         public EditSupplierForm()
         {
             InitializeComponent();
-
+            _strategy = new DefaultSupplierStrategy();
             notify.Visibility = Visibility.Hidden;
 
+        }
+
+        public void SetStrategy(ISupplierStrategy strategy)
+        {
+            _strategy = strategy;
         }
 
         private void btnEditSaveSuppier_Click(object sender, RoutedEventArgs e)
@@ -92,54 +99,8 @@ namespace FlowerShopManagementSystem.Suppliers
 
         private void UpdateSupplier()
         {
-            try
-            {
-                supplierNewInfo = new Supplier();
-                supplierNewInfo.maNCC = tbxEditSupplierID.Text.ToString();
-                supplierNewInfo.tenNCC = tbxEditSupplierName.Text.ToString();
-                ComboBoxItem newWardCBI = (ComboBoxItem)cbbEditSupplierWard.SelectedItem,
-                            newDistrictCBI = (ComboBoxItem)cbbEditSupplierDistrict.SelectedItem,
-                            newCityCBI = (ComboBoxItem)cbbEditSuppierCity.SelectedItem;
-                string newWard = newWardCBI.Content.ToString(),
-                        newDistrict = newDistrictCBI.Content.ToString(),
-                        newCity = newCityCBI.Content.ToString();
-                supplierNewInfo.diaChiNCC = tbxEditSupplierStreet.Text.ToString() + ", " + newWard + ", " + newDistrict + ", " + newCity;
-                finalEditedAddress = supplierNewInfo.diaChiNCC;
-                supplierNewInfo.soDTNCC = tbxEditSupplierPhoneNumber.Text.ToString();
-                using (var sqlConnection = new SqlConnection(Database.connection))
-                using (var cmd = new SqlDataAdapter())
-                using (var insertCommand = new SqlCommand(
-                    "update NHA_CUNG_CAP " +
-                    "set TENNCC = '" + supplierNewInfo.tenNCC + "', DIACHI = '" + supplierNewInfo.diaChiNCC + "', SODT = '" + supplierNewInfo.soDTNCC + "' " +
-                    "where MANCC = '" + supplierNewInfo.maNCC + "'"))
-                {
-                    insertCommand.Connection = sqlConnection;
-                    cmd.InsertCommand = insertCommand;
-                    sqlConnection.Open();
-                    cmd.InsertCommand.ExecuteNonQuery();
-                }
-                MessageBox.Show("Done!", "Message:", MessageBoxButton.OK, MessageBoxImage.Information);
-                Close();
-            }
-            catch (Exception)
-            {
-                if (tbxEditSupplierID.Text.Length < 6 || tbxEditSupplierID.Text.Length > 6)
-                {
-                    MessageBox.Show("Error:\nSupplier's ID must not have more/less than 6 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (tbxEditSupplierName.Text.Length > 40)
-                {
-                    MessageBox.Show("Error:\nSupplier's name must not have more than 40 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (finalEditedAddress.Length > 50)
-                {
-                    MessageBox.Show("Error:\nSupplier's address must not have more than 50 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (tbxEditSupplierPhoneNumber.Text.Length < 10 || tbxEditSupplierPhoneNumber.Text.Length > 11)
-                {
-                    MessageBox.Show("Error:\nSupplier's phone number must not have more than 11 characters, or less than 10 characters!", "Error alert!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
+            SetStrategy(new EditSupplierStrategy(this));
+            _strategy.Execute(supplierNewInfo);
         }
     }
 }

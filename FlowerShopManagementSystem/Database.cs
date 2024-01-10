@@ -14,7 +14,9 @@ namespace FlowerShopManagementSystem
         string command;
         public static string connection;
 
-        public static string connectionName = "LAMPHAN\\SQLEXPRESS";
+
+        public static string connectionName = "LAPTOP-O3I73I22\\SQLEXPRESS";
+
 
         //Tạo hàm kết nối đến CSDL thông qua chuỗi kết nối
         private void CreateConnection()
