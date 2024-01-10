@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FlowerShopManagementSystem"
   ],
-  "SelectedNode": "\\FlowerShopManagementSystem.sln",
+  "SelectedNode": "\\FlowerShopManagementSystem\\PasswordGenerator.cs",
   "PreviewInSolutionExplorer": false
 }
